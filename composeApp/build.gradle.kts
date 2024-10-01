@@ -1,6 +1,11 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.io.FileInputStream
+import java.util.Properties
+
+val storeKeyPropertiesFile = rootProject.file("storekey.properties")
+val storeKeyProperties = Properties()
+storeKeyProperties.load(FileInputStream(storeKeyPropertiesFile))
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -45,12 +50,21 @@ android {
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
+    signingConfigs {
+        create("release") {
+            storeFile = file(storeKeyProperties["storeFile"] as String)
+            storePassword = storeKeyProperties["storePassword"] as String
+            keyAlias = storeKeyProperties["keyAlias"] as String
+            keyPassword = storeKeyProperties["keyPassword"] as String
+        }
+    }
     defaultConfig {
         applicationId = "com.dys.mobile.meucaminhao"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
+        signingConfig = signingConfigs.getByName("release")
     }
     packaging {
         resources {
@@ -58,8 +72,18 @@ android {
         }
     }
     buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            isDebuggable = true
+        }
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -73,4 +97,3 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-
