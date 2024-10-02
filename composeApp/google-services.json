@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "32503568890",
+    "project_id": "meu-caminhao---mobile",
+    "storage_bucket": "meu-caminhao---mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32503568890:android:acbf3469b666448a3f2c43",
+        "android_client_info": {
+          "package_name": "com.dys.mobile.meucaminhao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAagvvif3J1KHT0MJKYEgZe_vxS53NUiPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32503568890:android:67282dbf8c99dcfa3f2c43",
+        "android_client_info": {
+          "package_name": "com.dys.mobile.meucaminhao.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAagvvif3J1KHT0MJKYEgZe_vxS53NUiPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
