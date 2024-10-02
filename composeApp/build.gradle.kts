@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.service)
 }
 
 kotlin {
@@ -38,6 +39,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
+            implementation(libs.firebase.analytics)
+            implementation(project.dependencies.platform(libs.firebase.bom))
         }
     }
 }
