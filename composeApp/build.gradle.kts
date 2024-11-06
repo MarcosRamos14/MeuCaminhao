@@ -28,6 +28,12 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(project(":composeFeatures:home"))
+            implementation(project(":composeFeatures:login"))
+            implementation(project(":composeFeatures:onboarding"))
+            implementation(project(":composeFeatures:toolkit"))
+            implementation(project(":composeFeatures:trip"))
+            implementation(project(":composeFeatures:uiKit"))
         }
         commonMain.dependencies {
             implementation(compose.runtime)
