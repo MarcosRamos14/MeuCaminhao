@@ -30,3 +30,9 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 include(":shared")
+include(":composeFeatures:onboarding")
+include(":composeFeatures:login")
+include(":composeFeatures:home")
+include(":composeFeatures:uiKit")
+include(":composeFeatures:toolkit")
+include(":composeFeatures:trip")
