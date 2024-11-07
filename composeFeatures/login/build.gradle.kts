@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.dys.mobile.login"
-    compileSdk = libs.versions.android.minSdk.get().toInt()
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
