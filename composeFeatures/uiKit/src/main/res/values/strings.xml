@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Login Screen -->
+    <string name="text_control_your_trips">Control your trips</string>
+    <string name="text_start_here">start here!</string>
+    <string name="text_access_your_app">Access your app:</string>
+    <string name="text_email" translatable="false">E-mail</string>
+    <string name="text_email_placeholder">example@example.com</string>
+    <string name="text_password">Password</string>
+    <string name="text_password_placeholder" translatable="false">**********</string>
+    <string name="text_forgot_my_password">Forgot my password</string>
+    <string name="text_access">Access</string>
+    <string name="text_access_with_google">Access with Google</string>
+    <string name="text_or">or</string>
+    <string name="text_dont_have_account">Dont have an account yet?</string>
+    <string name="text_register">Register</string>
+
+</resources>
