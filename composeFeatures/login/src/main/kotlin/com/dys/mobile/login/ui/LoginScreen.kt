@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.CredentialComponent
@@ -29,6 +31,20 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
 @Composable
 fun LoginScreen() {
+    val viewModel = viewModel<LoginViewModel>()
+    val state = viewModel.uiStateFlow.collectAsState().value
+
+    LoginContent(
+        state = state,
+        event = viewModel::onEvent
+    )
+}
+
+@Composable
+fun LoginContent(
+    state: LoginState,
+    event: (LoginEvent) -> Unit
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
@@ -55,15 +71,18 @@ fun LoginScreen() {
 
             Spacer(modifier = Modifier.height(60.dp))
 
-            Credentials()
+            Credentials(state, event)
 
-            LoginOptions()
+            LoginOptions(event)
         }
     }
 }
 
 @Composable
-fun Credentials() {
+private fun Credentials(
+    state: LoginState,
+    event: (LoginEvent) -> Unit
+) {
     TextComponent(
         text = stringResource(R.string.text_access_your_app),
         fontWeight = FontWeight.Bold,
@@ -75,7 +94,8 @@ fun Credentials() {
     CredentialComponent(
         title = stringResource(R.string.text_email),
         placeHolder = stringResource(R.string.text_email_placeholder),
-        onValueChange = { /*TODO*/ },
+        value = state.email,
+        onValueChange = { event(LoginEvent.EmailChanged(it)) },
     )
 
     Spacer(modifier = Modifier.height(16.dp))
@@ -84,17 +104,18 @@ fun Credentials() {
         title = stringResource(R.string.text_password),
         placeHolder = stringResource(R.string.text_password_placeholder),
         isPassword = true,
-        onValueChange = { /*TODO*/ },
+        value = state.password,
+        onValueChange = { event(LoginEvent.PasswordChanged(it)) },
     )
 }
 
 @Composable
-fun LoginOptions() {
+private fun LoginOptions(event: (LoginEvent) -> Unit) {
     TextButtonComponent(
         text = stringResource(R.string.text_forgot_my_password),
         style = MaterialTheme.typography.bodyMedium,
         contentPadding = PaddingValues(0.dp),
-        onClick = { /*TODO*/ }
+        onClick = { event(LoginEvent.ForgotPassword) }
     )
 
     Spacer(modifier = Modifier.height(56.dp))
@@ -104,7 +125,7 @@ fun LoginOptions() {
             .fillMaxWidth()
             .padding(horizontal = 60.dp),
         text = stringResource(R.string.text_access),
-        onClick = { /*TODO*/ }
+        onClick = { event(LoginEvent.Access) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
@@ -124,7 +145,7 @@ fun LoginOptions() {
         text = stringResource(R.string.text_access_with_google),
         icon = R.drawable.ic_google,
         contentPadding = PaddingValues(0.dp),
-        onClick = { /*TODO*/ }
+        onClick = {event(LoginEvent.AccessWithGoogle) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
@@ -139,7 +160,7 @@ fun LoginOptions() {
         text = stringResource(R.string.text_register),
         style = MaterialTheme.typography.bodyMedium,
         horizontalArrangement = Arrangement.Center,
-        onClick = { /*TODO*/ }
+        onClick = { event(LoginEvent.Register) }
     )
 }
 
@@ -147,6 +168,9 @@ fun LoginOptions() {
 @Composable
 private fun LoginScreenPreview() {
     MeuCaminhaoTheme {
-        LoginScreen()
+        LoginContent(
+            state = LoginState(),
+            event = {}
+        )
     }
 }

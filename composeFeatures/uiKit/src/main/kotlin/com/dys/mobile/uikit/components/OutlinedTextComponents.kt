@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dys.mobile.uikit.R
@@ -32,6 +33,7 @@ fun CredentialComponent(
     title: String? = null,
     placeHolder: String? = null,
     isPassword: Boolean = false,
+    value: String,
     onValueChange: (String) -> Unit = {}
 ) {
     var passwordVisible by remember { mutableStateOf(true) }
@@ -51,7 +53,7 @@ fun CredentialComponent(
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            value = "",
+            value = value,
             onValueChange = onValueChange,
             placeholder = {
                 TextComponent(
@@ -84,7 +86,12 @@ fun CredentialComponent(
                 focusedContainerColor = Gray90,
                 unfocusedContainerColor = Gray90,
             ),
-            shape = MaterialTheme.shapes.extraLarge
+            shape = MaterialTheme.shapes.extraLarge,
+            visualTransformation = if (isPassword && passwordVisible) {
+                PasswordVisualTransformation()
+            } else {
+                VisualTransformation.None
+            }
         )
     }
 }
@@ -93,10 +100,6 @@ fun CredentialComponent(
 @Composable
 private fun CredentialComponentPreview() {
     MeuCaminhaoTheme {
-        CredentialComponent(
-            title = "Email",
-            placeHolder = "**********",
-            isPassword = true
-        )
+
     }
 }
