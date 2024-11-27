@@ -28,11 +28,13 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.coroutines.test)
+            api(libs.koin.core)
         }
 
         androidMain.dependencies {
-
+            api(libs.androidx.lifecycle.viewmodel)
         }
 
         iosMain.dependencies {
