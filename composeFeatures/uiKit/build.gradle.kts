@@ -47,7 +47,7 @@ dependencies {
     api(libs.androidx.compose.ui)
     api(libs.androidx.compose.ui.graphics)
     api(libs.androidx.compose.ui.tooling.preview)
-    api(libs.androidx.lifecycle.viewmodel.compose)
+    api(libs.koin.compose)
 
     testImplementation(libs.junit)
     debugImplementation(libs.androidx.compose.ui.tooling)

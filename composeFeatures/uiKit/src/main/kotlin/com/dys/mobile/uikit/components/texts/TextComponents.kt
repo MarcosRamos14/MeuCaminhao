@@ -1,4 +1,4 @@
-package com.dys.mobile.uikit.components
+package com.dys.mobile.uikit.components.texts
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text

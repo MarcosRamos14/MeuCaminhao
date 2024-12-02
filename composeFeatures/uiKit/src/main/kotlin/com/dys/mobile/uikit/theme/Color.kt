@@ -21,3 +21,4 @@ val Gray90 = Color(0xFFFCFCFC)
 
 val BlueSky = Color(0xFF007AFF)
 val Black = Color(0xFF333333)
+val White = Color(0xFFFFFFFF)

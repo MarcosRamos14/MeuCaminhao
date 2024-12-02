@@ -1,4 +1,4 @@
-package com.dys.mobile.uikit.components
+package com.dys.mobile.uikit.components.outlinedtext
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,6 +24,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dys.mobile.uikit.R
+import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.Gray90
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
@@ -100,6 +101,9 @@ fun CredentialComponent(
 @Composable
 private fun CredentialComponentPreview() {
     MeuCaminhaoTheme {
-
+        CredentialComponent(
+            title = "Email",
+            value = ""
+        )
     }
 }

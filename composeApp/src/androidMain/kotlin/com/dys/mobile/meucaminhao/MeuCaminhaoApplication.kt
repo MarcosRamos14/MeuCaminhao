@@ -1,6 +1,7 @@
 package com.dys.mobile.meucaminhao
 
 import android.app.Application
+import com.dys.mobile.meucaminhao.di.useCaseModule
 import com.dys.mobile.meucaminhao.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,7 +15,7 @@ class MeuCaminhaoApplication : Application() {
         startKoin {
             androidContext(this@MeuCaminhaoApplication)
             androidLogger(Level.DEBUG)
-            modules(viewModelModule)
+            modules(viewModelModule, useCaseModule)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.dys.mobile.login.ui
+package com.dys.mobile.meucaminhao.viewmodels.login
 
 sealed interface LoginEvent {
     data class EmailChanged(val email: String) : LoginEvent
