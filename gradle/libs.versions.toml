@@ -20,6 +20,7 @@ kotlin = "2.0.21"
 kotlin-coroutines = "1.9.0"
 skie = "0.4.19"
 jvm-target = "11"
+uiUnitAndroid = "1.7.5"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -46,6 +47,7 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = 
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+androidx-ui-unit-android = { group = "androidx.compose.ui", name = "ui-unit-android", version.ref = "uiUnitAndroid" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

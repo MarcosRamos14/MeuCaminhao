@@ -38,6 +38,8 @@ android {
 
 dependencies {
 
+    api(project(":composeFeatures:toolkit"))
+
     api(libs.androidx.activity.compose)
     api(libs.androidx.appcompat)
     api(libs.androidx.core.ktx)

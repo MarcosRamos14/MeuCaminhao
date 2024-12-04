@@ -24,6 +24,8 @@ import com.dys.mobile.meucaminhao.viewmodels.login.LoginEvent
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginSharedViewModel
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginState
 import com.dys.mobile.uikit.R
+import com.dys.mobile.toolkit.extensions._dph
+import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.OutlinedRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.TextButtonComponent
@@ -62,7 +64,7 @@ fun LoginContent(
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
-            modifier = Modifier.padding(24.dp),
+            modifier = Modifier.padding(24._dph),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -81,7 +83,7 @@ fun LoginContent(
                 style = MaterialTheme.typography.titleLarge
             )
 
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(60._dph))
 
             Credentials(loginState, event)
 
@@ -101,7 +103,7 @@ private fun Credentials(
         style = MaterialTheme.typography.bodyLarge
     )
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(16._dph))
 
     CredentialComponent(
         title = stringResource(R.string.text_email),
@@ -110,7 +112,7 @@ private fun Credentials(
         onValueChange = { event(LoginEvent.EmailChanged(it)) },
     )
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(16._dph))
 
     CredentialComponent(
         title = stringResource(R.string.text_password),
@@ -130,17 +132,17 @@ private fun LoginOptions(event: (LoginEvent) -> Unit) {
         onClick = { event(LoginEvent.ForgotPassword) }
     )
 
-    Spacer(modifier = Modifier.height(56.dp))
+    Spacer(modifier = Modifier.height(56._dph))
 
     FilledRoundButtonComponent(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 60.dp),
+            .padding(horizontal = 60._dpw),
         text = stringResource(R.string.text_access),
         onClick = { event(LoginEvent.Access) }
     )
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(16._dph))
 
     TextComponent(
         text = stringResource(R.string.text_or),
@@ -148,19 +150,19 @@ private fun LoginOptions(event: (LoginEvent) -> Unit) {
         style = MaterialTheme.typography.bodyMedium
     )
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(16._dph))
 
     OutlinedRoundButtonComponent(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 60.dp),
+            .padding(horizontal = 60._dpw),
         text = stringResource(R.string.text_access_with_google),
         icon = R.drawable.ic_google,
         contentPadding = PaddingValues(0.dp),
         onClick = { event(LoginEvent.AccessWithGoogle) }
     )
 
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = Modifier.height(16._dph))
 
     TextComponent(
         text = stringResource(R.string.text_dont_have_account),
@@ -176,7 +178,7 @@ private fun LoginOptions(event: (LoginEvent) -> Unit) {
     )
 }
 
-@Preview
+@Preview(widthDp = 375, heightDp = 812)
 @Composable
 private fun LoginScreenPreview() {
     MeuCaminhaoTheme {

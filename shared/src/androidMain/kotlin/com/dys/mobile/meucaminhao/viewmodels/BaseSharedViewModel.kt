@@ -33,7 +33,7 @@ actual abstract class BaseSharedViewModel : ViewModel(), UiStateManager {
             runCatching {
                 action.invoke()
             }.onFailure {
-                emitState(UiState.ErrorState(ErrorDTO("", "")))
+                emitState(UiState.ErrorState(ErrorDTO(0, "", "", "")))
             }.also {
                 disableLoading()
             }

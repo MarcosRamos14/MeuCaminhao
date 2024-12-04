@@ -22,8 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.dys.mobile.uikit.R
+import com.dys.mobile.toolkit.extensions._dph
+import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.Gray90
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
@@ -42,7 +43,7 @@ fun CredentialComponent(
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8._dph)
     ) {
         title?.let {
             TextComponent(
@@ -72,7 +73,7 @@ fun CredentialComponent(
                     }
 
                     IconButton(
-                        modifier = Modifier.padding(end = 8.dp),
+                        modifier = Modifier.padding(end = 8._dpw),
                         onClick = { passwordVisible = !passwordVisible }
                     ) {
                         Icon(

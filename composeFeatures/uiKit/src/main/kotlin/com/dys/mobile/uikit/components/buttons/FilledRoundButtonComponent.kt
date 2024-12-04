@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
@@ -40,7 +40,7 @@ fun FilledRoundButtonComponent(
                     painter = painterResource(id = drawableRes),
                     contentDescription = null,
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(8._dpw))
             }
             TextComponent(
                 modifier = Modifier.wrapContentWidth(),

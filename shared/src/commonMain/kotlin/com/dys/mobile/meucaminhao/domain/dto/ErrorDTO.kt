@@ -1,6 +1,8 @@
 package com.dys.mobile.meucaminhao.domain.dto
 
 data class ErrorDTO(
-    val code: String,
-    override val message: String,
+    val statusCode: Int,
+    val errorCode: String?,
+    val msg: String,
+    val path: String?
 ) : Throwable()
