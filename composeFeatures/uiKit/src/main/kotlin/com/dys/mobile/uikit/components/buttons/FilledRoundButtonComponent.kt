@@ -26,11 +26,13 @@ fun FilledRoundButtonComponent(
     modifier: Modifier = Modifier.fillMaxWidth(),
     text: String,
     @DrawableRes icon: Int? = null,
+    enabled: Boolean = true,
     onClick: () -> Unit = {}
 ) {
     Button(
         modifier = modifier,
         onClick = onClick,
+        enabled = enabled
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically

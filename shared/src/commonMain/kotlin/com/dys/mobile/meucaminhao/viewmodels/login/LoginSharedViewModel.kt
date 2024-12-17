@@ -1,7 +1,7 @@
 package com.dys.mobile.meucaminhao.viewmodels.login
 
-import com.dys.mobile.meucaminhao.domain.usecase.EmailValidatorUseCaseImpl
-import com.dys.mobile.meucaminhao.domain.usecase.PasswordValidatorUseCaseImpl
+import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.EmailValidatorUseCaseImpl
+import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.PasswordValidatorUseCaseImpl
 import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -11,13 +11,16 @@ val Red60 = Color(0xFFE23B58)
 val Orange60 = Color(0xFFE29218)
 
 val Blue70 = Color(0xFFB2D1FF)
+val Gray70 = Color(0xFFC5C5C5)
 
 val Blue80 = Color(0xFFEDF3FC)
 val Gray80 = Color(0xFFD9D9D9)
 val Green80 = Color(0xFFD3E6E4)
 val Pink80 = Color(0xFFFCEBEE)
 
-val Gray90 = Color(0xFFFCFCFC)
+val Gray90 = Color(0xFFF4F4F4)
+
+val Gray95 = Color(0xFFFCFCFC)
 
 val BlueSky = Color(0xFF007AFF)
 val Black = Color(0xFF333333)

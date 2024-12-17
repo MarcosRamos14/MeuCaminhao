@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -19,14 +20,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.dys.mobile.uikit.R
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.transformation.PhoneVisualTransformation
 import com.dys.mobile.uikit.components.texts.TextComponent
-import com.dys.mobile.uikit.theme.Gray90
+import com.dys.mobile.uikit.theme.Gray70
+import com.dys.mobile.uikit.theme.Gray95
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
 @Composable
@@ -35,6 +39,8 @@ fun CredentialComponent(
     title: String? = null,
     placeHolder: String? = null,
     isPassword: Boolean = false,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    maxLines: Int = Int.MAX_VALUE,
     value: String,
     onValueChange: (String) -> Unit = {}
 ) {
@@ -84,16 +90,22 @@ fun CredentialComponent(
                 }
             },
             colors = TextFieldDefaults.colors(
-                unfocusedIndicatorColor = Color.LightGray,
-                focusedContainerColor = Gray90,
-                unfocusedContainerColor = Gray90,
+                unfocusedIndicatorColor = Gray70,
+                focusedContainerColor = Gray95,
+                unfocusedContainerColor = Gray95,
             ),
+            maxLines = maxLines,
             shape = MaterialTheme.shapes.extraLarge,
             visualTransformation = if (isPassword && passwordVisible) {
                 PasswordVisualTransformation()
+            } else if (keyboardType == KeyboardType.Phone) {
+                PhoneVisualTransformation()
             } else {
                 VisualTransformation.None
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = keyboardType
+            )
         )
     }
 }

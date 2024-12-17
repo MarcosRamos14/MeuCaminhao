@@ -46,7 +46,7 @@ fun TextButtonComponent(
         onClick = onClick,
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.wrapContentWidth(),
             horizontalArrangement = horizontalArrangement ?: Arrangement.Start,
         ) {
             icon?.let { drawableRes ->

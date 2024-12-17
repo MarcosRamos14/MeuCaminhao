@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -19,13 +20,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginEvent
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginSharedViewModel
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginState
-import com.dys.mobile.uikit.R
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.OutlinedRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.TextButtonComponent
@@ -35,14 +38,17 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     val viewModel = koinViewModel<LoginSharedViewModel>()
     val uiState = viewModel.uiState.collectAsState().value
     val loginState = viewModel.loginState.collectAsState().value
 
     LoginContent(
         loginState,
-        event = viewModel::onEvent
+        event = viewModel::onEvent,
+        navigateToRecoverPassword = {
+            navController.navigate(Routes.RecoverPasswordScreen.route)
+        }
     )
 
     if (uiState is UiState.Loading && uiState.isLoading) {
@@ -57,7 +63,8 @@ fun LoginScreen() {
 @Composable
 fun LoginContent(
     loginState: LoginState,
-    event: (LoginEvent) -> Unit
+    event: (LoginEvent) -> Unit,
+    navigateToRecoverPassword: () -> Unit
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -87,7 +94,7 @@ fun LoginContent(
 
             Credentials(loginState, event)
 
-            LoginOptions(event)
+            LoginOptions(event, navigateToRecoverPassword)
         }
     }
 }
@@ -124,12 +131,18 @@ private fun Credentials(
 }
 
 @Composable
-private fun LoginOptions(event: (LoginEvent) -> Unit) {
+private fun LoginOptions(
+    event: (LoginEvent) -> Unit,
+    navigateToRecoverPassword: () -> Unit
+) {
     TextButtonComponent(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentWidth(Alignment.Start),
         text = stringResource(R.string.text_forgot_my_password),
         style = MaterialTheme.typography.bodyMedium,
         contentPadding = PaddingValues(0.dp),
-        onClick = { event(LoginEvent.ForgotPassword) }
+        onClick = navigateToRecoverPassword
     )
 
     Spacer(modifier = Modifier.height(56._dph))
@@ -165,12 +178,13 @@ private fun LoginOptions(event: (LoginEvent) -> Unit) {
     Spacer(modifier = Modifier.height(16._dph))
 
     TextComponent(
-        text = stringResource(R.string.text_dont_have_account),
+        text = stringResource(R.string.text_do_not_have_account),
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.bodyMedium
     )
 
     TextButtonComponent(
+        modifier = Modifier.wrapContentWidth(),
         text = stringResource(R.string.text_register),
         style = MaterialTheme.typography.bodyMedium,
         horizontalArrangement = Arrangement.Center,
@@ -184,7 +198,8 @@ private fun LoginScreenPreview() {
     MeuCaminhaoTheme {
         LoginContent(
             loginState = LoginState(),
-            event = {}
+            event = {},
+            navigateToRecoverPassword = {}
         )
     }
 }

@@ -1,14 +1,11 @@
 package com.dys.mobile.meucaminhao.di
 
-import com.dys.mobile.meucaminhao.domain.usecase.EmailValidatorUseCaseImpl
-import com.dys.mobile.meucaminhao.domain.usecase.PasswordValidatorUseCaseImpl
+import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.EmailValidatorUseCaseImpl
+import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.PasswordValidatorUseCaseImpl
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    single {
-        EmailValidatorUseCaseImpl()
-    }
-    single {
-        PasswordValidatorUseCaseImpl()
-    }
+    singleOf(::EmailValidatorUseCaseImpl)
+    singleOf(::PasswordValidatorUseCaseImpl)
 }
