@@ -24,23 +24,28 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import com.dys.mobile.uikit.R
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.toolkit.transformation.PhoneVisualTransformation
+import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.texts.TextComponent
+import com.dys.mobile.uikit.theme.Black
+import com.dys.mobile.uikit.theme.Blue40
 import com.dys.mobile.uikit.theme.Gray70
 import com.dys.mobile.uikit.theme.Gray95
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
+import com.dys.mobile.uikit.theme.Red60
 
 @Composable
 fun CredentialComponent(
     modifier: Modifier = Modifier,
     title: String? = null,
+    titleColor: Color? = null,
     placeHolder: String? = null,
     isPassword: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Text,
     maxLines: Int = Int.MAX_VALUE,
+    isError: Boolean = false,
     value: String,
     onValueChange: (String) -> Unit = {}
 ) {
@@ -54,6 +59,7 @@ fun CredentialComponent(
         title?.let {
             TextComponent(
                 text = it,
+                color = titleColor ?: Black,
                 fontWeight = FontWeight.Light,
                 style = MaterialTheme.typography.bodyMedium
             )
@@ -90,7 +96,8 @@ fun CredentialComponent(
                 }
             },
             colors = TextFieldDefaults.colors(
-                unfocusedIndicatorColor = Gray70,
+                unfocusedIndicatorColor = if (isError) Red60 else Gray70,
+                focusedIndicatorColor = if (isError) Red60 else Blue40,
                 focusedContainerColor = Gray95,
                 unfocusedContainerColor = Gray95,
             ),
@@ -116,7 +123,8 @@ private fun CredentialComponentPreview() {
     MeuCaminhaoTheme {
         CredentialComponent(
             title = "Email",
-            value = ""
+            value = "",
+            isError = false
         )
     }
 }

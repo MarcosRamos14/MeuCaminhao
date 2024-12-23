@@ -3,6 +3,7 @@
 
     <!-- Common -->
     <string name="common_back">Voltar</string>
+    <string name="common_text_generic_error">Ocorreu um erro. Por favor, tente novamente.</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -26,5 +27,14 @@
     <string name="text_receiver_sms">Receber por SMS</string>
     <string name="text_receiver_email">Receber por e-mail</string>
     <string name="text_cell_phone">Celular</string>
+
+    <!-- New Password Screen -->
+    <string name="text_create_new_password">Crie uma nova senha</string>
+    <string name="text_ready_to_create_password">Tudo certo, agora você já pode criar uma nova senha.</string>
+    <string name="text_new_password">Nova senha</string>
+    <string name="text_confirm_password">Confirmar senha</string>
+    <string name="text_save_password">Salvar senha</string>
+    <string name="text_password_too_short">A senha é muito curta. Ela precisa ter pelo menos 6 caracteres.</string>
+    <string name="text_passwords_do_not_match">As senhas não correspondem.</string>
 
 </resources>

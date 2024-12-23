@@ -3,6 +3,7 @@
 
     <!-- Common -->
     <string name="common_back">Back</string>
+    <string name="common_text_generic_error">An error occurred. Please try again.</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">Control your trips</string>
@@ -29,5 +30,14 @@
     <string name="text_receiver_email">Receive by e-mail</string>
     <string name="text_cell_phone">Cell phone</string>
     <string name="text_cell_phone_placeholder" translatable="false">(DDD) 00000-0000</string>
+
+    <!-- New Password Screen -->
+    <string name="text_create_new_password">Create a new password</string>
+    <string name="text_ready_to_create_password">All right, now you can create a new password.</string>
+    <string name="text_new_password">New password</string>
+    <string name="text_confirm_password">Confirm password</string>
+    <string name="text_save_password">Save password</string>
+    <string name="text_password_too_short">The password is too short. It must have at least 6 characters.</string>
+    <string name="text_passwords_do_not_match">Passwords do not match.</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.dys.mobile.onboarding.recoverPassword.ui
+package com.dys.mobile.onboarding.ui.recoverPassword
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -9,7 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import com.dys.mobile.login.ui.LoginScreen
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
-import com.dys.mobile.onboarding.recoverPassword.ui.RecoverPasswordScreen
+import com.dys.mobile.onboarding.ui.recoverPassword.RecoverPasswordScreen
 
 @Composable
 fun MainNavHost() {

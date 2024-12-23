@@ -1,14 +1,12 @@
 package com.dys.mobile.meucaminhao.viewmodels.login
 
-import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.EmailValidatorUseCaseImpl
-import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.PasswordValidatorUseCaseImpl
+import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class LoginSharedViewModel(
-    private val emailValidator: EmailValidatorUseCaseImpl,
-    private val passwordValidator: PasswordValidatorUseCaseImpl
+    private val credentialsValidator: CredentialsValidatorUseCase
 ) : BaseSharedViewModel() {
 
     private var _loginStateFlow = MutableStateFlow(LoginState())
