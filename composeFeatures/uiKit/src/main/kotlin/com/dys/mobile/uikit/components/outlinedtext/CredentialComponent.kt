@@ -103,12 +103,10 @@ fun CredentialComponent(
             ),
             maxLines = maxLines,
             shape = MaterialTheme.shapes.extraLarge,
-            visualTransformation = if (isPassword && passwordVisible) {
-                PasswordVisualTransformation()
-            } else if (keyboardType == KeyboardType.Phone) {
-                PhoneVisualTransformation()
-            } else {
-                VisualTransformation.None
+            visualTransformation = when {
+                (isPassword && passwordVisible) -> PasswordVisualTransformation()
+                (keyboardType == KeyboardType.Phone) -> PhoneVisualTransformation()
+                else -> VisualTransformation.None
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = keyboardType

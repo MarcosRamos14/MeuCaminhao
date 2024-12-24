@@ -22,11 +22,7 @@
     <string name="text_recover_password">Recuperar senha</string>
     <string name="text_forgot_password_question">Você esqueceu sua senha?</string>
     <string name="text_recovery_code_message">Não se preocupe! Enviaremos um código de recuperação para o e-mail cadastrado.</string>
-    <string name="text_recovery_code_phone_message">Não se preocupe! Enviaremos um código de recuperação para o celular cadastrado.</string>
     <string name="text_send_code">Enviar código</string>
-    <string name="text_receiver_sms">Receber por SMS</string>
-    <string name="text_receiver_email">Receber por e-mail</string>
-    <string name="text_cell_phone">Celular</string>
 
     <!-- New Password Screen -->
     <string name="text_create_new_password">Crie uma nova senha</string>

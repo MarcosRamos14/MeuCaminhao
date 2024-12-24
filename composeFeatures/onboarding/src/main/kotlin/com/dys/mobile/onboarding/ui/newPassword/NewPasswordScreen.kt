@@ -22,11 +22,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordViewModel
-import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.PasswordError
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.R
@@ -130,8 +130,8 @@ fun NewPasswordContent(
 
             if (state.passwordError != null) {
                 val errorMessage = when (state.passwordError) {
-                    is PasswordError.PasswordTooShort -> stringResource(R.string.text_password_too_short)
-                    is PasswordError.PasswordsDoNotMatch -> stringResource(R.string.text_passwords_do_not_match)
+                    is CredentialsErrorState.PasswordTooShort -> stringResource(R.string.text_password_too_short)
+                    is CredentialsErrorState.PasswordsDoNotMatch -> stringResource(R.string.text_passwords_do_not_match)
                     else -> stringResource(R.string.common_text_generic_error)
                 }
 

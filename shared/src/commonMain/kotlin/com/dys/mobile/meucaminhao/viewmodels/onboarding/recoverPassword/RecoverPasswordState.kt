@@ -1,22 +1,18 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword
 
+import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 data class RecoverPasswordState(
-    val credential: String = "",
-    val credentialError: String? = null,
-    val receiveSms: Boolean = false
+    val email: String = "",
+    val emailError: CredentialsErrorState? = null
 )
 
-fun MutableStateFlow<RecoverPasswordState>.updateCredential(credential: String) {
-    update { it.copy(credential = credential) }
+fun MutableStateFlow<RecoverPasswordState>.updateEmail(email: String) {
+    update { it.copy(email = email) }
 }
 
-fun MutableStateFlow<RecoverPasswordState>.updateCredentialError(message: String) {
-    update { it.copy(credentialError = message) }
-}
-
-fun MutableStateFlow<RecoverPasswordState>.updateReceiveSms(receiveSms: Boolean) {
-    update { it.copy(receiveSms = receiveSms) }
+fun MutableStateFlow<RecoverPasswordState>.updateEmailError(error: CredentialsErrorState?) {
+    update { it.copy(emailError = error) }
 }

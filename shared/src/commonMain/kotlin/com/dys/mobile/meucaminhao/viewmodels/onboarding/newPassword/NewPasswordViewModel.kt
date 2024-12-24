@@ -1,5 +1,6 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword
 
+import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,12 +34,12 @@ class NewPasswordViewModel(
         val confirmPassword = _newPasswordStateFlow.value.confirmPassword
 
         if (!credentialsValidator.isPasswordValid(newPassword)) {
-            _newPasswordStateFlow.updatePasswordError(PasswordError.PasswordTooShort)
+            _newPasswordStateFlow.updatePasswordError(CredentialsErrorState.PasswordTooShort)
             return
         }
 
         if (newPassword != confirmPassword) {
-            _newPasswordStateFlow.updatePasswordError(PasswordError.PasswordsDoNotMatch)
+            _newPasswordStateFlow.updatePasswordError(CredentialsErrorState.PasswordsDoNotMatch)
             return
         }
 

@@ -24,12 +24,7 @@
     <string name="text_recover_password">Recover password</string>
     <string name="text_forgot_password_question">Did you forget your password?</string>
     <string name="text_recovery_code_message">Do not worry! We will send a recovery code to the registered email.</string>
-    <string name="text_recovery_code_phone_message">Do not worry! We will send a recovery code to the registered phone number.</string>
     <string name="text_send_code">Send code</string>
-    <string name="text_receiver_sms">Receive by SMS</string>
-    <string name="text_receiver_email">Receive by e-mail</string>
-    <string name="text_cell_phone">Cell phone</string>
-    <string name="text_cell_phone_placeholder" translatable="false">(DDD) 00000-0000</string>
 
     <!-- New Password Screen -->
     <string name="text_create_new_password">Create a new password</string>
