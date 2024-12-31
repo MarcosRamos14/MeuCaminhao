@@ -11,4 +11,6 @@ sealed class Routes(val route: String) {
      * Onboarding flow routes
      */
     data object RecoverPasswordScreen : Routes("recoverPasswordScreen")
+    data object VerifyCodeScreen : Routes("verifyCodeScreen")
+    data object NewPasswordScreen : Routes("newPasswordScreen")
 }

@@ -24,6 +24,12 @@
     <string name="text_recovery_code_message">Não se preocupe! Enviaremos um código de recuperação para o e-mail cadastrado.</string>
     <string name="text_send_code">Enviar código</string>
 
+    <!-- Verify Code Screen -->
+    <string name="text_enter_verification_code">Digite o código de verificação</string>
+    <string name="text_enter_six_digit_code">Digite o código de 6 dígitos que enviamos para seu e-mail e recupere sua senha.</string>
+    <string name="text_no_code_received">Não recebi meu código</string>
+    <string name="text_invalid_expired_code">Código inválido ou expirado.</string>
+
     <!-- New Password Screen -->
     <string name="text_create_new_password">Crie uma nova senha</string>
     <string name="text_ready_to_create_password">Tudo certo, agora você já pode criar uma nova senha.</string>

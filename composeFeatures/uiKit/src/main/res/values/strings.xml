@@ -26,6 +26,12 @@
     <string name="text_recovery_code_message">Do not worry! We will send a recovery code to the registered email.</string>
     <string name="text_send_code">Send code</string>
 
+    <!-- Verify Code Screen -->
+    <string name="text_enter_verification_code">Enter the verification code</string>
+    <string name="text_enter_six_digit_code">Enter the 6-digit code we sent to your email and recover your password.</string>
+    <string name="text_no_code_received">I do not receive my code</string>
+    <string name="text_invalid_expired_code">Invalid or expired code.</string>
+
     <!-- New Password Screen -->
     <string name="text_create_new_password">Create a new password</string>
     <string name="text_ready_to_create_password">All right, now you can create a new password.</string>

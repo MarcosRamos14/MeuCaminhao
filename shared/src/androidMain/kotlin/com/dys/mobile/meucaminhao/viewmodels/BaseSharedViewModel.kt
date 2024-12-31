@@ -23,7 +23,7 @@ actual abstract class BaseSharedViewModel : ViewModel(), UiStateManager {
         super.onCleared()
     }
 
-    override fun emitState(state: UiState) {
+    actual override fun emitState(state: UiState) {
         _uiStateFlow.tryEmit(state)
     }
 
