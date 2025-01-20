@@ -24,6 +24,7 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 @Composable
 fun FilledRoundButtonComponent(
     modifier: Modifier = Modifier.fillMaxWidth(),
+    modifierText: Modifier = Modifier.wrapContentWidth(),
     text: String,
     @DrawableRes icon: Int? = null,
     enabled: Boolean = true,
@@ -45,7 +46,7 @@ fun FilledRoundButtonComponent(
                 Spacer(modifier = Modifier.width(8._dpw))
             }
             TextComponent(
-                modifier = Modifier.wrapContentWidth(),
+                modifier = modifierText,
                 text = text,
                 color = Color.White,
                 fontWeight = FontWeight.Bold,

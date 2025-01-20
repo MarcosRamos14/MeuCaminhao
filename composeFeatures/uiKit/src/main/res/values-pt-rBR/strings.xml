@@ -23,6 +23,8 @@
     <string name="text_forgot_password_question">Você esqueceu sua senha?</string>
     <string name="text_recovery_code_message">Não se preocupe! Enviaremos um código de recuperação para o e-mail cadastrado.</string>
     <string name="text_send_code">Enviar código</string>
+    <string name="text_password_changed_successfully">Senha alterada com sucesso!</string>
+    <string name="text_password_reset_success_message">Agora você pode usar sua nova senha para acessar sua conta.</string>
 
     <!-- Verify Code Screen -->
     <string name="text_enter_verification_code">Digite o código de verificação</string>
@@ -38,5 +40,6 @@
     <string name="text_save_password">Salvar senha</string>
     <string name="text_password_too_short">A senha é muito curta. Ela precisa ter pelo menos 6 caracteres.</string>
     <string name="text_passwords_do_not_match">As senhas não correspondem.</string>
+    <string name="text_action_login">Fazer login</string>
 
 </resources>

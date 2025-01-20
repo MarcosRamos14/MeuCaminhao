@@ -64,7 +64,7 @@ fun MainNavHost() {
                 }
             )
         ) {
-            NewPasswordScreen()
+            NewPasswordScreen(navController)
         }
     }
 }

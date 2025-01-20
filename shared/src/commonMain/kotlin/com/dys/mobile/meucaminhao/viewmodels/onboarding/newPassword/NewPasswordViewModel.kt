@@ -1,6 +1,7 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
+import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,6 +49,7 @@ class NewPasswordViewModel(
     }
 
     private fun savePassword() {
-        // TODO: Save password
+        // TODO: Save password. If successful, emit success state.
+        emitState(UiState.Success(Unit))
     }
 }

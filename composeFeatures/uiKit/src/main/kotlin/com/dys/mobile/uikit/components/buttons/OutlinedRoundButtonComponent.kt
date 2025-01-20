@@ -1,6 +1,7 @@
 package com.dys.mobile.uikit.components.buttons
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.dys.mobile.toolkit.extensions._dpw
@@ -28,7 +30,10 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 @Composable
 fun OutlinedRoundButtonComponent(
     modifier: Modifier = Modifier.fillMaxWidth(),
+    modifierRow: Modifier = Modifier.fillMaxWidth(),
     text: String,
+    fontWeight: FontWeight = FontWeight.Normal,
+    color: Color? = null,
     @DrawableRes icon: Int? = null,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     onClick: () -> Unit = {}
@@ -36,10 +41,11 @@ fun OutlinedRoundButtonComponent(
     OutlinedButton(
         modifier = modifier,
         onClick = onClick,
-        contentPadding = contentPadding
+        contentPadding = contentPadding,
+        border = BorderStroke(1._dpw, color ?: Color.Gray)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = modifierRow,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -55,7 +61,8 @@ fun OutlinedRoundButtonComponent(
             TextComponent(
                 modifier = Modifier.wrapContentWidth(),
                 text = text,
-                color = Black,
+                color = color ?: Black,
+                fontWeight = fontWeight,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyMedium
             )
