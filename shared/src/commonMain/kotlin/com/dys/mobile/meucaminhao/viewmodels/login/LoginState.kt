@@ -25,3 +25,7 @@ fun MutableStateFlow<LoginState>.updatePassword(password: String) {
 fun MutableStateFlow<LoginState>.updatePasswordError(message: String) {
     update { it.copy(emailError = message) }
 }
+
+data class EmailAndPassword(val email: String, val pwd: String)
+val MutableStateFlow<LoginState>.emailAndPassword: EmailAndPassword
+    get() = EmailAndPassword(value.email, value.password)

@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
 
-val storeKeyPropertiesFile = rootProject.file("storekey.properties")
+val storeKeyPropertiesFile = rootProject.file("composeApp/storekey.properties")
 val storeKeyProperties = Properties()
 storeKeyProperties.load(FileInputStream(storeKeyPropertiesFile))
 
@@ -28,6 +28,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.kotlinx.coroutines.android)
             implementation(project(":composeFeatures:home"))
             implementation(project(":composeFeatures:login"))
             implementation(project(":composeFeatures:onboarding"))

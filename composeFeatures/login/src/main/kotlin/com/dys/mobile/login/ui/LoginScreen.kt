@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
+import com.dys.mobile.meucaminhao.domain.state.UiStateManager
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginEvent
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginSharedViewModel
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginState
@@ -38,9 +39,20 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
+fun CollectUiState(manager: UiStateManager) {
+    val uiState = manager.uiState.collectAsState().value
+    if (uiState is UiState.Loading && uiState.isLoading) {
+        // TODO: Show loading
+    }
+
+    if (uiState is UiState.ErrorState) {
+        // TODO: Show error
+    }
+}
+
+@Composable
 fun LoginScreen(navController: NavController) {
     val viewModel = koinViewModel<LoginSharedViewModel>()
-    val uiState = viewModel.uiState.collectAsState().value
     val loginState = viewModel.loginState.collectAsState().value
 
     LoginContent(
@@ -50,14 +62,7 @@ fun LoginScreen(navController: NavController) {
             navController.navigate(Routes.RecoverPasswordScreen.route)
         }
     )
-
-    if (uiState is UiState.Loading && uiState.isLoading) {
-        // TODO: Show loading
-    }
-
-    if (uiState is UiState.ErrorState) {
-        // TODO: Show error
-    }
+    collectUiState(viewModel)
 }
 
 @Composable

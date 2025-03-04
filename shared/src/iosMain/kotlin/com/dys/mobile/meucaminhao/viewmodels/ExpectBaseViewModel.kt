@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 
-actual abstract class BaseSharedViewModel {
+actual abstract class ExpectBaseViewModel {
 
     actual val scope: CoroutineScope = MainScope()
 
