@@ -2,13 +2,12 @@ package com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
-import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
+import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class RecoverPasswordSharedViewModel(
-    private val credentialsValidator: CredentialsValidatorUseCase
-) : BaseSharedViewModel() {
+class RecoverPasswordSharedViewModel(private val credentialsValidator: CredentialsValidatorUseCase) :
+    BaseViewModel() {
 
     private var _recoverPasswordStateFlow = MutableStateFlow(RecoverPasswordState())
     val recoverPasswordState = _recoverPasswordStateFlow.asStateFlow()

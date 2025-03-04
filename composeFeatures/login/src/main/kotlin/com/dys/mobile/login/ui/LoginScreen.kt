@@ -62,7 +62,7 @@ fun LoginScreen(navController: NavController) {
             navController.navigate(Routes.RecoverPasswordScreen.route)
         }
     )
-    collectUiState(viewModel)
+    CollectUiState(viewModel)
 }
 
 @Composable

@@ -3,13 +3,11 @@ package com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
-import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
+import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class NewPasswordViewModel(
-    private val credentialsValidator: CredentialsValidatorUseCase
-) : BaseSharedViewModel() {
+class NewPasswordViewModel(private val credentialsValidator: CredentialsValidatorUseCase) : BaseViewModel() {
 
     private var _newPasswordStateFlow = MutableStateFlow(NewPasswordState())
     val newPasswordState = _newPasswordStateFlow.asStateFlow()
