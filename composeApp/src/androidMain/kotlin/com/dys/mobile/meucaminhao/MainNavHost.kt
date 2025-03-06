@@ -11,6 +11,9 @@ import com.dys.mobile.login.ui.LoginScreen
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.onboarding.ui.newPassword.NewPasswordScreen
 import com.dys.mobile.onboarding.ui.recoverPassword.RecoverPasswordScreen
+import com.dys.mobile.onboarding.ui.register.CreateAccountScreen
+import com.dys.mobile.onboarding.ui.register.PlanTypeScreen
+import com.dys.mobile.onboarding.ui.register.ProfileTypeScreen
 import com.dys.mobile.onboarding.ui.verifyCode.VerifyCodeScreen
 
 @Composable
@@ -21,7 +24,7 @@ fun MainNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.LoginScreen.route
+        startDestination = Routes.CreateAccountScreen.route
     ) {
         composable(
             route = Routes.LoginScreen.route,
@@ -65,6 +68,39 @@ fun MainNavHost() {
             )
         ) {
             NewPasswordScreen(navController)
+        }
+
+        composable(
+            route = Routes.CreateAccountScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.CreateAccountScreen.route}"
+                }
+            )
+        ) {
+            CreateAccountScreen(navController)
+        }
+
+        composable(
+            route = Routes.ProfileTypeScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.ProfileTypeScreen.route}"
+                }
+            )
+        ) {
+            ProfileTypeScreen(navController)
+        }
+
+        composable(
+            route = Routes.PlanTypeScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.PlanTypeScreen.route}"
+                }
+            )
+        ) {
+            PlanTypeScreen()
         }
     }
 }

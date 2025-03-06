@@ -45,6 +45,7 @@ dependencies {
     api(libs.androidx.core.ktx)
     api(libs.androidx.material)
     api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.compose.constraint)
     api(libs.androidx.compose.navigation)
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.ui)

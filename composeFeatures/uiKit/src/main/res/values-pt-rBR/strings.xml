@@ -4,6 +4,8 @@
     <!-- Common -->
     <string name="common_back">Voltar</string>
     <string name="common_text_generic_error">Ocorreu um erro. Por favor, tente novamente.</string>
+    <string name="common_text_enter">Digitar</string>
+    <string name="common_text_advance">Avançar</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -17,6 +19,7 @@
     <string name="text_or">ou</string>
     <string name="text_do_not_have_account">Ainda não tem uma conta?</string>
     <string name="text_register">Cadastre-se</string>
+    <string name="text_invalid_email_password">E-mail ou senha incorretos.</string>
 
     <!-- Recover Password Screen -->
     <string name="text_recover_password">Recuperar senha</string>
@@ -41,5 +44,29 @@
     <string name="text_password_too_short">A senha é muito curta. Ela precisa ter pelo menos 6 caracteres.</string>
     <string name="text_passwords_do_not_match">As senhas não correspondem.</string>
     <string name="text_action_login">Fazer login</string>
+
+    <!-- Register Screen -->
+    <string name="text_create_account">Criar conta</string>
+    <string name="text_account_type">Tipo de conta</string>
+    <string name="text_start_using">Comece a usar!</string>
+    <string name="text_complete_registration">Completar cadastro</string>
+    <string name="text_register_welcome_message">Cadastre-se e aproveite o melhor da gestão de viagens.</string>
+    <string name="text_select_account_type_message">Selecione o tipo de conta que representa o seu perfil de uso no aplicativo.</string>
+    <string name="text_select_plan_type_message">Estamos quase lá! Escolha o plano ideal para você e aproveite.</string>
+    <string name="text_full_name">Nome completo</string>
+    <string name="text_create_password">Crie uma senha</string>
+    <string name="text_collaborator">Colaborador</string>
+    <string name="text_collaborator_profile_info">Registre despesas, execute checklists e gerencie dados do trajeto.</string>
+    <string name="text_owner">Proprietário</string>
+    <string name="text_owner_profile_info">Tenha controle sobre os veículos e assegure uma gestão precisa e otimizada.</string>
+    <string name="text_get_started">Começar a usar!</string>
+    <string name="text_step_create_account">Criar\n conta</string>
+    <string name="text_step_account_type">Tipo de\nconta</string>
+    <string name="text_step_start_using">Comece \na usar!</string>
+    <string name="text_invalid_email">E-mail inválido</string>
+    <string name="text_vehicle_management">Cadastre, edite e visualize todos os veículos vinculados à sua frota.</string>
+    <string name="text_financial_reports_access">Acesse relatórios detalhados, visualize e analise despesas.</string>
+    <string name="text_driver_and_trip_monitoring">Gerencie motoristas e monitore as viagens realizadas.</string>
+    <string name="text_custom_checklist_management">Cadastre e monitore checklists personalizados.</string>
 
 </resources>

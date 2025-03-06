@@ -4,6 +4,8 @@
     <!-- Common -->
     <string name="common_back">Back</string>
     <string name="common_text_generic_error">An error occurred. Please try again.</string>
+    <string name="common_text_enter">Enter</string>
+    <string name="common_text_advance">Advance</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">Control your trips</string>
@@ -19,6 +21,7 @@
     <string name="text_or">or</string>
     <string name="text_do_not_have_account">Do not have an account yet?</string>
     <string name="text_register">Register</string>
+    <string name="text_invalid_email_password">Incorrect email or password.</string>
 
     <!-- Recover Password Screen -->
     <string name="text_recover_password">Recover password</string>
@@ -43,5 +46,29 @@
     <string name="text_password_too_short">The password is too short. It must have at least 6 characters.</string>
     <string name="text_passwords_do_not_match">Passwords do not match.</string>
     <string name="text_action_login">Log in</string>
+
+    <!-- Register Screen -->
+    <string name="text_create_account">Create account</string>
+    <string name="text_account_type">Account type</string>
+    <string name="text_start_using">Start using!</string>
+    <string name="text_complete_registration">Complete registration</string>
+    <string name="text_register_welcome_message">Sign up and enjoy the best of travel management.</string>
+    <string name="text_select_account_type_message">Select the account type that represents your usage profile in the app.</string>
+    <string name="text_select_plan_type_message">We are almost there! Choose the ideal plan for you and enjoy.</string>
+    <string name="text_full_name">Full name</string>
+    <string name="text_create_password">Create a password</string>
+    <string name="text_collaborator">Collaborator</string>
+    <string name="text_collaborator_profile_info">Record expenses, run checklists, and manage route data.</string>
+    <string name="text_owner">Owner</string>
+    <string name="text_owner_profile_info">Have control over vehicles and ensure precise and optimized management.</string>
+    <string name="text_get_started">Get started!</string>
+    <string name="text_step_create_account">Create\n account</string>
+    <string name="text_step_account_type">Account\ntype</string>
+    <string name="text_step_start_using">Start\nusing!</string>
+    <string name="text_invalid_email">Invalid email</string>
+    <string name="text_vehicle_management">Register, edit and view all vehicles linked to your fleet.</string>
+    <string name="text_financial_reports_access">Access detailed reports, view and analyze expenses.</string>
+    <string name="text_driver_and_trip_monitoring">Manage drivers and monitor trips made.</string>
+    <string name="text_custom_checklist_management">Register and monitor personalized checklists.</string>
 
 </resources>

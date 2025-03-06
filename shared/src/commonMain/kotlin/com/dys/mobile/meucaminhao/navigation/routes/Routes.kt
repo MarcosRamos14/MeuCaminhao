@@ -13,4 +13,12 @@ sealed class Routes(val route: String) {
     data object RecoverPasswordScreen : Routes("recoverPasswordScreen")
     data object VerifyCodeScreen : Routes("verifyCodeScreen")
     data object NewPasswordScreen : Routes("newPasswordScreen")
+    data object CreateAccountScreen : Routes("createAccountScreen")
+    data object ProfileTypeScreen : Routes("profileTypeScreen")
+    data object PlanTypeScreen : Routes("planTypeScreen")
+
+    /**
+     * Home flow routes
+     */
+    data object HomeScreen : Routes("homeScreen")
 }
