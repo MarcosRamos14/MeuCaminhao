@@ -1,8 +1,11 @@
 package com.dys.mobile.uikit.components.outlinedtext
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
@@ -19,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -46,6 +50,7 @@ fun CredentialComponent(
     keyboardType: KeyboardType = KeyboardType.Text,
     maxLines: Int = Int.MAX_VALUE,
     isError: Boolean = false,
+    @StringRes errorMessage: Int? = null,
     value: String,
     onValueChange: (String) -> Unit = {}
 ) {
@@ -112,6 +117,14 @@ fun CredentialComponent(
                 keyboardType = keyboardType
             )
         )
+
+        if (errorMessage != null) {
+            TextComponent(
+                text = stringResource(errorMessage),
+                color = Red60,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
     }
 }
 
@@ -122,7 +135,7 @@ private fun CredentialComponentPreview() {
         CredentialComponent(
             title = "Email",
             value = "",
-            isError = false
+            isError = false,
         )
     }
 }

@@ -28,7 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
+import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordTooShort
+import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordsDoNotMatch
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordEvent
@@ -150,31 +151,22 @@ fun NewPasswordContent(
 
             Spacer(modifier = Modifier.height(16._dph))
 
+            val passwordErrorMessage = when (state.passwordError) {
+                is PasswordTooShort -> R.string.text_password_too_short
+                is PasswordsDoNotMatch -> R.string.text_passwords_do_not_match
+                else -> R.string.common_text_generic_error
+            }
+
             CredentialComponent(
                 title = stringResource(R.string.text_confirm_password),
                 titleColor = if (state.passwordError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_password_placeholder),
                 isPassword = true,
                 isError = state.passwordError != null,
+                errorMessage = if (state.passwordError != null) passwordErrorMessage else null,
                 value = state.confirmPassword,
                 onValueChange = { event(NewPasswordEvent.ConfirmPasswordChanged(it)) },
             )
-
-            if (state.passwordError != null) {
-                val errorMessage = when (state.passwordError) {
-                    is CredentialsErrorState.PasswordTooShort -> stringResource(R.string.text_password_too_short)
-                    is CredentialsErrorState.PasswordsDoNotMatch -> stringResource(R.string.text_passwords_do_not_match)
-                    else -> stringResource(R.string.common_text_generic_error)
-                }
-
-                Spacer(modifier = Modifier.height(8._dph))
-
-                TextComponent(
-                    text = errorMessage,
-                    color = Red60,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
 
             Spacer(modifier = Modifier.height(40._dph))
 

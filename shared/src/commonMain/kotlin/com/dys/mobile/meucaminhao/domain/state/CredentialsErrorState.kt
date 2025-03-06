@@ -5,4 +5,5 @@ sealed interface CredentialsErrorState {
     data object PasswordTooShort : CredentialsErrorState
     data object PasswordsDoNotMatch : CredentialsErrorState
     data object InvalidVerificationCode : CredentialsErrorState
+    data object InvalidCredentials : CredentialsErrorState
 }
