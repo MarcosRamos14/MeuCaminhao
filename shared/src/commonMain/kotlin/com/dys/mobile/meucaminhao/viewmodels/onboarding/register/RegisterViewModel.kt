@@ -6,13 +6,13 @@ import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordToo
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordsDoNotMatch
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
-import com.dys.mobile.meucaminhao.viewmodels.BaseSharedViewModel
+import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class RegisterViewModel(
     private val credentialsValidator: CredentialsValidatorUseCase
-) : BaseSharedViewModel() {
+) : BaseViewModel() {
 
     private var _registerStateFlow = MutableStateFlow(RegisterState())
     val registerState = _registerStateFlow.asStateFlow()
@@ -67,6 +67,10 @@ class RegisterViewModel(
                 //TODO:
             }
         }
+    }
+
+    fun resetState() {
+        _registerStateFlow.value = RegisterState()
     }
 
     private fun validateCredentials() {

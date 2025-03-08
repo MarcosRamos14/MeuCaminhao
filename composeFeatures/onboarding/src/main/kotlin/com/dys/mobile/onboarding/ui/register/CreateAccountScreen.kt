@@ -15,6 +15,7 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -70,6 +71,16 @@ fun CreateAccountScreen(navController: NavController) {
 
         if (uiState is UiState.ErrorState) {
             // TODO: Show error
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            if (navController.currentBackStackEntry?.destination?.route
+                    .equals(Routes.LoginScreen.route)
+            ) {
+                viewModel.resetState()
+            }
         }
     }
 }

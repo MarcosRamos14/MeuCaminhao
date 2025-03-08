@@ -24,7 +24,7 @@ fun MainNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.CreateAccountScreen.route
+        startDestination = Routes.LoginScreen.route
     ) {
         composable(
             route = Routes.LoginScreen.route,

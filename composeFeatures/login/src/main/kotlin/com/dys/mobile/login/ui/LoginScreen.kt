@@ -61,6 +61,9 @@ fun LoginScreen(navController: NavController) {
         event = viewModel::onEvent,
         navigateToRecoverPassword = {
             navController.navigate(Routes.RecoverPasswordScreen.route)
+        },
+        navigateToRegisterScreen = {
+            navController.navigate(Routes.CreateAccountScreen.route)
         }
     )
     CollectUiState(viewModel)
@@ -70,7 +73,8 @@ fun LoginScreen(navController: NavController) {
 fun LoginContent(
     loginState: LoginState,
     event: (LoginEvent) -> Unit,
-    navigateToRecoverPassword: () -> Unit
+    navigateToRecoverPassword: () -> Unit,
+    navigateToRegisterScreen: () -> Unit
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -100,7 +104,11 @@ fun LoginContent(
 
             Credentials(loginState, event)
 
-            LoginOptions(event, navigateToRecoverPassword)
+            LoginOptions(
+                event,
+                navigateToRecoverPassword,
+                navigateToRegisterScreen
+            )
         }
     }
 }
@@ -144,7 +152,8 @@ private fun Credentials(
 @Composable
 private fun LoginOptions(
     event: (LoginEvent) -> Unit,
-    navigateToRecoverPassword: () -> Unit
+    navigateToRecoverPassword: () -> Unit,
+    navigateToRegisterScreen: () -> Unit
 ) {
     TextButtonComponent(
         modifier = Modifier
@@ -199,7 +208,7 @@ private fun LoginOptions(
         text = stringResource(R.string.text_register),
         style = MaterialTheme.typography.bodyMedium,
         horizontalArrangement = Arrangement.Center,
-        onClick = { event(LoginEvent.Register) }
+        onClick = navigateToRegisterScreen
     )
 }
 
@@ -210,7 +219,8 @@ private fun LoginScreenPreview() {
         LoginContent(
             loginState = LoginState(),
             event = {},
-            navigateToRecoverPassword = {}
+            navigateToRecoverPassword = {},
+            navigateToRegisterScreen = {}
         )
     }
 }

@@ -23,14 +23,8 @@ class LoginSharedViewModel(
             is LoginEvent.PasswordChanged -> {
                 _loginStateFlow.updatePassword(event.password)
             }
-            LoginEvent.ForgotPassword -> {
-                TODO()
-            }
             LoginEvent.Access -> doLogin()
             LoginEvent.AccessWithGoogle -> {
-                TODO()
-            }
-            LoginEvent.Register -> {
                 TODO()
             }
         }
