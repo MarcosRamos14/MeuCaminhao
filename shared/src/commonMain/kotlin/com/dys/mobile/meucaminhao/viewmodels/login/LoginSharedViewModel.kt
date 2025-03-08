@@ -1,6 +1,7 @@
 package com.dys.mobile.meucaminhao.viewmodels.login
 
 import com.dys.mobile.meucaminhao.data.authentication.AuthenticationRepository
+import com.dys.mobile.meucaminhao.domain.state.launchWithState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
