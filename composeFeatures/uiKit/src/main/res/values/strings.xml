@@ -71,4 +71,20 @@
     <string name="text_driver_and_trip_monitoring">Manage drivers and monitor trips made.</string>
     <string name="text_custom_checklist_management">Register and monitor personalized checklists.</string>
 
+    <!-- Home Screen -->
+    <string name="text_home_screen_title">Welcome, %s!</string>
+    <string name="text_home">Home</string>
+
+    <!-- Management Screen -->
+    <string name="text_management">Manage</string>
+
+    <!-- Vehicles Screen -->
+    <string name="text_vehicles">Vehicles</string>
+
+    <!-- Trips Screen -->
+    <string name="text_trips">Trips</string>
+
+    <!-- More Screen -->
+    <string name="text_more">More</string>
+
 </resources>

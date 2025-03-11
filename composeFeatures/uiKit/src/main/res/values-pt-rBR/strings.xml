@@ -69,4 +69,20 @@
     <string name="text_driver_and_trip_monitoring">Gerencie motoristas e monitore as viagens realizadas.</string>
     <string name="text_custom_checklist_management">Cadastre e monitore checklists personalizados.</string>
 
+    <!-- Home Screen -->
+    <string name="text_home_screen_title">Boas-vindas, %s!</string>
+    <string name="text_home">Home</string>
+
+    <!-- Management Screen -->
+    <string name="text_management">Gestão</string>
+
+    <!-- Vehicles Screen -->
+    <string name="text_vehicles">Veículos</string>
+
+    <!-- Trips Screen -->
+    <string name="text_trips">Viagens</string>
+
+    <!-- More Screen -->
+    <string name="text_more">Mais</string>
+
 </resources>

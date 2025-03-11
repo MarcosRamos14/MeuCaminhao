@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
+import com.dys.mobile.home.ui.HomeScreen
 import com.dys.mobile.login.ui.LoginScreen
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.onboarding.ui.newPassword.NewPasswordScreen
@@ -101,6 +102,17 @@ fun MainNavHost() {
             )
         ) {
             PlanTypeScreen()
+        }
+
+        composable(
+            route = Routes.HomeScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.HomeScreen.route}"
+                }
+            )
+        ) {
+            HomeScreen(navController)
         }
     }
 }
