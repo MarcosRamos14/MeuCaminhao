@@ -101,7 +101,8 @@ fun NewPasswordContent(
         topBar = {
             TopAppBarComponent(
                 modifier = Modifier.fillMaxWidth(),
-                title = stringResource(R.string.text_recover_password)
+                title = stringResource(R.string.text_recover_password),
+                hasDivider = false
             )
         }
     ) { innerPadding ->

@@ -74,6 +74,7 @@
     <!-- Home Screen -->
     <string name="text_home_screen_title">Welcome, %s!</string>
     <string name="text_home">Home</string>
+    <string name="text_new_trip">New trip</string>
 
     <!-- Management Screen -->
     <string name="text_management">Manage</string>
