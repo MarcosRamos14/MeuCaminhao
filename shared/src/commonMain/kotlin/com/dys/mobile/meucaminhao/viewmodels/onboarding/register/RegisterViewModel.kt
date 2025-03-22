@@ -4,8 +4,10 @@ import com.dys.mobile.meucaminhao.domain.enum.UserProfileTypeEnum
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.InvalidEmail
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordTooShort
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordsDoNotMatch
+import com.dys.mobile.meucaminhao.domain.state.SingleEvent
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -86,16 +88,20 @@ class RegisterViewModel(
         _registerStateFlow.updatePasswordError(passwordError)
 
         if (emailError == null && passwordError == null) {
-            emitState(UiState.Success(Unit))
+            emitState(UiState.Navigation(
+                SingleEvent(Routes.ProfileTypeScreen.route)
+            ))
         }
     }
 
     private fun checkProfileType() {
-        if (_registerStateFlow.value.profileType == UserProfileTypeEnum.ALPHA) {
-            //TODO: navigate to PlanTypeScreen
-        } else {
-            //TODO: navigate to Home, as he is a driver
+        val route = when (_registerStateFlow.value.profileType) {
+            UserProfileTypeEnum.ALPHA -> Routes.PlanTypeScreen.route
+            else -> Routes.HomeScreen.route
         }
-        emitState(UiState.Success(Unit))
+
+        emitState(UiState.Navigation(
+            SingleEvent(route)
+        ))
     }
 }

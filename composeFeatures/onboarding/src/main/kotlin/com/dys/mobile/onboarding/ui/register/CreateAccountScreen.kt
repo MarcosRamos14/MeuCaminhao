@@ -60,17 +60,10 @@ fun CreateAccountScreen(navController: NavController) {
     )
 
     LaunchedEffect(uiState) {
-        if (uiState is UiState.Loading && uiState.isLoading) {
-            // TODO: Show loading
-        }
-
-        if (uiState is UiState.Success<*>) {
-            navController.navigate(Routes.ProfileTypeScreen.route)
-            viewModel.emitState(UiState.Initial())
-        }
-
-        if (uiState is UiState.ErrorState) {
-            // TODO: Show error
+        if (uiState is UiState.Navigation<*>) {
+            uiState.content.getContentIfNotHandled()?.let { route ->
+                navController.navigate(route.toString())
+            }
         }
     }
 

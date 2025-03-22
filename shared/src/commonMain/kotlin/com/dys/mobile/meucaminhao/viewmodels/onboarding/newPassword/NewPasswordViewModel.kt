@@ -7,7 +7,9 @@ import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class NewPasswordViewModel(private val credentialsValidator: CredentialsValidatorUseCase) : BaseViewModel() {
+class NewPasswordViewModel(
+    private val credentialsValidator: CredentialsValidatorUseCase
+) : BaseViewModel() {
 
     private var _newPasswordStateFlow = MutableStateFlow(NewPasswordState())
     val newPasswordState = _newPasswordStateFlow.asStateFlow()

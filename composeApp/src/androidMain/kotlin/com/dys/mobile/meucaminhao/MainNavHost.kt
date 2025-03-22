@@ -45,7 +45,7 @@ fun MainNavHost() {
                 }
             )
         ) {
-            RecoverPasswordScreen()
+            RecoverPasswordScreen(navController)
         }
 
         composable(

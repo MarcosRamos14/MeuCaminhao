@@ -1,13 +1,17 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
+import com.dys.mobile.meucaminhao.domain.state.SingleEvent
+import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class RecoverPasswordSharedViewModel(private val credentialsValidator: CredentialsValidatorUseCase) :
-    BaseViewModel() {
+class RecoverPasswordSharedViewModel(
+    private val credentialsValidator: CredentialsValidatorUseCase
+) : BaseViewModel() {
 
     private var _recoverPasswordStateFlow = MutableStateFlow(RecoverPasswordState())
     val recoverPasswordState = _recoverPasswordStateFlow.asStateFlow()
@@ -32,10 +36,24 @@ class RecoverPasswordSharedViewModel(private val credentialsValidator: Credentia
         }
 
         _recoverPasswordStateFlow.updateEmailError(null)
+        checkIfEmailIsRegistered()
+    }
+
+    private fun checkIfEmailIsRegistered() {
+        // TODO: Check if the email is from a registered user.
+
         sendCode()
     }
 
     private fun sendCode() {
         // TODO: Send code
+
+        emitNavigate()
+    }
+
+    private fun emitNavigate() {
+        emitState(UiState.Navigation(
+            SingleEvent(Routes.VerifyCodeScreen.route)
+        ))
     }
 }

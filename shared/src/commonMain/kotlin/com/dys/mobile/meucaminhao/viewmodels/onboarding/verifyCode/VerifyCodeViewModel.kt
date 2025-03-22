@@ -1,7 +1,9 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
+import com.dys.mobile.meucaminhao.domain.state.SingleEvent
 import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -43,6 +45,8 @@ class VerifyCodeViewModel : BaseViewModel() {
         }
 
         _verifyCodeStateFlow.updateCodeError(null)
-        emitState(UiState.Success(Unit))
+        emitState(UiState.Navigation(
+            SingleEvent(Routes.NewPasswordScreen.route)
+        ))
     }
 }

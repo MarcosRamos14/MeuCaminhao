@@ -114,10 +114,10 @@ fun InvisibleContent(
             ),
         verticalArrangement = Arrangement.spacedBy(8._dph)
     ) {
-        profileTypeInfoEnum.items.forEach { item ->
+        profileTypeInfoEnum.features.forEach { item ->
             CardIconAndTextComponent(
-                icon = item.first,
-                text = item.second
+                icon = item.icon,
+                text = item.text
             )
         }
     }

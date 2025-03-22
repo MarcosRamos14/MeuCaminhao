@@ -1,9 +1,8 @@
 package com.dys.mobile.meucaminhao.navigation.routes
 
 sealed class Routes(val route: String) {
-
     /**
-     * Login flow routes
+     * Login flow route
      */
     data object LoginScreen : Routes("loginScreen")
 
@@ -18,7 +17,7 @@ sealed class Routes(val route: String) {
     data object PlanTypeScreen : Routes("planTypeScreen")
 
     /**
-     * Home flow routes
+     * Home flow route
      */
     data object HomeScreen : Routes("homeScreen")
 }

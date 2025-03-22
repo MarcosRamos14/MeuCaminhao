@@ -29,7 +29,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.state.UiState
-import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeViewModel
@@ -56,19 +55,20 @@ fun VerifyCodeScreen(navController: NavController) {
         event = viewModel::onEvent
     )
 
-    if (uiState is UiState.Loading && uiState.isLoading) {
-        // TODO: Show loading
-    }
-
-    if (uiState is UiState.Success<*>) {
-        LaunchedEffect(uiState) {
-            navController.navigate(Routes.NewPasswordScreen.route)
-            viewModel.emitState(UiState.Initial())
+    LaunchedEffect(uiState) {
+        when(uiState) {
+            is  UiState.Loading -> {
+                // TODO: Show loading
+            }
+            is UiState.ErrorState -> {
+                // TODO: Show error
+            }
+            is UiState.Navigation<*> -> {
+                uiState.content.getContentIfNotHandled()?.let { route ->
+                    navController.navigate(route.toString())
+                }
+            }
         }
-    }
-
-    if (uiState is UiState.ErrorState) {
-        // TODO: Show error
     }
 }
 

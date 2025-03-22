@@ -13,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword.RecoverPasswordEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword.RecoverPasswordEvent.EmailChanged
@@ -39,7 +41,7 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun RecoverPasswordScreen() {
+fun RecoverPasswordScreen(navController: NavController) {
     val viewModel = koinViewModel<RecoverPasswordSharedViewModel>()
     val uiState = viewModel.uiState.collectAsState().value
     val recoverPasswordState = viewModel.recoverPasswordState.collectAsState().value
@@ -48,6 +50,22 @@ fun RecoverPasswordScreen() {
         state = recoverPasswordState,
         event = viewModel::onEvent
     )
+
+    LaunchedEffect(uiState) {
+        when(uiState) {
+            is UiState.Loading -> {
+                // TODO: Show loading
+            }
+            is UiState.ErrorState -> {
+                // TODO: Show error
+            }
+            is UiState.Navigation<*> -> {
+                uiState.content.getContentIfNotHandled()?.let { route ->
+                    navController.navigate(route.toString())
+                }
+            }
+        }
+    }
 
     if (uiState is UiState.Loading && uiState.isLoading) {
         // TODO: Show loading

@@ -59,18 +59,18 @@ fun NewPasswordScreen(navController: NavController) {
         event = viewModel::onEvent
     )
 
-    if (uiState is UiState.Loading && uiState.isLoading) {
-        // TODO: Show loading
-    }
-
-    if (uiState is UiState.Success<*>) {
-        LaunchedEffect(Unit) {
-            showBottomSheet = true
+    LaunchedEffect(uiState) {
+        when(uiState) {
+            is UiState.Loading -> {
+                // TODO: Show loading
+            }
+            is UiState.Success<*> -> {
+                showBottomSheet = true
+            }
+            is UiState.ErrorState -> {
+                // TODO: Show error
+            }
         }
-    }
-
-    if (uiState is UiState.ErrorState) {
-        // TODO: Show error
     }
 
     if (showBottomSheet) {

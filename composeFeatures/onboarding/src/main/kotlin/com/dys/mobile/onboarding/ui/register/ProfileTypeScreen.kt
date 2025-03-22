@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.enum.UserProfileTypeEnum
 import com.dys.mobile.meucaminhao.domain.state.UiState
-import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterViewModel
@@ -57,22 +56,19 @@ fun ProfileTypeScreen(navController: NavController) {
     )
 
     LaunchedEffect(uiState) {
-        if (uiState is UiState.Loading && uiState.isLoading) {
-            // TODO: Show loading
-        }
-
-        if (uiState is UiState.Success<*>) {
-            when (registerState.profileType) {
-                UserProfileTypeEnum.BETA -> navigateToHome(navController)
-                else -> {
-                    navigateToPlanTypeScreen(navController)
-                    viewModel.emitState(UiState.Initial())
+        when (uiState) {
+            is UiState.Loading -> {
+                // TODO: Show loading
+            }
+            is UiState.ErrorState -> {
+                // TODO: Show error
+            }
+            is UiState.Navigation<*> -> {
+                uiState.content.getContentIfNotHandled()?.let { route ->
+                    val shouldPopUp = registerState.profileType != UserProfileTypeEnum.ALPHA
+                    navigate(navController, route.toString(), shouldPopUp)
                 }
             }
-        }
-
-        if (uiState is UiState.ErrorState) {
-            // TODO: Show error
         }
     }
 }
@@ -184,14 +180,10 @@ private fun ProfileTypeScreenContent(
     }
 }
 
-private fun navigateToHome(navController: NavController) {
-    navController.navigate(Routes.HomeScreen.route) {
-        popUpTo(navController.graph.startDestinationId) { inclusive = true }
+private fun navigate(navController: NavController, route: String, popUp: Boolean = false) {
+    navController.navigate(route) {
+        if (popUp) popUpTo(navController.graph.startDestinationId) { inclusive = true }
     }
-}
-
-private fun navigateToPlanTypeScreen(navController: NavController) {
-    navController.navigate(Routes.PlanTypeScreen.route)
 }
 
 @Preview

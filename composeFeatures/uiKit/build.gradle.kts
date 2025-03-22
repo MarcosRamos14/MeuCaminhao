@@ -39,6 +39,7 @@ android {
 dependencies {
 
     api(project(":composeFeatures:toolkit"))
+    implementation(project(":shared"))
 
     api(libs.androidx.activity.compose)
     api(libs.androidx.appcompat)
