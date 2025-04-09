@@ -21,14 +21,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.navigation.event.Event
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
-import com.dys.mobile.meucaminhao.domain.state.UiStateManager
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginEvent
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginSharedViewModel
 import com.dys.mobile.meucaminhao.viewmodels.login.LoginState
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.extensions.handleRoute
+import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.OutlinedRoundButtonComponent
@@ -40,41 +42,21 @@ import com.dys.mobile.uikit.theme.Red60
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun CollectUiState(manager: UiStateManager) {
-    val uiState = manager.uiState.collectAsState().value
-    if (uiState is UiState.Loading && uiState.isLoading) {
-        // TODO: Show loading
-    }
-
-    if (uiState is UiState.ErrorState) {
-        // TODO: Show error
-    }
-}
-
-@Composable
 fun LoginScreen(navController: NavController) {
     val viewModel = koinViewModel<LoginSharedViewModel>()
     val loginState = viewModel.loginState.collectAsState().value
 
     LoginContent(
-        loginState,
-        event = viewModel::onEvent,
-        navigateToRecoverPassword = {
-            navController.navigate(Routes.RecoverPasswordScreen.route)
-        },
-        navigateToRegisterScreen = {
-            navController.navigate(Routes.CreateAccountScreen.route)
-        }
+        loginState = loginState,
+        event = viewModel::onEvent
     )
-    CollectUiState(viewModel)
+    CollectUiState(viewModel, navController::handleRoute)
 }
 
 @Composable
 fun LoginContent(
     loginState: LoginState,
-    event: (LoginEvent) -> Unit,
-    navigateToRecoverPassword: () -> Unit,
-    navigateToRegisterScreen: () -> Unit
+    event: (Event) -> Unit
 ) {
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -104,11 +86,7 @@ fun LoginContent(
 
             Credentials(loginState, event)
 
-            LoginOptions(
-                event,
-                navigateToRecoverPassword,
-                navigateToRegisterScreen
-            )
+            LoginOptions(event)
         }
     }
 }
@@ -150,11 +128,7 @@ private fun Credentials(
 }
 
 @Composable
-private fun LoginOptions(
-    event: (LoginEvent) -> Unit,
-    navigateToRecoverPassword: () -> Unit,
-    navigateToRegisterScreen: () -> Unit
-) {
+private fun LoginOptions(event: (Event) -> Unit) {
     TextButtonComponent(
         modifier = Modifier
             .fillMaxWidth()
@@ -162,7 +136,7 @@ private fun LoginOptions(
         text = stringResource(R.string.text_forgot_my_password),
         style = MaterialTheme.typography.bodyMedium,
         contentPadding = PaddingValues(0.dp),
-        onClick = navigateToRecoverPassword
+        onClick = { event(NavigateTo(Routes.RecoverPasswordScreen.route)) }
     )
 
     Spacer(modifier = Modifier.height(56._dph))
@@ -208,7 +182,7 @@ private fun LoginOptions(
         text = stringResource(R.string.text_register),
         style = MaterialTheme.typography.bodyMedium,
         horizontalArrangement = Arrangement.Center,
-        onClick = navigateToRegisterScreen
+        onClick = { event(NavigateTo(Routes.CreateAccountScreen.route)) }
     )
 }
 
@@ -218,9 +192,7 @@ private fun LoginScreenPreview() {
     MeuCaminhaoTheme {
         LoginContent(
             loginState = LoginState(),
-            event = {},
-            navigateToRecoverPassword = {},
-            navigateToRegisterScreen = {}
+            event = {}
         )
     }
 }

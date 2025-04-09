@@ -16,6 +16,8 @@ import com.dys.mobile.onboarding.ui.register.CreateAccountScreen
 import com.dys.mobile.onboarding.ui.register.PlanTypeScreen
 import com.dys.mobile.onboarding.ui.register.ProfileTypeScreen
 import com.dys.mobile.onboarding.ui.verifyCode.VerifyCodeScreen
+import com.dys.mobile.trips.ui.TripDetailsScreen
+import com.dys.mobile.trips.ui.TripsScreen
 
 @Composable
 fun MainNavHost() {
@@ -25,7 +27,7 @@ fun MainNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeScreen.route
+        startDestination = Routes.LoginScreen.route
     ) {
         composable(
             route = Routes.LoginScreen.route,
@@ -113,6 +115,28 @@ fun MainNavHost() {
             )
         ) {
             HomeScreen(navController)
+        }
+
+        composable(
+            route = Routes.TripsScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.TripsScreen.route}"
+                }
+            )
+        ) {
+            TripsScreen()
+        }
+
+        composable(
+            route = Routes.TripDetailsScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "${applicationId}://app/${Routes.TripDetailsScreen.route}"
+                }
+            )
+        ) {
+            TripDetailsScreen()
         }
     }
 }

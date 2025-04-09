@@ -1,8 +1,9 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
-import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
+import com.dys.mobile.meucaminhao.navigation.event.Event
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +15,7 @@ class NewPasswordViewModel(
     private var _newPasswordStateFlow = MutableStateFlow(NewPasswordState())
     val newPasswordState = _newPasswordStateFlow.asStateFlow()
 
-    fun onEvent(event: NewPasswordEvent) {
+    fun onEvent(event: Event) {
         when (event) {
             is NewPasswordEvent.PasswordChanged -> {
                 _newPasswordStateFlow.updatePassword(event.password)
@@ -26,6 +27,12 @@ class NewPasswordViewModel(
 
             NewPasswordEvent.SavePassword -> {
                 validatePasswords()
+            }
+
+            is NavigateTo -> {
+                updateState { state ->
+                    state.copy(navigation = event.route)
+                }
             }
         }
     }
@@ -50,6 +57,7 @@ class NewPasswordViewModel(
 
     private fun savePassword() {
         // TODO: Save password. If successful, emit success state.
-        emitState(UiState.Success(Unit))
+
+        _newPasswordStateFlow.updateBottomSheetVisibility(true)
     }
 }

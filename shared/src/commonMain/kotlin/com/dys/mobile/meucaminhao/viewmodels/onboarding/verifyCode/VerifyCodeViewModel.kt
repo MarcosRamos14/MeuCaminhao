@@ -1,8 +1,7 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
-import com.dys.mobile.meucaminhao.domain.state.SingleEvent
-import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.domain.state.asSingleEvent
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +36,7 @@ class VerifyCodeViewModel : BaseViewModel() {
     private fun validateCode() {
         val code = _verifyCodeStateFlow.value.code
 
-        // TODO: Verificar se código não está expirado.
+        // TODO: Verificar se código não está expirado e faz a validação do código.
 
         if (code.joinToString("") != VALID_OTP_CODE_TEST) {
             _verifyCodeStateFlow.updateCodeError(CredentialsErrorState.InvalidVerificationCode)
@@ -45,8 +44,12 @@ class VerifyCodeViewModel : BaseViewModel() {
         }
 
         _verifyCodeStateFlow.updateCodeError(null)
-        emitState(UiState.Navigation(
-            SingleEvent(Routes.NewPasswordScreen.route)
-        ))
+        emitNavigateEvent()
+    }
+
+    private fun emitNavigateEvent() {
+        updateState { state ->
+            state.copy(navigation = Routes.NewPasswordScreen.route.asSingleEvent())
+        }
     }
 }

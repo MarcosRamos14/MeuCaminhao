@@ -1,8 +1,7 @@
 package com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword
 
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState
-import com.dys.mobile.meucaminhao.domain.state.SingleEvent
-import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.domain.state.asSingleEvent
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
@@ -48,12 +47,12 @@ class RecoverPasswordSharedViewModel(
     private fun sendCode() {
         // TODO: Send code
 
-        emitNavigate()
+        emitNavigateEvent()
     }
 
-    private fun emitNavigate() {
-        emitState(UiState.Navigation(
-            SingleEvent(Routes.VerifyCodeScreen.route)
-        ))
+    private fun emitNavigateEvent() {
+        updateState { state ->
+            state.copy(navigation = Routes.VerifyCodeScreen.route.asSingleEvent())
+        }
     }
 }

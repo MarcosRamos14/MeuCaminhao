@@ -4,8 +4,7 @@ import com.dys.mobile.meucaminhao.domain.enum.UserProfileTypeEnum
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.InvalidEmail
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordTooShort
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordsDoNotMatch
-import com.dys.mobile.meucaminhao.domain.state.SingleEvent
-import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.domain.state.asSingleEvent
 import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.CredentialsValidatorUseCase
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
@@ -88,9 +87,7 @@ class RegisterViewModel(
         _registerStateFlow.updatePasswordError(passwordError)
 
         if (emailError == null && passwordError == null) {
-            emitState(UiState.Navigation(
-                SingleEvent(Routes.ProfileTypeScreen.route)
-            ))
+            emitNavigateEvent(Routes.ProfileTypeScreen.route)
         }
     }
 
@@ -100,8 +97,12 @@ class RegisterViewModel(
             else -> Routes.HomeScreen.route
         }
 
-        emitState(UiState.Navigation(
-            SingleEvent(route)
-        ))
+        emitNavigateEvent(route)
+    }
+
+    private fun emitNavigateEvent(route: String) {
+        updateState { state ->
+            state.copy(navigation = route.asSingleEvent())
+        }
     }
 }

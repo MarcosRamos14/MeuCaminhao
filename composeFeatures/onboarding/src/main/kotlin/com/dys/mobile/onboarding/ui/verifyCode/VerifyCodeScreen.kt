@@ -15,7 +15,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -28,12 +27,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.extensions.handleRoute
+import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
@@ -47,29 +47,13 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun VerifyCodeScreen(navController: NavController) {
     val viewModel = koinViewModel<VerifyCodeViewModel>()
-    val uiState = viewModel.uiState.collectAsState().value
     val verifyCodeState = viewModel.verifyCodeState.collectAsState().value
 
     VerifyCodeContent(
         state = verifyCodeState,
         event = viewModel::onEvent
     )
-
-    LaunchedEffect(uiState) {
-        when(uiState) {
-            is  UiState.Loading -> {
-                // TODO: Show loading
-            }
-            is UiState.ErrorState -> {
-                // TODO: Show error
-            }
-            is UiState.Navigation<*> -> {
-                uiState.content.getContentIfNotHandled()?.let { route ->
-                    navController.navigate(route.toString())
-                }
-            }
-        }
-    }
+    CollectUiState(viewModel, navController::handleRoute)
 }
 
 @Composable

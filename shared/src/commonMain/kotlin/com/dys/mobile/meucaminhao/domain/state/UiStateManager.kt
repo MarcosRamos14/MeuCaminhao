@@ -10,7 +10,7 @@ interface UiStateManager {
 
     val uiState: StateFlow<UiState>
 
-    fun emitState(state: UiState)
+    fun updateState(fn: (UiState) -> UiState)
 }
 
 fun UiStateManager.launchWithState(updateLoading: Boolean = true, action: suspend () -> Unit) {
@@ -20,7 +20,9 @@ fun UiStateManager.launchWithState(updateLoading: Boolean = true, action: suspen
             action.invoke()
         }.onFailure { throwable ->
             (throwable as? ErrorDTO)?.let { error ->
-                emitState(UiState.ErrorState(error))
+                updateState { state ->
+                    state.copy(error = error.asSingleEvent())
+                }
             }
         }.also {
             disableLoading()
@@ -34,9 +36,13 @@ val UiStateManager.scope: CoroutineScope? get() = when(this) {
 }
 
 fun UiStateManager.enableLoading() {
-    emitState(UiState.Loading(true))
+    updateState { state ->
+        state.copy(isLoading = true)
+    }
 }
 
 fun UiStateManager.disableLoading() {
-    emitState(UiState.Loading(false))
+    updateState { state ->
+        state.copy(isLoading = false)
+    }
 }

@@ -15,7 +15,6 @@ import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,12 +27,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.enum.UserProfileTypeEnum
-import com.dys.mobile.meucaminhao.domain.state.UiState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.extensions.handleRoute
+import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
@@ -47,30 +47,13 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ProfileTypeScreen(navController: NavController) {
     val viewModel = koinViewModel<RegisterViewModel>()
-    val uiState = viewModel.uiState.collectAsState().value
     val registerState = viewModel.registerState.collectAsState().value
 
     ProfileTypeScreenContent(
         state = registerState,
         event = viewModel::onProfileTypeEvent
     )
-
-    LaunchedEffect(uiState) {
-        when (uiState) {
-            is UiState.Loading -> {
-                // TODO: Show loading
-            }
-            is UiState.ErrorState -> {
-                // TODO: Show error
-            }
-            is UiState.Navigation<*> -> {
-                uiState.content.getContentIfNotHandled()?.let { route ->
-                    val shouldPopUp = registerState.profileType != UserProfileTypeEnum.ALPHA
-                    navigate(navController, route.toString(), shouldPopUp)
-                }
-            }
-        }
-    }
+    CollectUiState(viewModel, navController::handleRoute)
 }
 
 @Composable
@@ -177,12 +160,6 @@ private fun ProfileTypeScreenContent(
 
             Spacer(modifier = Modifier.height(32._dph))
         }
-    }
-}
-
-private fun navigate(navController: NavController, route: String, popUp: Boolean = false) {
-    navController.navigate(route) {
-        if (popUp) popUpTo(navController.graph.startDestinationId) { inclusive = true }
     }
 }
 

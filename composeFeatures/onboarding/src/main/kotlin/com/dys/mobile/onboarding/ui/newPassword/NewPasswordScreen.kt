@@ -13,12 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,13 +25,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordTooShort
 import com.dys.mobile.meucaminhao.domain.state.CredentialsErrorState.PasswordsDoNotMatch
-import com.dys.mobile.meucaminhao.domain.state.UiState
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordEvent
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordState
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.newPassword.NewPasswordViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.extensions.handleRoute
+import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
 import com.dys.mobile.uikit.components.bottomSheet.CommonBottomSheet
@@ -50,42 +47,26 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun NewPasswordScreen(navController: NavController) {
     val viewModel = koinViewModel<NewPasswordViewModel>()
-    val uiState = viewModel.uiState.collectAsState().value
     val newPasswordState = viewModel.newPasswordState.collectAsState().value
-    var showBottomSheet by remember { mutableStateOf(false) }
 
     NewPasswordContent(
         state = newPasswordState,
         event = viewModel::onEvent
     )
 
-    LaunchedEffect(uiState) {
-        when(uiState) {
-            is UiState.Loading -> {
-                // TODO: Show loading
-            }
-            is UiState.Success<*> -> {
-                showBottomSheet = true
-            }
-            is UiState.ErrorState -> {
-                // TODO: Show error
-            }
-        }
-    }
+    CollectUiState(viewModel, navController::handleRoute)
 
-    if (showBottomSheet) {
+    if (newPasswordState.isBottomSheetVisible) {
         CommonBottomSheet(
             icon = R.drawable.thumbnail_check_circle,
             title = R.string.text_password_changed_successfully,
             message = R.string.text_password_reset_success_message,
             textPositiveButton = R.string.text_action_login,
             onPositiveButtonClicked = {
-                showBottomSheet = false
-                navigateToLogin(navController)
+                viewModel.onEvent(NavigateTo(Routes.LoginScreen.route))
             },
             onDismissRequest = {
-                showBottomSheet = false
-                navigateToLogin(navController)
+                viewModel.onEvent(NavigateTo(Routes.LoginScreen.route))
             }
         )
     }
@@ -191,11 +172,5 @@ private fun NewPasswordPreview() {
             state = NewPasswordState(),
             event = {}
         )
-    }
-}
-
-private fun navigateToLogin(navController: NavController) {
-    navController.navigate(Routes.LoginScreen.route) {
-        popUpTo(navController.graph.startDestinationId) { inclusive = true }
     }
 }

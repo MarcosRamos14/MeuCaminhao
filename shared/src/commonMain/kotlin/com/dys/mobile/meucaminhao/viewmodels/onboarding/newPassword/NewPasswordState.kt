@@ -8,6 +8,7 @@ data class NewPasswordState(
     val password: String = "",
     val confirmPassword: String = "",
     val passwordError: CredentialsErrorState? = null,
+    val isBottomSheetVisible: Boolean = false
 )
 
 fun MutableStateFlow<NewPasswordState>.updatePassword(password: String) {
@@ -20,4 +21,8 @@ fun MutableStateFlow<NewPasswordState>.updateConfirmPassword(confirmPassword: St
 
 fun MutableStateFlow<NewPasswordState>.updatePasswordError(error: CredentialsErrorState?) {
     update { it.copy(passwordError = error) }
+}
+
+fun MutableStateFlow<NewPasswordState>.updateBottomSheetVisibility(isVisible: Boolean) {
+    update { it.copy(isBottomSheetVisible = isVisible) }
 }
