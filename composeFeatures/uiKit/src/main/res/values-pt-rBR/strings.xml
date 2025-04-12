@@ -82,6 +82,13 @@
 
     <!-- Trips Screen -->
     <string name="text_trips">Viagens</string>
+    <string name="text_driver">Motorista</string>
+    <string name="text_plate">Placa</string>
+    <string name="text_date">Data</string>
+    <string name="text_profit_loss">Lucro/Prejuízo</string>
+
+    <!-- Trip Details Screen -->
+    <string name="text_trip_of_the_day">Viagem do dia %s</string>
 
     <!-- More Screen -->
     <string name="text_more">Mais</string>

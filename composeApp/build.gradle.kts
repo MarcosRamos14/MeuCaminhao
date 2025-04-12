@@ -33,7 +33,7 @@ kotlin {
             implementation(project(":composeFeatures:login"))
             implementation(project(":composeFeatures:onboarding"))
             implementation(project(":composeFeatures:toolkit"))
-            implementation(project(":composeFeatures:trip"))
+            implementation(project(":composeFeatures:trips"))
             implementation(project(":composeFeatures:uiKit"))
         }
         commonMain.dependencies {

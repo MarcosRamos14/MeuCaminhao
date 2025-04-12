@@ -20,4 +20,10 @@ sealed class Routes(val route: String) {
      * Home flow route
      */
     data object HomeScreen : Routes("homeScreen")
+
+    /**
+     * Trips flow route
+     */
+    data object TripsScreen : Routes("tripsScreen")
+    data object TripDetailsScreen : Routes("tripDetailsScreen")
 }

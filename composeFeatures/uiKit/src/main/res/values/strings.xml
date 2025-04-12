@@ -84,6 +84,13 @@
 
     <!-- Trips Screen -->
     <string name="text_trips">Trips</string>
+    <string name="text_driver">Driver</string>
+    <string name="text_plate">Plate</string>
+    <string name="text_date">Date</string>
+    <string name="text_profit_loss">Profit/Loss</string>
+
+    <!-- Trip Details Screen -->
+    <string name="text_trip_of_the_day">Trip of the day %s</string>
 
     <!-- More Screen -->
     <string name="text_more">More</string>
