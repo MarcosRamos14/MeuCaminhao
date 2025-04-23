@@ -17,6 +17,16 @@ sealed class Routes(val route: String) {
     data object PlanTypeScreen : Routes("planTypeScreen")
 
     /**
+     * Management flow route
+     */
+    data object ManagementScreen : Routes("managementScreen")
+
+    /**
+     * Vehicles flow route
+     */
+    data object VehiclesScreen : Routes("vehiclesScreen")
+
+    /**
      * Home flow route
      */
     data object HomeScreen : Routes("homeScreen")
@@ -26,4 +36,9 @@ sealed class Routes(val route: String) {
      */
     data object TripsScreen : Routes("tripsScreen")
     data object TripDetailsScreen : Routes("tripDetailsScreen")
+
+    /**
+     * More tooltip (special route, will not sail)
+     */
+    data object MoreTooltip : Routes("moreTooltip")
 }

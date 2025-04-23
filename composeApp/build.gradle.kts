@@ -35,6 +35,9 @@ kotlin {
             implementation(project(":composeFeatures:toolkit"))
             implementation(project(":composeFeatures:trips"))
             implementation(project(":composeFeatures:uiKit"))
+            implementation(project(":composeFeatures:management"))
+            implementation(project(":composeFeatures:vehicles"))
+            implementation(project(":composeFeatures:more"))
         }
         commonMain.dependencies {
             implementation(compose.runtime)
