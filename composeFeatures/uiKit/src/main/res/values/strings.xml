@@ -6,6 +6,13 @@
     <string name="common_text_generic_error">An error occurred. Please try again.</string>
     <string name="common_text_enter">Enter</string>
     <string name="common_text_advance">Advance</string>
+    <string name="common_text_see_more">See more</string>
+    <string name="common_text_ok" translatable="false">Ok</string>
+    <string name="common_text_cancel">Cancel</string>
+
+    <!-- Accessibility description -->
+    <string name="text_search_icon_description">Search icon</string>
+    <string name="text_go_to_top">Back to top</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">Control your trips</string>
@@ -77,7 +84,7 @@
     <string name="text_new_trip">New trip</string>
 
     <!-- Management Screen -->
-    <string name="text_management">Manage</string>
+    <string name="text_management">Management</string>
 
     <!-- Vehicles Screen -->
     <string name="text_vehicles">Vehicles</string>
@@ -88,11 +95,18 @@
     <string name="text_plate">Plate</string>
     <string name="text_date">Date</string>
     <string name="text_profit_loss">Profit/Loss</string>
+    <string name="text_status_all_trips">All trips</string>
+    <string name="text_status_in_progress">In progress</string>
+    <string name="text_status_finished">Finished</string>
+    <string name="text_status_canceled">Canceled</string>
+    <string name="text_search_by_plate">Search by vehicle license plate</string>
+    <string name="text_start_date_prefix">From</string>
+    <string name="text_end_date_prefix">to</string>
 
     <!-- Trip Details Screen -->
     <string name="text_trip_of_the_day">Trip of the day %s</string>
 
-    <!-- More Screen -->
+    <!-- More Tooltip -->
     <string name="text_more">More</string>
 
 </resources>

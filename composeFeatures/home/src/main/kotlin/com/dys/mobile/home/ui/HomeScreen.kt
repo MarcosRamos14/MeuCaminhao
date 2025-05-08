@@ -16,12 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.dys.mobile.meucaminhao.viewmodels.login.LoginEvent
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
-import com.dys.mobile.uikit.components.bottomBar.BottomAppBarComponent
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
@@ -36,16 +34,10 @@ fun HomeContent() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = MaterialTheme.colorScheme.onBackground,
         topBar = {
-            TopAppBarComponent(
-                modifier = Modifier.fillMaxWidth(),
-                title = stringResource(R.string.text_home_screen_title, nameTest) // TODO: Add dynamic name
-            )
-        },
-        bottomBar = {
-            BottomAppBarComponent()
-        },
-        containerColor = MaterialTheme.colorScheme.onBackground
+            TopAppBarComponent(title = stringResource(R.string.text_home_screen_title, nameTest)) // TODO: Get user name
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier

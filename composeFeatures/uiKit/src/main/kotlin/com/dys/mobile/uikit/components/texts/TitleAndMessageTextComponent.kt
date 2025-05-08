@@ -18,10 +18,11 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
 @Composable
 fun TextAndMessageTextComponent(
+    modifier: Modifier = Modifier,
     @StringRes title: Int,
-    message: String
+    message: String,
 ) {
-    Column {
+    Column(modifier = modifier) {
         TextComponent(
             modifier = Modifier.wrapContentWidth(),
             text = stringResource(title),
@@ -36,7 +37,8 @@ fun TextAndMessageTextComponent(
             modifier = Modifier.wrapContentWidth(),
             text = message,
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1
         )
     }
 }
@@ -46,8 +48,8 @@ fun TextAndMessageTextComponent(
 private fun TextAndMessageTextComponentPreview() {
     MeuCaminhaoTheme {
         TextAndMessageTextComponent(
-            R.string.text_driver,
-            "Marcos Ramos"
+            title = R.string.text_driver,
+            message = "Marcos Ramos"
         )
     }
 }

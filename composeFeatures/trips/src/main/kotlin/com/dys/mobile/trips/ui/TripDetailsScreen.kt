@@ -25,7 +25,7 @@ fun TripDetailsScreen() {
 }
 
 @Composable
-fun TripDetailsContent() {
+private fun TripDetailsContent() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -52,7 +52,7 @@ fun TripDetailsContent() {
 
 @Preview
 @Composable
-private fun TripDetailsScreenPreview() {
+private fun TripDetailsContentPreview() {
     MeuCaminhaoTheme {
         TripDetailsContent()
     }

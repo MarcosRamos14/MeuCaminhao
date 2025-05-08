@@ -17,8 +17,11 @@ import com.dys.mobile.uikit.theme.Gray65
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 
 @Composable
-fun TextAndPlateComponent(plateValue: String) {
-    Column {
+fun TextAndPlateComponent(
+    modifier: Modifier = Modifier,
+    plateValue: String
+) {
+    Column(modifier = modifier) {
         TextComponent(
             modifier = Modifier.wrapContentWidth(),
             text = stringResource(R.string.text_plate),
@@ -37,6 +40,8 @@ fun TextAndPlateComponent(plateValue: String) {
 @Composable
 private fun TextAndPlateComponentPreview() {
     MeuCaminhaoTheme {
-        TextAndPlateComponent("IUX7H564")
+        TextAndPlateComponent(
+            plateValue = "IUX7H564"
+        )
     }
 }

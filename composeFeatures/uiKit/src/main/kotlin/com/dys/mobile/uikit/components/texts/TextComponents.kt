@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import com.dys.mobile.uikit.theme.Black
 
 @Composable
@@ -17,7 +18,9 @@ fun TextComponent(
     color: Color = Black,
     fontWeight: FontWeight = FontWeight.Normal,
     textAlign: TextAlign? = TextAlign.Start,
-    style: TextStyle
+    style: TextStyle,
+    maxLines: Int?  = null,
+    textOverflow: TextOverflow = TextOverflow.Ellipsis
 ) {
     Text(
         text = text,
@@ -25,6 +28,8 @@ fun TextComponent(
         color = color,
         fontWeight = fontWeight,
         textAlign = textAlign,
-        style = style
+        style = style,
+        maxLines = maxLines ?: Int.MAX_VALUE,
+        overflow = textOverflow,
     )
 }

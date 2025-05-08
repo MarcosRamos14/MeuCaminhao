@@ -6,6 +6,12 @@
     <string name="common_text_generic_error">Ocorreu um erro. Por favor, tente novamente.</string>
     <string name="common_text_enter">Digitar</string>
     <string name="common_text_advance">Avançar</string>
+    <string name="common_text_see_more">Ver mais</string>
+    <string name="common_text_cancel">Cancelar</string>
+
+    <!-- Accessibility description -->
+    <string name="text_search_icon_description">Ícone de busca</string>
+    <string name="text_go_to_top">Voltar ao topo</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -86,11 +92,18 @@
     <string name="text_plate">Placa</string>
     <string name="text_date">Data</string>
     <string name="text_profit_loss">Lucro/Prejuízo</string>
+    <string name="text_status_all_trips">Todas as viagens</string>
+    <string name="text_status_in_progress">Em progresso</string>
+    <string name="text_status_finished">Finalizadas</string>
+    <string name="text_status_canceled">Canceladas</string>
+    <string name="text_search_by_plate">Pesquise pela placa do veículo</string>
+    <string name="text_start_date_prefix">De</string>
+    <string name="text_end_date_prefix">a</string>
 
     <!-- Trip Details Screen -->
     <string name="text_trip_of_the_day">Viagem do dia %s</string>
 
-    <!-- More Screen -->
+    <!-- More Tooltip -->
     <string name="text_more">Mais</string>
 
 </resources>

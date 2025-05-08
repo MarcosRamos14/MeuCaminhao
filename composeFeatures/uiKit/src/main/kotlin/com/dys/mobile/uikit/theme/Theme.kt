@@ -21,7 +21,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 private val DarkColorScheme = darkColorScheme(
-    // TODO: Add dark colors
+    primary = Blue65
 )
 
 @OptIn(ExperimentalFoundationApi::class)
