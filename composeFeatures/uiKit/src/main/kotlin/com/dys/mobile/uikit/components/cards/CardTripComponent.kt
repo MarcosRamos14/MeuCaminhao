@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dys.mobile.meucaminhao.domain.dto.TripDTO
-import com.dys.mobile.meucaminhao.domain.dto.TripVehicleDTO
+import com.dys.mobile.meucaminhao.domain.dto.TripGeneralInfoDTO
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.R
@@ -65,14 +65,14 @@ fun CardTripComponent(
                     TextAndMessageTextComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_driver,
-                        message = trip.driver
+                        message = trip.generalInformation?.driver ?: stringResource(R.string.common_error_getting_name)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
 
                     TextAndPlateComponent(
                         modifier = Modifier.weight(1f),
-                        plateValue = trip.vehicle.plate
+                        plateValue = trip.generalInformation?.vehiclePlate ?: stringResource(R.string.common_vehicle_plate_not_defined)
                     )
                 }
 
@@ -85,7 +85,7 @@ fun CardTripComponent(
                     TextAndTimeComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_date,
-                        time = trip.startAt
+                        time = trip.generalInformation?.date ?: stringResource(R.string.common_date_not_defined)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
@@ -93,8 +93,12 @@ fun CardTripComponent(
                     TextAndMonetaryComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_profit_loss,
-                        type = MonetaryValueType.POSITIVE, // TODO: Alterar conforme retorno do back
-                        value = trip.totalAmount // TODO: Alterar para valor positivo ou negativo de acordo com back
+                        type = if (trip.income?.totalAmount?.isPositive == true) {
+                            MonetaryValueType.POSITIVE
+                        } else {
+                            MonetaryValueType.NEGATIVE
+                        },
+                        value = trip.income?.totalAmount?.formatted ?: stringResource(R.string.common_default_price)
                     )
                 }
             }
@@ -133,26 +137,22 @@ private fun CardTripComponentPreview() {
             CardTripComponent(
                 TripDTO(
                     id = 1,
-                    title = "Viagem para Rio de Janeiro",
-                    origin = "Belo Horizonte",
-                    destination = "Rio de Janeiro",
-                    startAt = "Ago 23, 2025",
-                    endAt = null,
-                    wight = 15000.0,
-                    manifestUrl = null,
-                    driver = "Marcos Moreira Ramos",
-                    totalAmount = "R$ 2250",
-                    remainingAmount = "",
-                    duration = "12:50:00",
-                    status = "DONE",
-                    weightAmount = "R$125,50",
-                    vehicle = TripVehicleDTO(
-                        id = 1,
-                        plate = "QUB6J82",
-                        model = "Volvo 540",
-                        photoUrl = null,
-                        owner = "Marcos Moreira Ramos"
-                    )
+                    title = "",
+                    generalInformation = TripGeneralInfoDTO(
+                        driver = "Marcos Ramos",
+                        vehiclePlate = "AAA1B23",
+                        date = "Ago 23, 2025",
+                        startTime = null,
+                        duration = null,
+                        manifestUrl = null,
+                        course = null,
+                        weight = null
+                    ),
+                    income = null,
+                    expenses = null,
+                    checklist = emptyList(),
+                    canEdit = null,
+                    canDelete = null
                 )
             )
         }

@@ -68,7 +68,7 @@ fun TextAndMonetaryComponent(
                         .padding(horizontal = 16._dpw, vertical = 4._dph),
                     text = value,
                     color = valueColor,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.SemiBold,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyMedium
                 )

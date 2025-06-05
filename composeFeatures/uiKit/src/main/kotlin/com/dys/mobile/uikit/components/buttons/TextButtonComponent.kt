@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import com.dys.mobile.toolkit.extensions._dpw
@@ -28,9 +29,11 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 fun TextButtonComponent(
     modifier: Modifier = Modifier.fillMaxWidth(),
     text: String,
+    fontWeight: FontWeight = FontWeight.Normal,
     style: TextStyle,
     underline: Boolean = true,
     @DrawableRes icon: Int? = null,
+    iconColor: Color = Color.Unspecified,
     iconPosition: Boolean = true,
     horizontalArrangement: Arrangement.Horizontal? = null,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
@@ -51,13 +54,14 @@ fun TextButtonComponent(
         ) {
             icon?.let { drawableRes ->
                 if (iconPosition) {
-                    IconTexButtonComponent(drawableRes)
+                    IconTexButtonComponent(drawableRes, iconColor)
                     Spacer(modifier = Modifier.width(8._dpw))
                 }
             }
             TextComponent(
                 modifier = Modifier.wrapContentWidth(),
                 text = text,
+                fontWeight = fontWeight,
                 color = MaterialTheme.colorScheme.primary,
                 style = style.copy(
                     textDecoration = if (underline) TextDecoration.Underline else TextDecoration.None
@@ -66,7 +70,7 @@ fun TextButtonComponent(
             icon?.let { drawableRes ->
                 if (!iconPosition) {
                     Spacer(modifier = Modifier.width(8._dpw))
-                    IconTexButtonComponent(drawableRes)
+                    IconTexButtonComponent(drawableRes, iconColor)
                 }
             }
         }
@@ -74,12 +78,12 @@ fun TextButtonComponent(
 }
 
 @Composable
-private fun IconTexButtonComponent(drawableRes: Int) {
+private fun IconTexButtonComponent(drawableRes: Int, iconColor: Color) {
     Icon(
         painter = painterResource(id = drawableRes),
         contentDescription = null,
         modifier = Modifier.size(ButtonDefaults.IconSize),
-        tint = Color.Unspecified
+        tint = iconColor
     )
 }
 

@@ -33,7 +33,7 @@ fun CardPlateComponent(plateValue: String) {
                     .wrapContentWidth()
                     .padding(horizontal = 16._dpw, vertical = 4._dph),
                 text = plateValue,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyMedium
             )

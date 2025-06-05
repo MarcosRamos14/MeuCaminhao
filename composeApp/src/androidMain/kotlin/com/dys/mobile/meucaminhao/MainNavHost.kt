@@ -50,7 +50,7 @@ fun MainNavHost() {
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = Routes.HomeScreen.route
+            startDestination = Routes.TripDetailsScreen.route // TODO:
         ) {
             composable(
                 route = Routes.ManagementScreen.route,

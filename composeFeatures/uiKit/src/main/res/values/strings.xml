@@ -9,10 +9,24 @@
     <string name="common_text_see_more">See more</string>
     <string name="common_text_ok" translatable="false">Ok</string>
     <string name="common_text_cancel">Cancel</string>
+    <string name="common_general_information">General information</string>
+    <string name="common_result">Result</string>
+    <string name="common_checklist" translatable="false">Checklist</string>
+    <string name="common_delete">Delete</string>
+    <string name="common_default_price">$0.00</string>
+    <string name="common_error_getting_name">Error getting name</string>
+    <string name="common_date_not_defined" translatable="false">-- -- ----</string>
+    <string name="common_time_not_defined" translatable="false">--:--</string>
+    <string name="common_vehicle_plate_not_defined" translatable="false">--- ----</string>
+    <string name="common_error_getting_weight">Error getting weight</string>
+    <string name="common_error_getting_origin">Error getting origin</string>
+    <string name="common_error_getting_destination">Error getting destination</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Search icon</string>
     <string name="text_go_to_top">Back to top</string>
+    <string name="text_download_file">Download file</string>
+    <string name="text_error_loading_image">Error loading image</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">Control your trips</string>
@@ -105,6 +119,25 @@
 
     <!-- Trip Details Screen -->
     <string name="text_trip_of_the_day">Trip of the day %s</string>
+    <string name="text_start_time">Start time</string>
+    <string name="text_duration">Duration</string>
+    <string name="text_net_total_value">Net total value</string>
+    <string name="text_loaded_weight">Loaded weight</string>
+    <string name="text_balance">Balance</string>
+    <string name="text_course">Course</string>
+    <string name="text_view_on_map">View on map</string>
+    <string name="text_to_prefix">To</string>
+    <string name="text_complete_checklist">Complete checklist</string>
+    <string name="text_incomplete_checklist">Incomplete checklist</string>
+    <string name="text_checklist_not_carried_out">Checklist not carried out</string>
+    <string name="text_checklist_error">Checklist error</string>
+    <string name="text_expenses">Expenses</string>
+    <string name="text_edit_trip">Edit trip</string>
+    <string name="text_total_expense">Total expense</string>
+    <string name="text_new_expense">New expense</string>
+    <string name="text_net_worth">Net worth</string>
+    <string name="text_manifest">Manifest</string>
+    <string name="text_manifest_image">Manifest image</string>
 
     <!-- More Tooltip -->
     <string name="text_more">More</string>

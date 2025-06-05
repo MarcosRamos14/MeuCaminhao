@@ -84,7 +84,7 @@ private fun FilterChipComponent(
                 modifier = Modifier.wrapContentWidth(),
                 text = stringResource(text),
                 color = if (selected) White else Black,
-                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1
             )

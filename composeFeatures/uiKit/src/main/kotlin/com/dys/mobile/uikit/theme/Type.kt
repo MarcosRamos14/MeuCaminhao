@@ -9,9 +9,11 @@ import com.dys.mobile.uikit.R
 import com.dys.mobile.toolkit.extensions._sp
 
 val RobotoFamily = FontFamily(
+    Font(R.font.roboto_medium, FontWeight.Medium),
     Font(R.font.roboto_regular, FontWeight.Normal),
+    Font(R.font.roboto_light, FontWeight.Light),
     Font(R.font.roboto_bold, FontWeight.Bold),
-    Font(R.font.roboto_light, FontWeight.Light)
+    Font(R.font.roboto_semi_bold, FontWeight.SemiBold)
 )
 
 val Typography = Typography(

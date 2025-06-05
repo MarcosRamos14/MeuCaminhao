@@ -16,6 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -60,7 +61,7 @@ fun TextAndTimeComponent(
                     TextComponent(
                         modifier = Modifier
                             .wrapContentWidth()
-                            .padding(horizontal = 16._dpw, vertical = 4._dph),
+                            .padding(start = 16._dpw, top = 4._dph, bottom = 4._dph),
                         text = time,
                         color = MaterialTheme.colorScheme.primary,
                         fontWeight = timeFontWeight,
@@ -69,12 +70,15 @@ fun TextAndTimeComponent(
                     )
 
                     icon?.let { drawableRes ->
+                        Spacer(modifier = Modifier.width(4._dpw))
                         Icon(
                             painter = painterResource(id = drawableRes),
                             contentDescription = null,
+                            tint = Color.Unspecified
                         )
-                        Spacer(modifier = Modifier.width(4._dpw))
                     }
+
+                    Spacer(modifier = Modifier.width(16._dpw))
                 }
             }
         )

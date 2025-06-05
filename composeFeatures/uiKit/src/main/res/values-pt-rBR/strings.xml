@@ -8,10 +8,20 @@
     <string name="common_text_advance">Avançar</string>
     <string name="common_text_see_more">Ver mais</string>
     <string name="common_text_cancel">Cancelar</string>
+    <string name="common_general_information">Informações gerais</string>
+    <string name="common_result">Resultado</string>
+    <string name="common_delete">Excluir</string>
+    <string name="common_default_price">R$0.00</string>
+    <string name="common_error_getting_name">Erro ao obter nome</string>
+    <string name="common_error_getting_weight">Erro ao obter tonelada</string>
+    <string name="common_error_getting_origin">Erro ao obter origem</string>
+    <string name="common_error_getting_destination">Erro ao obter destino</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Ícone de busca</string>
     <string name="text_go_to_top">Voltar ao topo</string>
+    <string name="text_download_file">Baixar arquivo</string>
+    <string name="text_error_loading_image">Erro ao carregar imagem</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -102,6 +112,25 @@
 
     <!-- Trip Details Screen -->
     <string name="text_trip_of_the_day">Viagem do dia %s</string>
+    <string name="text_start_time">Hora inicial</string>
+    <string name="text_duration">Duração</string>
+    <string name="text_net_total_value">Valor total líquido</string>
+    <string name="text_loaded_weight">Peso carregado</string>
+    <string name="text_balance">Saldo</string>
+    <string name="text_course">Percurso</string>
+    <string name="text_view_on_map">Ver no mapa</string>
+    <string name="text_to_prefix">Para</string>
+    <string name="text_complete_checklist">Checklist completo</string>
+    <string name="text_incomplete_checklist">Checklist imcompleto</string>
+    <string name="text_checklist_not_carried_out">Checklist não realizado</string>
+    <string name="text_checklist_error">Erro no checklist</string>
+    <string name="text_expenses">Despesas</string>
+    <string name="text_edit_trip">Editar viagem</string>
+    <string name="text_total_expense">Despesa total</string>
+    <string name="text_new_expense">Nova despesa</string>
+    <string name="text_net_worth">Valor líquido</string>
+    <string name="text_manifest">Manifesto</string>
+    <string name="text_manifest_image">Imagem do manifesto</string>
 
     <!-- More Tooltip -->
     <string name="text_more">Mais</string>

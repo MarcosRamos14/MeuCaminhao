@@ -21,6 +21,7 @@ fun TextAndMessageTextComponent(
     modifier: Modifier = Modifier,
     @StringRes title: Int,
     message: String,
+    messageMaxLin: Int? = null
 ) {
     Column(modifier = modifier) {
         TextComponent(
@@ -28,7 +29,8 @@ fun TextAndMessageTextComponent(
             text = stringResource(title),
             color = Gray65,
             fontWeight = FontWeight.Light,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = messageMaxLin
         )
 
         Spacer(modifier = Modifier.height(4._dph))
@@ -36,7 +38,7 @@ fun TextAndMessageTextComponent(
         TextComponent(
             modifier = Modifier.wrapContentWidth(),
             text = message,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.SemiBold,
             style = MaterialTheme.typography.bodyMedium,
             maxLines = 1
         )

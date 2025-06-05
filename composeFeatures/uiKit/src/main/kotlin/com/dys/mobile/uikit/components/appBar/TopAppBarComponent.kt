@@ -29,7 +29,7 @@ fun TopAppBarComponent(
             title = {
                 TextComponent(
                     text = title,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Medium,
                     style = MaterialTheme.typography.titleLarge
                 )
             },

@@ -6,6 +6,7 @@ import com.dys.mobile.meucaminhao.viewmodels.onboarding.recoverPassword.RecoverP
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.register.RegisterViewModel
 import com.dys.mobile.meucaminhao.viewmodels.onboarding.verifyCode.VerifyCodeViewModel
 import com.dys.mobile.meucaminhao.viewmodels.trips.TripsViewModel
+import com.dys.mobile.meucaminhao.viewmodels.trips.TripDetailsViewModel
 import com.dys.mobile.meucaminhao.viewmodels.home.HomeViewModel
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -18,4 +19,5 @@ val viewModelModule = module {
     singleOf(::RegisterViewModel)
     singleOf(::HomeViewModel)
     singleOf(::TripsViewModel)
+    singleOf(::TripDetailsViewModel)
 }
