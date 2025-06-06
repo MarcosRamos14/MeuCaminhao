@@ -40,7 +40,7 @@ fun MainNavHost() {
         Routes.TripsScreen.route
     )
 
-    val shouldShowBars = currentDestination in screensWithBars
+    val shouldShowBars = (currentDestination in screensWithBars)
 
     Scaffold(
         bottomBar = {

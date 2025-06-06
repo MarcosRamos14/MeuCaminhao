@@ -48,7 +48,7 @@ fun BottomAppBarComponent(navController: NavController) {
             screens.forEach { screen ->
                 with(screen.bottomAppBarItem) {
                     NavigationBarItem(
-                        selected = currentDestination == route,
+                        selected = (currentDestination == route),
                         onClick = {
                             navController.navigate(route) {
                                 launchSingleTop = true

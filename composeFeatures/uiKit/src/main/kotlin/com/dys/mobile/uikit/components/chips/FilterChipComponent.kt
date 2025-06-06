@@ -57,7 +57,7 @@ fun <T : Enum<T>> FilterChipGroupComponent(
                 val option = options[index]
                 FilterChipComponent(
                     text = getLabelRes(option),
-                    selected = option == selectedOption,
+                    selected = (option == selectedOption),
                     onClick = { onOptionSelected(option) }
                 )
             }

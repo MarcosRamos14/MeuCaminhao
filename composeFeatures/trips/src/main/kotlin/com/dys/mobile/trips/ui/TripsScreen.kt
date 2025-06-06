@@ -66,12 +66,12 @@ private fun TripsContent(viewModel: TripsViewModel) {
     val listState = rememberLazyListState()
     val showFilters by remember {
         derivedStateOf {
-            listState.firstVisibleItemIndex == 0 && listState.firstVisibleItemScrollOffset < 50
+            ((listState.firstVisibleItemIndex == 0) && (listState.firstVisibleItemScrollOffset < 50))
         }
     }
     val showScrollToTopButton by remember {
         derivedStateOf {
-            listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 300
+            ((listState.firstVisibleItemIndex > 0) || (listState.firstVisibleItemScrollOffset > 300))
         }
     }
     var queryState by rememberSaveable { mutableStateOf("") }
