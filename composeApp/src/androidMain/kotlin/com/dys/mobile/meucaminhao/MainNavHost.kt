@@ -1,29 +1,37 @@
 package com.dys.mobile.meucaminhao
 
+import android.net.Uri
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import com.dys.mobile.home.ui.HomeScreen
 import com.dys.mobile.login.ui.LoginScreen
 import com.dys.mobile.management.ui.ManagementScreen
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
+import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_INDEX
+import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_TRIP_ID
+import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_URL
 import com.dys.mobile.onboarding.ui.newPassword.NewPasswordScreen
 import com.dys.mobile.onboarding.ui.recoverPassword.RecoverPasswordScreen
 import com.dys.mobile.onboarding.ui.register.CreateAccountScreen
 import com.dys.mobile.onboarding.ui.register.PlanTypeScreen
 import com.dys.mobile.onboarding.ui.register.ProfileTypeScreen
 import com.dys.mobile.onboarding.ui.verifyCode.VerifyCodeScreen
-import com.dys.mobile.trips.ui.TripDetailsScreen
-import com.dys.mobile.trips.ui.TripsScreen
+import com.dys.mobile.trips.ui.tripDetails.TripDetailsScreen
+import com.dys.mobile.trips.ui.tripsHistory.TripsHistoryScreen
 import com.dys.mobile.uikit.components.bottomBar.BottomAppBarComponent
+import com.dys.mobile.uikit.screens.photos.FullPhotoScreen
+import com.dys.mobile.uikit.screens.photos.PhotoGalleryScreen
 import com.dys.mobile.vehicles.ui.VehiclesScreen
 
 @Composable
@@ -37,7 +45,7 @@ fun MainNavHost() {
         Routes.ManagementScreen.route,
         Routes.VehiclesScreen.route,
         Routes.HomeScreen.route,
-        Routes.TripsScreen.route
+        Routes.TripsHistoryScreen.route
     )
 
     val shouldShowBars = (currentDestination in screensWithBars)
@@ -50,7 +58,7 @@ fun MainNavHost() {
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = Routes.TripDetailsScreen.route // TODO:
+            startDestination = Routes.TripsHistoryScreen.route // TODO:
         ) {
             composable(
                 route = Routes.ManagementScreen.route,
@@ -86,14 +94,29 @@ fun MainNavHost() {
             }
 
             composable(
-                route = Routes.TripsScreen.route,
+                route = Routes.TripsHistoryScreen.route,
                 deepLinks = listOf(
                     navDeepLink {
-                        uriPattern = "${applicationId}://app/${Routes.TripsScreen.route}"
+                        uriPattern = "${applicationId}://app/${Routes.TripsHistoryScreen.route}"
                     }
                 )
             ) {
-                TripsScreen(navController)
+                TripsHistoryScreen(navController)
+            }
+
+            composable(
+                route = Routes.TripDetailsScreen.route,
+                arguments = listOf(
+                    navArgument(ARG_TRIP_ID) { type = NavType.LongType }
+                ),
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.TripDetailsScreen.route}/${ARG_TRIP_ID}"
+                    }
+                )
+            ) { backStackEntry ->
+                val tripId = backStackEntry.arguments?.getLong(ARG_TRIP_ID) ?: -1L
+                TripDetailsScreen(tripId = tripId, navController)
             }
 
             composable(
@@ -174,14 +197,51 @@ fun MainNavHost() {
             }
 
             composable(
-                route = Routes.TripDetailsScreen.route,
+                route = Routes.PhotoGalleryScreen.route,
+                arguments = listOf(
+                    navArgument(ARG_URL) { type = NavType.StringType }
+                ),
                 deepLinks = listOf(
                     navDeepLink {
-                        uriPattern = "${applicationId}://app/${Routes.TripDetailsScreen.route}"
+                        uriPattern = "${applicationId}://app/${Routes.PhotoGalleryScreen.route}/${ARG_URL}"
                     }
                 )
-            ) {
-                TripDetailsScreen()
+            ) { backStackEntry ->
+                val encodedUrlList = backStackEntry.arguments?.getString(ARG_URL)
+                val urlList = encodedUrlList
+                    ?.split(",")
+                    ?.map { Uri.decode(it) }
+                    ?: emptyList()
+
+                PhotoGalleryScreen(
+                    navController = navController,
+                    photos = urlList
+                )
+            }
+
+            composable(
+                route = Routes.FullPhotoScreen.route,
+                arguments = listOf(
+                    navArgument(ARG_URL) { type = NavType.StringType },
+                    navArgument(ARG_INDEX) { type = NavType.IntType }
+                ),
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.FullPhotoScreen.route}/${ARG_URL}/${ARG_INDEX}"
+                    }
+                )
+            ) { backStackEntry ->
+                val encodedUrlList = backStackEntry.arguments?.getString(ARG_URL)
+                val index = backStackEntry.arguments?.getInt(ARG_INDEX) ?: 0
+                val urlList = encodedUrlList
+                    ?.split(",")
+                    ?.map { Uri.decode(it) }
+                    ?: emptyList()
+
+                FullPhotoScreen(
+                    photos = urlList,
+                    initialIndex = index
+                )
             }
         }
     }

@@ -24,6 +24,7 @@ import com.dys.mobile.toolkit.extensions.FileType
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.toolkit.extensions.openGoogleMaps
+import com.dys.mobile.toolkit.extensions.openPdfExternally
 import com.dys.mobile.toolkit.extensions.toFileType
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.enum.MonetaryValueType
@@ -41,7 +42,8 @@ import com.dys.mobile.uikit.theme.Shapes
 fun CardTripGeneralInfoComponent(
     modifier: Modifier = Modifier,
     generalInfo: TripGeneralInfoDTO?,
-    income: TripIncomeDTO?
+    income: TripIncomeDTO?,
+    openManifestImageClick: () -> Unit
 ) {
     val context = LocalContext.current
 
@@ -169,16 +171,20 @@ fun CardTripGeneralInfoComponent(
                 when (manifestUrl?.toFileType()) {
                     FileType.PDF -> {
                         CardDownloadFileComponent(
-                            fileName = "Manifest.pdf", //TODO
+                            fileName = "Manifest.pdf", // TODO
                             onClick = {
-                                //TODO
+                                manifestUrl.let { url ->
+                                    context.openPdfExternally(url)
+                                }
                             }
                         )
                     }
                     FileType.IMAGE -> {
                         ImageComponent(
+                            modifier = Modifier.height(120._dph),
                             url = manifestUrl,
-                            contentDescription = R.string.text_manifest_image
+                            contentDescription = R.string.text_manifest_image,
+                            openImageClick = openManifestImageClick
                         )
                     }
                     else -> { }
@@ -194,7 +200,8 @@ private fun CardTripGeneralInfoPreview() {
     MeuCaminhaoTheme {
         CardTripGeneralInfoComponent(
             generalInfo = null,
-            income = null
+            income = null,
+            openManifestImageClick = { }
         )
     }
 }

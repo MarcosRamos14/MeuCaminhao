@@ -34,11 +34,29 @@ sealed class Routes(val route: String) {
     /**
      * Trips flow route
      */
-    data object TripsScreen : Routes("tripsScreen")
-    data object TripDetailsScreen : Routes("tripDetailsScreen")
+    data object TripsHistoryScreen : Routes("tripsHistoryScreen")
+    data object TripDetailsScreen : Routes("tripDetailsScreen/{tripId}") {
+        fun routeWithArgs(tripId: Long) = "tripDetailsScreen/$tripId"
+    }
 
     /**
      * More tooltip (special route, will not sail)
      */
     data object MoreTooltip : Routes("moreTooltip")
+
+    /**
+     * Shared
+     */
+    data object PhotoGalleryScreen : Routes("photoGalleryScreen/{url}") {
+        fun routeWithArgs(url: String) = "photoGalleryScreen/$url"
+    }
+    data object FullPhotoScreen : Routes("fullPhotoScreen/{url}/{index}") {
+        fun routeWithArgs(url: String, index: Int = 0) = "fullPhotoScreen/$url/$index"
+    }
+
+    companion object {
+        const val ARG_TRIP_ID = "tripId"
+        const val ARG_URL = "url"
+        const val ARG_INDEX = "index"
+    }
 }

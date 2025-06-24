@@ -1,7 +1,6 @@
 package com.dys.mobile.uikit.components.cards
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -109,14 +108,15 @@ fun CardTripComponent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Gray95)
-                    .clickable(onClick = onClick)
             ) {
                 TextButtonComponent(
+                    modifier = Modifier.fillMaxWidth(),
                     text = stringResource(R.string.common_text_see_more),
                     style = MaterialTheme.typography.bodyMedium,
                     icon = R.drawable.ic_see_more,
                     iconPosition = false,
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.Center,
+                    onClick = onClick
                 )
             }
         }

@@ -1,13 +1,15 @@
-package com.dys.mobile.meucaminhao.viewmodels.trips
+package com.dys.mobile.meucaminhao.viewmodels.trips.history
 
 import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
 import com.dys.mobile.meucaminhao.domain.dto.TripDTO
 import com.dys.mobile.meucaminhao.domain.dto.TripGeneralInfoDTO
 import com.dys.mobile.meucaminhao.domain.dto.TripIncomeDTO
 import com.dys.mobile.meucaminhao.domain.state.launchWithState
+import com.dys.mobile.meucaminhao.navigation.event.Event
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
 
-class TripsViewModel : BaseViewModel() {
+class TripsHistoryViewModel : BaseViewModel() {
 
     init {
         requestAllTrips()
@@ -16,6 +18,16 @@ class TripsViewModel : BaseViewModel() {
     private fun requestAllTrips() {
         launchWithState {
             //TODO: Request to API all trips
+        }
+    }
+
+    fun onEvent(event: Event) {
+        when (event) {
+            is NavigateTo -> {
+                updateState { state ->
+                    state.copy(navigation = event.route)
+                }
+            }
         }
     }
 

@@ -23,6 +23,7 @@ import com.dys.mobile.uikit.components.enum.MonetaryValueType
 import com.dys.mobile.uikit.theme.Black
 import com.dys.mobile.uikit.theme.Blue80
 import com.dys.mobile.uikit.theme.Gray65
+import com.dys.mobile.uikit.theme.Gray80
 import com.dys.mobile.uikit.theme.Green80
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import com.dys.mobile.uikit.theme.Orange80
@@ -42,7 +43,7 @@ fun TextAndMonetaryComponent(
         MonetaryValueType.NEGATIVE -> Pink80
         MonetaryValueType.NEUTRAL -> Blue80
         MonetaryValueType.WARNING -> Orange80
-        MonetaryValueType.INDEFINITE -> Gray65
+        MonetaryValueType.INDEFINITE -> Gray80
     }
 
     Column(modifier = modifier) {

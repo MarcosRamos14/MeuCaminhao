@@ -44,7 +44,11 @@ fun CardExpenseTypeComponent(
     modifier: Modifier = Modifier,
     title: String,
     amount: String?,
-    items: List<ExpenseItemDTO>
+    items: List<ExpenseItemDTO>,
+    openPhotoTicketClick: (String) -> Unit,
+    openAdditionalPhotosClick: (String) -> Unit,
+    deleteExpenseClick: () -> Unit,
+    editExpenseClick: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -108,7 +112,11 @@ fun CardExpenseTypeComponent(
                             val backgroundColor = colors[index % colors.size]
                             CardExpenseItemComponent(
                                 containerColor = backgroundColor,
-                                item = item
+                                item = item,
+                                openPhotoTicketClick = openPhotoTicketClick,
+                                openAdditionalPhotosClick = openAdditionalPhotosClick,
+                                deleteExpenseClick = deleteExpenseClick,
+                                editExpenseClick = editExpenseClick,
                             )
                         }
                     }
@@ -125,30 +133,11 @@ private fun CardExpenseTypePreview() {
         CardExpenseTypeComponent(
             title = "Despesa recorrente",
             amount = "R$ 261,32",
-            items = listOf(
-                ExpenseItemDTO(
-                    expenseId = 123,
-                    title = "Abastecimento",
-                    vehiclePlate = "ABC-1234",
-                    category = null,
-                    amount = null,
-                    generalInformation = null,
-                    ticketUrl = "",
-                    additionalResources = null,
-                    observation = ""
-                ),
-                ExpenseItemDTO(
-                    expenseId = 456,
-                    title = "Pedágio",
-                    vehiclePlate = "ABC-1234",
-                    category = null,
-                    amount = null,
-                    generalInformation = null,
-                    ticketUrl = "",
-                    additionalResources = null,
-                    observation = ""
-                )
-            )
+            items = emptyList(),
+            openPhotoTicketClick = { },
+            openAdditionalPhotosClick = { },
+            deleteExpenseClick = { },
+            editExpenseClick = { }
         )
     }
 }

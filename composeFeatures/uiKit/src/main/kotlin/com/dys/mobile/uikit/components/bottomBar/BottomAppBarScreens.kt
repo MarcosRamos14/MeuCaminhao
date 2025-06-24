@@ -34,7 +34,7 @@ sealed class ScreenItem(
 
     data object TripsScreen : ScreenItem(
         bottomAppBarItem = BottomAppBarItem(
-            route = Routes.TripsScreen.route,
+            route = Routes.TripsHistoryScreen.route,
             iconResId = R.drawable.ic_trips,
             labelResId = R.string.text_trips
         )

@@ -1,5 +1,6 @@
-package com.dys.mobile.trips.ui
+package com.dys.mobile.trips.ui.tripDetails
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,14 +20,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.dto.TripDTO
 import com.dys.mobile.meucaminhao.domain.dto.checklistStatusEnum
 import com.dys.mobile.meucaminhao.domain.enum.ChecklistStatusEnum.COMPLETED
 import com.dys.mobile.meucaminhao.domain.enum.ChecklistStatusEnum.INCOMPLETE
 import com.dys.mobile.meucaminhao.domain.enum.ChecklistStatusEnum.UNREALIZED
-import com.dys.mobile.meucaminhao.viewmodels.trips.TripDetailsViewModel
+import com.dys.mobile.meucaminhao.navigation.event.Event
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
+import com.dys.mobile.meucaminhao.viewmodels.trips.details.TripDetailsViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
+import com.dys.mobile.toolkit.extensions.handleRoute
+import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
 import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
@@ -41,14 +48,24 @@ import com.dys.mobile.uikit.theme.Red60
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun TripDetailsScreen() {
+fun TripDetailsScreen(tripId: Long, navController: NavController) {
     val viewModel = koinViewModel<TripDetailsViewModel>()
 
-    TripDetailsContent(viewModel.getMockList())
+    viewModel.requestTripById(tripId = tripId)
+
+    TripDetailsContent(
+        mockTrip = viewModel.getMockList(), // TODO: Switch to real data
+        event = viewModel::onEvent
+    )
+
+    CollectUiState(viewModel, navController::handleRoute)
 }
 
 @Composable
-private fun TripDetailsContent(mockTrip: TripDTO) {
+private fun TripDetailsContent(
+    mockTrip: TripDTO,
+    event: (Event) -> Unit
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -79,7 +96,13 @@ private fun TripDetailsContent(mockTrip: TripDTO) {
 
             CardTripGeneralInfoComponent(
                 generalInfo = mockTrip.generalInformation,
-                income = mockTrip.income
+                income = mockTrip.income,
+                openManifestImageClick = {
+                    navigateToFullPhotoScreen(
+                        uri = mockTrip.generalInformation?.manifestUrl ?: "",
+                        event = event
+                    )
+                }
             )
 
             Spacer(modifier = Modifier.height(24._dph))
@@ -109,7 +132,26 @@ private fun TripDetailsContent(mockTrip: TripDTO) {
             Spacer(modifier = Modifier.height(16._dph))
 
             CardExpensesComponent(
-                tripExpenses = mockTrip.expenses
+                tripExpenses = mockTrip.expenses,
+                openPhotoTicketClick = { uri ->
+                    navigateToFullPhotoScreen(uri, event)
+                },
+                openAdditionalPhotosClick = {
+                    event(NavigateTo(
+                        Routes.PhotoGalleryScreen.routeWithArgs(
+                            Uri.encode(it)
+                        )
+                    ))
+                },
+                deleteExpenseClick = {
+                    // TODO: Delete expense
+                },
+                editExpenseClick = {
+                    // TODO: Edit expense
+                },
+                newExpenseClick = {
+                    // TODO: New Expense Screen
+                }
             )
 
             Spacer(modifier = Modifier.height(24._dph))
@@ -137,7 +179,7 @@ private fun TripDetailsContent(mockTrip: TripDTO) {
                         icon = iconRes,
                         contentDescription = contentDescription,
                         onClick = {
-                            //TODO: Chamar módulo de checklist
+                           // TODO: Pendente de implementação para tela de checklist.
                         }
                     )
                 }
@@ -151,7 +193,7 @@ private fun TripDetailsContent(mockTrip: TripDTO) {
                 if (mockTrip.canDelete == true) {
                     OutlinedRoundButtonComponent(
                         modifier = Modifier.weight(1f),
-                        text = stringResource(R.string.common_delete),
+                        text = stringResource(R.string.text_delete_trip),
                         fontWeight = FontWeight.Bold,
                         color = Red60,
                         onClick = {
@@ -176,10 +218,30 @@ private fun TripDetailsContent(mockTrip: TripDTO) {
     }
 }
 
+private fun navigateToFullPhotoScreen(uri: String, event: (Event) -> Unit) {
+    event(NavigateTo(
+        Routes.FullPhotoScreen.routeWithArgs(
+            Uri.encode(uri)
+        )
+    ))
+}
+
 @Preview
 @Composable
 private fun TripDetailsContentPreview() {
     MeuCaminhaoTheme {
-        TripDetailsScreen()
+        TripDetailsContent(
+            mockTrip = TripDTO(
+                id = 123,
+                title = "",
+                generalInformation = null,
+                income = null,
+                expenses = null,
+                checklist = emptyList(),
+                canEdit = true,
+                canDelete = true
+            ),
+            event = {  }
+        )
     }
 }

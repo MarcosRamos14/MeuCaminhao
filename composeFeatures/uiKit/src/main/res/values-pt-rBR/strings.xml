@@ -10,12 +10,16 @@
     <string name="common_text_cancel">Cancelar</string>
     <string name="common_general_information">Informações gerais</string>
     <string name="common_result">Resultado</string>
-    <string name="common_delete">Excluir</string>
     <string name="common_default_price">R$0.00</string>
     <string name="common_error_getting_name">Erro ao obter nome</string>
+    <string name="common_error_in_type">Erro no tipo</string>
     <string name="common_error_getting_weight">Erro ao obter tonelada</string>
     <string name="common_error_getting_origin">Erro ao obter origem</string>
     <string name="common_error_getting_destination">Erro ao obter destino</string>
+    <string name="common_observation">Observação</string>
+    <string name="common_responsible">Responsável</string>
+    <string name="common_value">Valor</string>
+    <string name="common_type">Tipo</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Ícone de busca</string>
@@ -125,14 +129,26 @@
     <string name="text_checklist_not_carried_out">Checklist não realizado</string>
     <string name="text_checklist_error">Erro no checklist</string>
     <string name="text_expenses">Despesas</string>
+    <string name="text_expense">Despesa: %s</string>
     <string name="text_edit_trip">Editar viagem</string>
+    <string name="text_edit_expense">Editar despesa</string>
     <string name="text_total_expense">Despesa total</string>
     <string name="text_new_expense">Nova despesa</string>
     <string name="text_net_worth">Valor líquido</string>
     <string name="text_manifest">Manifesto</string>
     <string name="text_manifest_image">Imagem do manifesto</string>
+    <string name="text_cancel_trip">Cancelar viagem</string>
+    <string name="text_delete_trip">Excluir viagem</string>
+    <string name="text_delete_expense">Excluir despesa</string>
 
     <!-- More Tooltip -->
     <string name="text_more">Mais</string>
+
+    <!-- Expense -->
+    <string name="text_invoice">Nota fiscal</string>
+    <string name="text_additional_photos">Fotos adicionais</string>
+
+    <!-- Gallery Screen -->
+    <string name="text_all_photos">Todas as fotos</string>
 
 </resources>

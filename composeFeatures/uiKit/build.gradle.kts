@@ -41,6 +41,8 @@ dependencies {
     api(project(":composeFeatures:toolkit"))
     implementation(project(":shared"))
 
+    api(libs.accompanist.pager)
+    api(libs.accompanist.pager.indicators)
     api(libs.androidx.activity.compose)
     api(libs.androidx.appcompat)
     api(libs.androidx.core.ktx)

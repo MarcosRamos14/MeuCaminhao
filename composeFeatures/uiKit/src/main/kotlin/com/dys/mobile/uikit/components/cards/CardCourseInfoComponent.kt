@@ -36,7 +36,7 @@ fun CardCourseInfoComponent(
 ) {
     Card(
         modifier = modifier,
-        shape = Shapes.small,
+        shape = Shapes.medium,
         colors = CardDefaults.cardColors(
             containerColor = Blue80
         ),

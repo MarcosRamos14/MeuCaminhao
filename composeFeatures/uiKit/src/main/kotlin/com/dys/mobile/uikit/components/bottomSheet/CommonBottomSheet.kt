@@ -154,6 +154,11 @@ private fun CommonBottomSheetPreview() {
     /**
      * use 'rememberStandardBottomSheetState' to view the bottomSheet in the preview, as
      * 'rememberModalBottomSheetState' by default sets the bottomSheet state to Hidden.
+     *
+     * ⚠️ Warning:
+     * Using 'rememberStandardBottomSheetState' outside of a preview context (e.g., in test) can
+     * throw an IllegalStateException when calling 'dismiss()' or 'hide()' if 'skipHiddenState' is
+     * true (which is the default).
      */
 
     MeuCaminhaoTheme {

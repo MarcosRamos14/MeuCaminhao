@@ -1,10 +1,11 @@
 package com.dys.mobile.uikit.components.images
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -16,27 +17,29 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import coil.compose.SubcomposeAsyncImage
-import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.uikit.R
+import com.dys.mobile.uikit.theme.Shapes
 
 @Composable
 fun ImageComponent(
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
+    @DrawableRes fallback: Int = R.drawable.ic_broken_image,
+    @StringRes contentDescription: Int,
     url: String,
-    @StringRes contentDescription: Int
+    openImageClick: () -> Unit
 ) {
     SubcomposeAsyncImage(
         modifier = modifier
-            .clip(shape = MaterialTheme.shapes.medium)
+            .clip(shape = Shapes.medium)
             .fillMaxWidth()
-            .height(120._dph),
+            .clickable { openImageClick() },
         model = url,
         contentDescription = stringResource(contentDescription),
         contentScale = contentScale,
         error = {
             Icon(
-                painter = painterResource(R.drawable.ic_broken_image),
+                painter = painterResource(fallback),
                 contentDescription = stringResource(R.string.text_error_loading_image)
             )
         },

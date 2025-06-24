@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.dys.mobile.meucaminhao.domain.dto.ExpenseItemDTO
 import com.dys.mobile.meucaminhao.domain.dto.ExpensiveDTO
 import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
 import com.dys.mobile.meucaminhao.domain.dto.TripExpensesDTO
@@ -29,7 +28,12 @@ import com.dys.mobile.uikit.theme.Shapes
 @Composable
 fun CardExpensesComponent(
     modifier: Modifier = Modifier,
-    tripExpenses: TripExpensesDTO?
+    tripExpenses: TripExpensesDTO?,
+    openPhotoTicketClick: (String) -> Unit,
+    openAdditionalPhotosClick: (String) -> Unit,
+    deleteExpenseClick: () -> Unit,
+    editExpenseClick: () -> Unit,
+    newExpenseClick: () -> Unit
 ) {
     Card(
         modifier = modifier,
@@ -46,6 +50,10 @@ fun CardExpensesComponent(
                         title = expense.title ?: "",
                         amount = expense.amount?.formatted,
                         items = expense.items ?: emptyList(),
+                        openPhotoTicketClick = openPhotoTicketClick,
+                        openAdditionalPhotosClick = openAdditionalPhotosClick,
+                        deleteExpenseClick = deleteExpenseClick,
+                        editExpenseClick = editExpenseClick,
                     )
 
                     Spacer(modifier = Modifier.height(8._dph))
@@ -53,7 +61,7 @@ fun CardExpensesComponent(
 
                 CardTotalValueComponent(
                     title = R.string.text_total_expense,
-                    amount = tripExpenses?.totalAmount
+                    amount = tripExpenses?.amount
                 )
 
                 TextButtonComponent(
@@ -67,9 +75,7 @@ fun CardExpensesComponent(
                     iconColor = MaterialTheme.colorScheme.primary,
                     iconPosition = true,
                     contentPadding = PaddingValues(0._dph),
-                    onClick = {
-                        // TODO: Mostrar tela para add uma nova despesa
-                    }
+                    onClick = newExpenseClick
                 )
             }
         }
@@ -81,7 +87,7 @@ fun CardExpensesComponent(
 private fun CardExpensesPreview() {
     MeuCaminhaoTheme {
         val tripExpenses = TripExpensesDTO(
-            totalAmount = TotalAmountDTO(
+            amount = TotalAmountDTO(
                 value = 934.74,
                 currency = "BRL",
                 formatted = "R$ 934,74",
@@ -97,34 +103,17 @@ private fun CardExpensesPreview() {
                         isPositive = true
                     ),
                     items = null
-                ),
-                ExpensiveDTO(
-                    title = "Despesa ocasional",
-                    amount = TotalAmountDTO(
-                        value = 673.42,
-                        currency = "BRL",
-                        formatted = "R$ 673,42",
-                        isPositive = true
-                    ),
-                    items = listOf(
-                        ExpenseItemDTO(
-                            expenseId = 123,
-                            title = "Abastecimento",
-                            vehiclePlate = "ABC-1234",
-                            category = null,
-                            amount = null,
-                            generalInformation = null,
-                            ticketUrl = "",
-                            additionalResources = null,
-                            observation = ""
-                        )
-                    )
                 )
             )
         )
 
         CardExpensesComponent(
-            tripExpenses = tripExpenses
+            tripExpenses = tripExpenses,
+            openPhotoTicketClick = { },
+            openAdditionalPhotosClick = { },
+            deleteExpenseClick = { },
+            editExpenseClick = { },
+            newExpenseClick = { }
         )
     }
 }

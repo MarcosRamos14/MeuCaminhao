@@ -1,4 +1,4 @@
-package com.dys.mobile.trips.ui
+package com.dys.mobile.trips.ui.tripsHistory
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -33,7 +33,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.domain.dto.TripDTO
-import com.dys.mobile.meucaminhao.viewmodels.trips.TripsViewModel
+import com.dys.mobile.meucaminhao.navigation.event.Event
+import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
+import com.dys.mobile.meucaminhao.navigation.routes.Routes
+import com.dys.mobile.meucaminhao.viewmodels.trips.history.TripsHistoryViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions.handleRoute
 import com.dys.mobile.toolkit.state.CollectUiState
@@ -51,17 +54,22 @@ import org.koin.androidx.compose.koinViewModel
 const val LICENSE_PLATE_SIZE = 7
 
 @Composable
-fun TripsScreen(navController: NavController) {
-    val viewModel = koinViewModel<TripsViewModel>()
+fun TripsHistoryScreen(navController: NavController) {
+    val viewModel = koinViewModel<TripsHistoryViewModel>()
 
-    TripsContent(viewModel)
+    TripsHistoryContent(
+        mockTrips = viewModel.getMockList(), // TODO: Switch to real data
+        event = viewModel::onEvent
+    )
+
     CollectUiState(viewModel, navController::handleRoute)
 }
 
 @Composable
-private fun TripsContent(viewModel: TripsViewModel) {
-    val mockTrips: List<TripDTO> = viewModel.getMockList()
-
+private fun TripsHistoryContent(
+    mockTrips: List<TripDTO>,
+    event: (Event) -> Unit
+) {
     val coroutineScope = rememberCoroutineScope()
     val listState = rememberLazyListState()
     val showFilters by remember {
@@ -161,7 +169,9 @@ private fun TripsContent(viewModel: TripsViewModel) {
                 items(mockTrips) { trip ->
                     CardTripComponent(
                         trip = trip,
-                        onClick = { }
+                        onClick = {
+                            event(NavigateTo(Routes.TripDetailsScreen.routeWithArgs(tripId = trip.id)))
+                        }
                     )
                 }
             }
@@ -171,8 +181,11 @@ private fun TripsContent(viewModel: TripsViewModel) {
 
 @Preview
 @Composable
-private fun TripsContentPreview() {
+private fun TripsHistoryContentPreview() {
     MeuCaminhaoTheme {
-        TripsContent(TripsViewModel())
+        TripsHistoryContent(
+            mockTrips = emptyList(),
+            event = {}
+        )
     }
 }

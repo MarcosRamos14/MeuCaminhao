@@ -12,15 +12,19 @@
     <string name="common_general_information">General information</string>
     <string name="common_result">Result</string>
     <string name="common_checklist" translatable="false">Checklist</string>
-    <string name="common_delete">Delete</string>
     <string name="common_default_price">$0.00</string>
     <string name="common_error_getting_name">Error getting name</string>
+    <string name="common_error_in_type">Error in type</string>
     <string name="common_date_not_defined" translatable="false">-- -- ----</string>
     <string name="common_time_not_defined" translatable="false">--:--</string>
     <string name="common_vehicle_plate_not_defined" translatable="false">--- ----</string>
     <string name="common_error_getting_weight">Error getting weight</string>
     <string name="common_error_getting_origin">Error getting origin</string>
     <string name="common_error_getting_destination">Error getting destination</string>
+    <string name="common_observation">Observation</string>
+    <string name="common_responsible">Responsible</string>
+    <string name="common_value">Value</string>
+    <string name="common_type">Type</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Search icon</string>
@@ -132,14 +136,26 @@
     <string name="text_checklist_not_carried_out">Checklist not carried out</string>
     <string name="text_checklist_error">Checklist error</string>
     <string name="text_expenses">Expenses</string>
+    <string name="text_expense">Expense: %s</string>
     <string name="text_edit_trip">Edit trip</string>
+    <string name="text_edit_expense">Edit expense</string>
     <string name="text_total_expense">Total expense</string>
     <string name="text_new_expense">New expense</string>
     <string name="text_net_worth">Net worth</string>
     <string name="text_manifest">Manifest</string>
     <string name="text_manifest_image">Manifest image</string>
+    <string name="text_cancel_trip">Cancel trip</string>
+    <string name="text_delete_trip">Delete trip</string>
+    <string name="text_delete_expense">Delete expense</string>
 
     <!-- More Tooltip -->
     <string name="text_more">More</string>
+
+    <!-- Expense -->
+    <string name="text_invoice">Invoice</string>
+    <string name="text_additional_photos">Additional photos</string>
+
+    <!-- Gallery Screen -->
+    <string name="text_all_photos">All photos</string>
 
 </resources>
