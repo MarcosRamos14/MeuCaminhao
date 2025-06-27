@@ -107,6 +107,9 @@
     <!-- Vehicles Screen -->
     <string name="text_vehicles">Vehicles</string>
 
+    <!-- My Vehicles Screen -->
+    <string name="text_my_vehicles">My vehicles</string>
+
     <!-- Trips Screen -->
     <string name="text_trips">Trips</string>
     <string name="text_driver">Driver</string>

@@ -32,7 +32,7 @@ fun OutlinedRoundButtonComponent(
     modifier: Modifier = Modifier.fillMaxWidth(),
     modifierRow: Modifier = Modifier.fillMaxWidth(),
     text: String,
-    fontWeight: FontWeight = FontWeight.Normal,
+    fontWeight: FontWeight = FontWeight.SemiBold,
     color: Color? = null,
     @DrawableRes icon: Int? = null,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,

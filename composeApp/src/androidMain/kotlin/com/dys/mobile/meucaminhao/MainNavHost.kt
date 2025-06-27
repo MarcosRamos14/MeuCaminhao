@@ -32,7 +32,8 @@ import com.dys.mobile.trips.ui.tripsHistory.TripsHistoryScreen
 import com.dys.mobile.uikit.components.bottomBar.BottomAppBarComponent
 import com.dys.mobile.uikit.screens.photos.FullPhotoScreen
 import com.dys.mobile.uikit.screens.photos.PhotoGalleryScreen
-import com.dys.mobile.vehicles.ui.VehiclesScreen
+import com.dys.mobile.vehicles.ui.myVehicles.MyVehiclesScreen
+import com.dys.mobile.vehicles.ui.vehicles.VehiclesScreen
 
 @Composable
 fun MainNavHost() {
@@ -58,7 +59,7 @@ fun MainNavHost() {
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = Routes.TripsHistoryScreen.route // TODO:
+            startDestination = Routes.VehiclesScreen.route // TODO:
         ) {
             composable(
                 route = Routes.ManagementScreen.route,
@@ -79,7 +80,18 @@ fun MainNavHost() {
                     }
                 )
             ) {
-                VehiclesScreen()
+                VehiclesScreen(navController)
+            }
+
+            composable(
+                route = Routes.MyVehiclesScreen.route,
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.MyVehiclesScreen.route}"
+                    }
+                )
+            ) {
+                MyVehiclesScreen(navController)
             }
 
             composable(

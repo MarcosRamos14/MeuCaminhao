@@ -25,6 +25,7 @@ sealed class Routes(val route: String) {
      * Vehicles flow route
      */
     data object VehiclesScreen : Routes("vehiclesScreen")
+    data object MyVehiclesScreen : Routes("MyVehiclesScreen")
 
     /**
      * Home flow route

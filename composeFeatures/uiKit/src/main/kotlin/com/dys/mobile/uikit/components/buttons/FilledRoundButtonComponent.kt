@@ -49,7 +49,7 @@ fun FilledRoundButtonComponent(
                 modifier = modifierText,
                 text = text,
                 color = Color.White,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyMedium
             )
