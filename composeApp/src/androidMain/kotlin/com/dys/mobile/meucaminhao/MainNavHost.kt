@@ -21,6 +21,7 @@ import com.dys.mobile.meucaminhao.navigation.routes.Routes
 import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_INDEX
 import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_TRIP_ID
 import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_URL
+import com.dys.mobile.meucaminhao.navigation.routes.Routes.Companion.ARG_VEHICLE_ID
 import com.dys.mobile.onboarding.ui.newPassword.NewPasswordScreen
 import com.dys.mobile.onboarding.ui.recoverPassword.RecoverPasswordScreen
 import com.dys.mobile.onboarding.ui.register.CreateAccountScreen
@@ -33,6 +34,7 @@ import com.dys.mobile.uikit.components.bottomBar.BottomAppBarComponent
 import com.dys.mobile.uikit.screens.photos.FullPhotoScreen
 import com.dys.mobile.uikit.screens.photos.PhotoGalleryScreen
 import com.dys.mobile.vehicles.ui.myVehicles.MyVehiclesScreen
+import com.dys.mobile.vehicles.ui.vehicleDetails.VehicleDetailsScreen
 import com.dys.mobile.vehicles.ui.vehicles.VehiclesScreen
 
 @Composable
@@ -92,6 +94,21 @@ fun MainNavHost() {
                 )
             ) {
                 MyVehiclesScreen(navController)
+            }
+
+            composable(
+                route = Routes.VehicleDetailsScreen.route,
+                arguments = listOf(
+                    navArgument(ARG_VEHICLE_ID) { type = NavType.LongType }
+                ),
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.VehicleDetailsScreen.route}/${ARG_VEHICLE_ID}"
+                    }
+                )
+            ) { backStackEntry ->
+                val vehicleId = backStackEntry.arguments?.getLong(ARG_VEHICLE_ID) ?: -1L
+                VehicleDetailsScreen(vehicleId = vehicleId)
             }
 
             composable(

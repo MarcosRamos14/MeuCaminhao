@@ -102,6 +102,9 @@
 
     <!-- My Vehicles Screen -->
     <string name="text_my_vehicles">Meu veículos</string>
+    <string name="text_registration_date">Data de cadastro</string>
+    <string name="text_total_spent">Gasto total</string>
+    <string name="text_drivers">Motoristas</string>
 
     <!-- Trips Screen -->
     <string name="text_trips">Viagens</string>

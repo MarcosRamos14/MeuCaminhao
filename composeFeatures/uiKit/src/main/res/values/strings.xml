@@ -109,6 +109,9 @@
 
     <!-- My Vehicles Screen -->
     <string name="text_my_vehicles">My vehicles</string>
+    <string name="text_registration_date">Registration date</string>
+    <string name="text_total_spent">Total spent</string>
+    <string name="text_drivers">Drivers</string>
 
     <!-- Trips Screen -->
     <string name="text_trips">Trips</string>
