@@ -61,7 +61,8 @@ fun CardTripGeneralInfoComponent(
             ) {
                 TextAndMessageTextComponent(
                     title = R.string.text_driver,
-                    message = generalInfo?.driver ?: stringResource(R.string.common_error_getting_name)
+                    message = generalInfo?.driver
+                        ?: stringResource(R.string.common_error_getting_name)
                 )
 
                 Spacer(modifier = Modifier.height(16._dph))
@@ -73,7 +74,8 @@ fun CardTripGeneralInfoComponent(
                     TextAndTimeComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_start_time,
-                        time = generalInfo?.startTime ?: stringResource(R.string.common_time_not_defined)
+                        time = generalInfo?.startTime
+                            ?: stringResource(R.string.common_time_not_defined)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
@@ -83,7 +85,8 @@ fun CardTripGeneralInfoComponent(
                         timeFontWeight = FontWeight.SemiBold,
                         icon = R.drawable.ic_clock,
                         title = R.string.text_duration,
-                        time = generalInfo?.duration ?: stringResource(R.string.common_time_not_defined)
+                        time = generalInfo?.duration
+                            ?: stringResource(R.string.common_time_not_defined)
                     )
                 }
 
@@ -97,7 +100,8 @@ fun CardTripGeneralInfoComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_net_total_value,
                         type = MonetaryValueType.NEUTRAL,
-                        value = income?.totalAmount?.formatted ?: stringResource(R.string.common_default_price)
+                        value = income?.totalAmount?.formatted
+                            ?: stringResource(R.string.common_default_price)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
@@ -105,7 +109,8 @@ fun CardTripGeneralInfoComponent(
                     TextAndMessageTextComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_loaded_weight,
-                        message = generalInfo?.weight?.formatted ?:  stringResource(R.string.common_error_getting_weight)
+                        message = generalInfo?.weight?.formatted
+                            ?: stringResource(R.string.common_error_getting_weight)
                     )
                 }
 
@@ -119,22 +124,26 @@ fun CardTripGeneralInfoComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_balance,
                         type = MonetaryValueType.NEUTRAL,
-                        value = income?.balanceReceivable?.formatted ?: stringResource(R.string.common_default_price)
+                        value = income?.balanceReceivable?.formatted
+                            ?: stringResource(R.string.common_default_price)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
 
                     TextAndPlateComponent(
                         modifier = Modifier.weight(1f),
-                        plateValue = generalInfo?.vehiclePlate ?:  stringResource(R.string.common_vehicle_plate_not_defined)
+                        plateValue = generalInfo?.vehiclePlate
+                            ?: stringResource(R.string.common_vehicle_plate_not_defined)
                     )
                 }
 
                 Spacer(modifier = Modifier.height(16._dph))
 
                 CardCourseInfoComponent(
-                    origin = generalInfo?.course?.origin ?: stringResource(R.string.common_error_getting_origin),
-                    destination = generalInfo?.course?.destination ?: stringResource(R.string.common_error_getting_destination),
+                    origin = generalInfo?.course?.origin
+                        ?: stringResource(R.string.common_error_getting_origin),
+                    destination = generalInfo?.course?.destination
+                        ?: stringResource(R.string.common_error_getting_destination),
                     showMapOnClick = {
                         val originLat = generalInfo?.course?.originLatitude
                         val originLng = generalInfo?.course?.originLongitude
@@ -143,10 +152,10 @@ fun CardTripGeneralInfoComponent(
 
                         if (originLat != null && originLng != null && destinationLat != null && destinationLng != null) {
                             context.openGoogleMaps(
-                                originLatitude = originLat,
-                                originLongitude = originLng,
-                                destinationLatitude = destinationLat,
-                                destinationLongitude = destinationLng
+                                originLat = originLat,
+                                originLng = originLng,
+                                destinationLat = destinationLat,
+                                destinationLng = destinationLng
                             )
                         } else {
                             // TODO: Show snackBar (outra branch implementação)
@@ -179,6 +188,7 @@ fun CardTripGeneralInfoComponent(
                             }
                         )
                     }
+
                     FileType.IMAGE -> {
                         ImageComponent(
                             modifier = Modifier.height(120._dph),
@@ -187,7 +197,8 @@ fun CardTripGeneralInfoComponent(
                             openImageClick = openManifestImageClick
                         )
                     }
-                    else -> { }
+
+                    else -> {}
                 }
             }
         }

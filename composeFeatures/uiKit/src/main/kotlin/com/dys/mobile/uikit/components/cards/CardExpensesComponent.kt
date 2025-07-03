@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.dys.mobile.meucaminhao.domain.dto.ExpensiveDTO
+import com.dys.mobile.meucaminhao.domain.dto.ExpenseDTO
 import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
 import com.dys.mobile.meucaminhao.domain.dto.TripExpensesDTO
 import com.dys.mobile.toolkit.extensions._dph
@@ -94,7 +94,7 @@ private fun CardExpensesPreview() {
                 isPositive = true
             ),
             items = listOf(
-                ExpensiveDTO(
+                ExpenseDTO(
                     title = "Despesa recorrente",
                     amount = TotalAmountDTO(
                         value = 261.32,

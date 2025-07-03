@@ -5,33 +5,19 @@ import android.content.Intent
 import androidx.core.net.toUri
 
 fun Context.openGoogleMaps(
-    originLatitude: Double,
-    originLongitude: Double,
-    destinationLatitude: Double,
-    destinationLongitude: Double
+    originLat: Double,
+    originLng: Double,
+    destinationLat: Double,
+    destinationLng: Double
 ) {
-    val uri = "https://www.google.com/maps/dir/".toUri()
+    val mapsUri = "https://www.google.com/maps/dir/".toUri()
         .buildUpon()
         .appendQueryParameter("api", "1")
-        .appendQueryParameter("origin", "$originLatitude,$originLongitude")
-        .appendQueryParameter("destination", "$destinationLatitude,$destinationLongitude")
+        .appendQueryParameter("origin", "$originLat,$originLng")
+        .appendQueryParameter("destination", "$destinationLat,$destinationLng")
         .build()
 
-    val mapIntent = Intent(Intent.ACTION_VIEW, uri).apply {
-        setPackage("com.google.android.apps.maps")
-    }
+    val intent = Intent(Intent.ACTION_VIEW, mapsUri)
 
-    val fallbackUri = "https://maps.google.com/maps".toUri()
-        .buildUpon()
-        .appendQueryParameter("saddr", "$originLatitude,$originLongitude")
-        .appendQueryParameter("daddr", "$destinationLatitude,$destinationLongitude")
-        .build()
-
-    val fallbackIntent = Intent(Intent.ACTION_VIEW, fallbackUri)
-
-    runCatching {
-        startActivity(mapIntent)
-    }.onFailure {
-        startActivity(Intent.createChooser(fallbackIntent, "Escolha um app de mapas"))
-    }
+    startActivity(intent)
 }

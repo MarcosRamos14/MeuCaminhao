@@ -53,17 +53,13 @@ fun ExpenseDetailsBottomSheet(
     )
     val scope = rememberCoroutineScope()
 
-    fun hideSheetAndRunAction(action: () -> Unit) {
-        scope.launch {
-            sheetState.hide()
-        }.invokeOnCompletion {
-            action()
-        }
-    }
-
     ModalBottomSheet(
         onDismissRequest = {
-            hideSheetAndRunAction { onDismissRequest?.invoke() }
+            scope.launch {
+                sheetState.hide()
+            }.invokeOnCompletion {
+                onDismissRequest?.invoke()
+            }
         },
         sheetState = sheetState,
         containerColor = MaterialTheme.colorScheme.background
@@ -143,16 +139,17 @@ fun ExpenseDetailsBottomSheet(
                     )
 
                     val quantityAdditionalResource = expenseItem.additionalResources?.quantity ?: 0
-                    val urlList = expenseItem
-                        .additionalResources
-                        ?.resources
-                        ?.mapNotNull { it.url?.takeIf { url -> url.isNotBlank() } }
-                        ?: emptyList()
-                    val urlsAsString = urlList.joinToString(separator = ",")
 
                     if (quantityAdditionalResource > 0) {
+                        val urlsAsString = expenseItem
+                            .additionalResources
+                            ?.resources
+                            ?.asSequence()
+                            ?.mapNotNull { it.url?.takeIf { url -> url.isNotBlank() } }
+                            ?.joinToString(separator = ",").orEmpty()
+
                         CardImageGalleryPreview(
-                            imageUrls = urlList,
+                            imageUrls = urlsAsString.split(","),
                             onClick = {
                                 openAdditionalPhotosClick(urlsAsString)
                             }

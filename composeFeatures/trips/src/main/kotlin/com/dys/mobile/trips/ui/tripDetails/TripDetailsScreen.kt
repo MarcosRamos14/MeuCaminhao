@@ -183,9 +183,9 @@ private fun TripDetailsContent(
                         }
                     )
                 }
-            }
 
-            Spacer(modifier = Modifier.height(24._dph))
+                Spacer(modifier = Modifier.height(24._dph))
+            }
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8._dpw)
@@ -213,7 +213,9 @@ private fun TripDetailsContent(
                 }
             }
 
-            Spacer(modifier = Modifier.height(24._dph))
+            if (mockTrip.canDelete == true || mockTrip.canEdit == true) {
+                Spacer(modifier = Modifier.height(24._dph))
+            }
         }
     }
 }
