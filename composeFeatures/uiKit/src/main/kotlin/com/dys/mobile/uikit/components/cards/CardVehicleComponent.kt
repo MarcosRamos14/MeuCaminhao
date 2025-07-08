@@ -133,7 +133,8 @@ private fun CardVehicleComponentPreview() {
         ) {
             CardVehicleComponent(
                 vehicle = VehicleDTO(
-                    id = 1
+                    id = 1,
+                    licensePlate = " "
                 )
             )
         }

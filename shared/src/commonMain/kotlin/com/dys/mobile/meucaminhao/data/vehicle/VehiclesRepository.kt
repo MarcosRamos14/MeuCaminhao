@@ -12,7 +12,8 @@ class VehiclesRepositoryImpl : VehiclesRepository {
     override suspend fun requestMyVehicles(): List<VehicleDTO> {
         return listOf(
             VehicleDTO(
-                id = 1
+                id = 1,
+                licensePlate = "AAA-1111"
             )
         )
     }

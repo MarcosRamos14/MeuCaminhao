@@ -95,7 +95,10 @@ fun MyVehiclesContent(
                     CardVehicleComponent(
                         vehicle = vehicle,
                         onClick = {
-                            event(NavigateTo(Routes.VehicleDetailsScreen.routeWithArgs(vehicle.id)))
+                            event(NavigateTo(Routes.VehicleDetailsScreen.routeWithArgs(
+                                id = vehicle.id,
+                                licensePlate = vehicle.licensePlate
+                            )))
                         }
                     )
                 }

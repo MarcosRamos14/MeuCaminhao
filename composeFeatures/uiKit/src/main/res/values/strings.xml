@@ -113,6 +113,12 @@
     <string name="text_total_spent">Total spent</string>
     <string name="text_drivers">Drivers</string>
 
+    <!-- Vehicle Details Screen -->
+    <string name="text_travel_expenses">Travel expenses</string>
+    <string name="text_extra_expenses">Extra expenses</string>
+    <string name="text_checklist_history">Checklist history</string>
+    <string name="text_vehicle">Vehicle: %s</string>
+
     <!-- Trips Screen -->
     <string name="text_trips">Trips</string>
     <string name="text_driver">Driver</string>

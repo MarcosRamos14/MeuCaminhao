@@ -26,8 +26,8 @@ sealed class Routes(val route: String) {
      */
     data object VehiclesScreen : Routes("vehiclesScreen")
     data object MyVehiclesScreen : Routes("myVehiclesScreen")
-    data object VehicleDetailsScreen : Routes("vehicleDetailsScreen/{vehicleId}") {
-        fun routeWithArgs(vehicleId: Long) = "vehicleDetailsScreen/$vehicleId"
+    data object VehicleDetailsScreen : Routes("vehicleDetailsScreen/{id}/{licensePlate}") {
+        fun routeWithArgs(id: Long, licensePlate: String) = "vehicleDetailsScreen/$id/$licensePlate"
     }
 
     /**
@@ -62,6 +62,7 @@ sealed class Routes(val route: String) {
         const val ARG_TRIP_ID = "tripId"
         const val ARG_URL = "url"
         const val ARG_INDEX = "index"
-        const val ARG_VEHICLE_ID = "vehicleId"
+        const val ARG_ID = "id"
+        const val ARG_LICENSE_PLATE = "licensePlate"
     }
 }

@@ -106,6 +106,12 @@
     <string name="text_total_spent">Gasto total</string>
     <string name="text_drivers">Motoristas</string>
 
+    <!-- Vehicle Details Screen -->
+    <string name="text_travel_expenses">Despesas em viagens</string>
+    <string name="text_extra_expenses">Despesas extra</string>
+    <string name="text_checklist_history">Histórico de checklist</string>
+    <string name="text_vehicle">Veículo: %s</string>
+
     <!-- Trips Screen -->
     <string name="text_trips">Viagens</string>
     <string name="text_driver">Motorista</string>
