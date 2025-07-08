@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -18,10 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import com.dys.mobile.meucaminhao.domain.dto.VehicleDTO
 import com.dys.mobile.meucaminhao.navigation.event.Event
 import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.navigation.routes.Routes
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles.MyVehiclesEvent.RequestMyVehicles
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles.MyVehiclesState
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles.MyVehiclesViewModel
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions.handleRoute
@@ -38,9 +40,10 @@ const val LICENSE_PLATE_SIZE = 7
 @Composable
 fun MyVehiclesScreen(navController: NavController) {
     val viewModel = koinViewModel<MyVehiclesViewModel>()
+    val myVehiclesState = viewModel.myVehiclesState.collectAsState().value
 
     MyVehiclesContent(
-        vehicles = viewModel.mockedVehicleList(), // TODO: Switch to real data
+        myVehiclesState = myVehiclesState,
         event = viewModel::onEvent
     )
 
@@ -49,9 +52,11 @@ fun MyVehiclesScreen(navController: NavController) {
 
 @Composable
 fun MyVehiclesContent(
-    vehicles: List<VehicleDTO>,
+    myVehiclesState: MyVehiclesState,
     event: (Event) -> Unit
 ) {
+    event(RequestMyVehicles)
+
     var queryState by rememberSaveable { mutableStateOf("") }
 
     Scaffold(
@@ -86,7 +91,7 @@ fun MyVehiclesContent(
                     Spacer(modifier = Modifier.height(8._dph))
                 }
 
-                items(vehicles) { vehicle ->
+                items(myVehiclesState.vehicles) { vehicle ->
                     CardVehicleComponent(
                         vehicle = vehicle,
                         onClick = {
@@ -104,11 +109,7 @@ fun MyVehiclesContent(
 private fun MyVehiclesPreview() {
     MeuCaminhaoTheme {
         MyVehiclesContent(
-            vehicles = listOf(
-                VehicleDTO(1),
-                VehicleDTO(2),
-                VehicleDTO(3)
-            ),
+            myVehiclesState = MyVehiclesState(),
             event = { }
         )
     }
