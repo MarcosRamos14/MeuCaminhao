@@ -34,6 +34,7 @@ import com.dys.mobile.trips.ui.tripsHistory.TripsHistoryScreen
 import com.dys.mobile.uikit.components.bottomBar.BottomAppBarComponent
 import com.dys.mobile.uikit.screens.photos.FullPhotoScreen
 import com.dys.mobile.uikit.screens.photos.PhotoGalleryScreen
+import com.dys.mobile.vehicles.ui.editVehicle.EditVehicleScreen
 import com.dys.mobile.vehicles.ui.myVehicles.MyVehiclesScreen
 import com.dys.mobile.vehicles.ui.vehicleDetails.VehicleDetailsScreen
 import com.dys.mobile.vehicles.ui.vehicles.VehiclesScreen
@@ -112,7 +113,27 @@ fun MainNavHost() {
                 val id = backStackEntry.arguments?.getLong(ARG_ID) ?: -1L
                 val licensePlate = backStackEntry.arguments?.getString(ARG_LICENSE_PLATE) ?: ""
 
-                VehicleDetailsScreen(id = id, licensePlate = licensePlate)
+                VehicleDetailsScreen(
+                    navController = navController,
+                    id = id,
+                    licensePlate = licensePlate
+                )
+            }
+
+            composable(
+                route = Routes.EditVehicleScreen.route,
+                arguments = listOf(
+                    navArgument(ARG_ID) { type = NavType.LongType },
+                ),
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.EditVehicleScreen.route}/${ARG_ID}"
+                    }
+                )
+            ) { backStackEntry ->
+                val id = backStackEntry.arguments?.getLong(ARG_ID) ?: -1L
+
+                EditVehicleScreen(id = id)
             }
 
             composable(

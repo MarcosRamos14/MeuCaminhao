@@ -10,18 +10,20 @@ import com.dys.mobile.meucaminhao.viewmodels.trips.details.TripDetailsViewModel
 import com.dys.mobile.meucaminhao.viewmodels.home.HomeViewModel
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.vehiclesContent.VehiclesViewModel
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles.MyVehiclesViewModel
-import org.koin.core.module.dsl.singleOf
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.vehicleDetails.generalInfo.GeneralVehicleInfoViewModel
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    singleOf(::LoginSharedViewModel)
-    singleOf(::RecoverPasswordSharedViewModel)
-    singleOf(::VerifyCodeViewModel)
-    singleOf(::NewPasswordViewModel)
-    singleOf(::RegisterViewModel)
-    singleOf(::HomeViewModel)
-    singleOf(::TripsHistoryViewModel)
-    singleOf(::TripDetailsViewModel)
-    singleOf(::VehiclesViewModel)
-    singleOf(::MyVehiclesViewModel)
+    factoryOf(::LoginSharedViewModel)
+    factoryOf(::RecoverPasswordSharedViewModel)
+    factoryOf(::VerifyCodeViewModel)
+    factoryOf(::NewPasswordViewModel)
+    factoryOf(::RegisterViewModel)
+    factoryOf(::HomeViewModel)
+    factoryOf(::TripsHistoryViewModel)
+    factoryOf(::TripDetailsViewModel)
+    factoryOf(::VehiclesViewModel)
+    factoryOf(::MyVehiclesViewModel)
+    factoryOf(::GeneralVehicleInfoViewModel)
 }

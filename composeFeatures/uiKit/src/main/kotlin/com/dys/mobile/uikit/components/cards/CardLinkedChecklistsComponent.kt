@@ -1,12 +1,12 @@
 package com.dys.mobile.uikit.components.cards
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,78 +21,64 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.dys.mobile.meucaminhao.domain.dto.VehicleDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleChecklistDTO
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.buttons.TextButtonComponent
-import com.dys.mobile.uikit.components.enum.MonetaryValueType
-import com.dys.mobile.uikit.components.texts.TextAndMonetaryComponent
-import com.dys.mobile.uikit.components.texts.TextAndPlateComponent
+import com.dys.mobile.uikit.components.texts.TextAndMessageTextComponent
 import com.dys.mobile.uikit.components.texts.TextAndTimeComponent
 import com.dys.mobile.uikit.theme.Gray80
-import com.dys.mobile.uikit.theme.Gray95
+import com.dys.mobile.uikit.theme.Gray90
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import com.dys.mobile.uikit.theme.Shapes
 
 @Composable
-fun CardVehicleComponent(
-    vehicle: VehicleDTO,
-    onClick: () -> Unit = {}
+fun CardLinkedChecklistsComponent(
+    modifier: Modifier = Modifier,
+    checklist: VehicleChecklistDTO,
+    onClick: () -> Unit
 ) {
     Card(
-        modifier = Modifier.padding(vertical = 8._dph, horizontal = 24._dpw),
+        modifier = modifier
+            .padding(bottom = 16._dph)
+            .border(1.dp, Gray80, shape = Shapes.large),
         shape = Shapes.large,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 2._dpw
         ),
         content = {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16._dph)
+                    .padding(16._dph),
             ) {
+                TextAndMessageTextComponent(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = R.string.common_checklist,
+                    message = checklist.name,
+                    messageMaxLin = 1
+                )
+
+                Spacer(modifier = Modifier.height(16._dph))
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    TextAndPlateComponent(
-                        modifier = Modifier.weight(1f),
-                        plateValue = vehicle.licensePlate
-                    )
-
-                    Spacer(modifier = Modifier.width(16._dpw))
-
                     TextAndTimeComponent(
                         modifier = Modifier.weight(1f),
-                        title = R.string.text_registration_date,
-                        time = "Ago 23, 2025" ?: stringResource(R.string.common_date_not_defined) // TODO()
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(14._dph))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    TextAndMonetaryComponent(
-                        modifier = Modifier.weight(1f),
-                        title = R.string.text_total_income,
-                        type = MonetaryValueType.POSITIVE,
-                        value = "R$ 5.421,57" ?: stringResource(R.string.common_default_price) // TODO()
+                        title = R.string.text_last_review,
+                        time = checklist.lastReview ?: stringResource(R.string.common_date_not_defined)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
 
-                    TextAndMonetaryComponent(
+                    TextAndMessageTextComponent(
                         modifier = Modifier.weight(1f),
-                        title = R.string.text_total_spent,
-                        type = MonetaryValueType.NEGATIVE,
-                        value = "R$ 2.151,47" ?: stringResource(R.string.common_default_price) // TODO()
+                        title = R.string.text_periodicity,
+                        message = checklist.periodicity ?: stringResource(R.string.common_error_getting_name),
+                        messageMaxLin = 1
                     )
                 }
             }
@@ -102,11 +88,11 @@ fun CardVehicleComponent(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Gray95)
+                    .background(Gray90)
             ) {
                 TextButtonComponent(
                     modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(R.string.common_text_see_more),
+                    text = stringResource(R.string.text_checklist_management),
                     style = MaterialTheme.typography.bodyMedium,
                     icon = R.drawable.ic_see_more,
                     iconPosition = false,
@@ -120,21 +106,16 @@ fun CardVehicleComponent(
 
 @Preview
 @Composable
-private fun CardVehicleComponentPreview() {
+private fun CardLinkedChecklistsPreview() {
     MeuCaminhaoTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Gray80),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            CardVehicleComponent(
-                vehicle = VehicleDTO(
-                    id = 1,
-                    licensePlate = "AAA-1234"
-                )
-            )
-        }
+        CardLinkedChecklistsComponent(
+            checklist = VehicleChecklistDTO(
+                id = 0,
+                name = "Revisão pré-jornada",
+                lastReview = "Ago 23, 2025",
+                periodicity = "A cada 15 dias"
+            ),
+            onClick = { }
+        )
     }
 }

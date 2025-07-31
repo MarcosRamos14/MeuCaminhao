@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,7 +41,8 @@ fun ImageComponent(
         error = {
             Icon(
                 painter = painterResource(fallback),
-                contentDescription = stringResource(R.string.text_error_loading_image)
+                contentDescription = stringResource(R.string.text_error_loading_image),
+                tint = Color.Unspecified
             )
         },
         loading = {

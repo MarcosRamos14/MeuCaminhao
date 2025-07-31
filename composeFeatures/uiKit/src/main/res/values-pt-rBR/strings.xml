@@ -11,6 +11,7 @@
     <string name="common_general_information">Informações gerais</string>
     <string name="common_result">Resultado</string>
     <string name="common_default_price">R$0.00</string>
+    <string name="common_error_getting_data">Erro ao obter dado</string>
     <string name="common_error_getting_name">Erro ao obter nome</string>
     <string name="common_error_in_type">Erro no tipo</string>
     <string name="common_error_getting_weight">Erro ao obter tonelada</string>
@@ -26,6 +27,7 @@
     <string name="text_go_to_top">Voltar ao topo</string>
     <string name="text_download_file">Baixar arquivo</string>
     <string name="text_error_loading_image">Erro ao carregar imagem</string>
+    <string name="text_user_photo">Foto do usuário</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -105,12 +107,30 @@
     <string name="text_registration_date">Data de cadastro</string>
     <string name="text_total_spent">Gasto total</string>
     <string name="text_drivers">Motoristas</string>
+    <string name="text_total_income">Receita total</string>
 
     <!-- Vehicle Details Screen -->
     <string name="text_travel_expenses">Despesas em viagens</string>
     <string name="text_extra_expenses">Despesas extra</string>
     <string name="text_checklist_history">Histórico de checklist</string>
     <string name="text_vehicle">Veículo: %s</string>
+    <string name="text_vehicle_image">Imagem do veículo</string>
+    <string name="text_delete_vehicle">Excluir veículo</string>
+    <string name="text_edit_vehicle">Editar veículo</string>
+    <string name="text_exclude_vehicle">Excluir veículo?</string>
+    <string name="text_excluded_vehicle">Veículo excluído</string>
+    <string name="text_vehicle_deletion_message">Tem certeza que deseja excluir este veículo? Todos os dados relacionados serão removidos permanentemente.</string>
+    <string name="text_vehicle_removed_successfully">O veículo foi removido da sua frota com sucesso.</string>
+    <string name="text_make">Marca</string>
+    <string name="text_model">Modelo</string>
+    <string name="text_linked_drivers">Motoristas vinculados</string>
+    <string name="text_linked_checklists">Checklists vinculados</string>
+    <string name="text_last_review">Últ. revisão</string>
+    <string name="text_periodicity">Periodicidade</string>
+    <string name="text_checklist_management">Gestão de checklist</string>
+    <string name="text_number_of_trips">Qtd. viagens</string>
+
+    <!-- Edit Vehicle Screen -->
 
     <!-- Trips Screen -->
     <string name="text_trips">Viagens</string>

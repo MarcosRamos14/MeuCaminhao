@@ -10,8 +10,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
 import com.dys.mobile.uikit.components.chips.FilterChipGroupComponent
@@ -27,7 +29,11 @@ import com.dys.mobile.vehicles.ui.vehicleDetails.pages.VehicleTravelExpensesPage
 import kotlinx.coroutines.launch
 
 @Composable
-fun VehicleDetailsScreen(id: Long, licensePlate: String) {
+fun VehicleDetailsScreen(
+    navController: NavController,
+    id: Long,
+    licensePlate: String
+) {
     val coroutineScope = rememberCoroutineScope()
     val pages = VehicleDetailPagesEnum.entries.toTypedArray()
     val pagerState = rememberPagerState(
@@ -68,7 +74,7 @@ fun VehicleDetailsScreen(id: Long, licensePlate: String) {
                 userScrollEnabled = false
             ) { page ->
                 when (pages[page]) {
-                    GENERAL_INFO -> GeneralVehicleInfoPage(id)
+                    GENERAL_INFO -> GeneralVehicleInfoPage(navController, id)
                     TRAVEL_EXPENSES -> VehicleTravelExpensesPage(id)
                     EXTRA_EXPENSES -> VehicleExtraExpensesPage(id)
                     CHECKLIST_HISTORY -> VehicleChecklistHistoryPage(id)
@@ -83,6 +89,7 @@ fun VehicleDetailsScreen(id: Long, licensePlate: String) {
 private fun VehicleDetailsPreview() {
     MeuCaminhaoTheme {
         VehicleDetailsScreen(
+            navController = NavController(LocalContext.current),
             id = 1,
             licensePlate = "ABC-1234"
         )

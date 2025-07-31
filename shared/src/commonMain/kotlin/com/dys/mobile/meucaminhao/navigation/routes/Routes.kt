@@ -29,6 +29,9 @@ sealed class Routes(val route: String) {
     data object VehicleDetailsScreen : Routes("vehicleDetailsScreen/{id}/{licensePlate}") {
         fun routeWithArgs(id: Long, licensePlate: String) = "vehicleDetailsScreen/$id/$licensePlate"
     }
+    data object EditVehicleScreen : Routes("editVehicleScreen/{id}") {
+        fun routeWithArgs(id: Long) = "editVehicleScreen/$id"
+    }
 
     /**
      * Home flow route
