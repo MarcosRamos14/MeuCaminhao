@@ -1,7 +1,8 @@
 package com.dys.mobile.meucaminhao.data.vehicle
 
 import com.dys.mobile.meucaminhao.domain.dto.ComponentDTO
-import com.dys.mobile.meucaminhao.domain.dto.VehicleDTO
+import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleChecklistDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDriverDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleInfoDTO
@@ -21,7 +22,20 @@ class VehiclesRepositoryImpl : VehiclesRepository {
         return listOf(
             VehicleDTO(
                 id = 1,
-                licensePlate = "AAA-1111"
+                plate = "AAA-1111",
+                createdAt = "Ago 23, 2025",
+                totalIncome = TotalAmountDTO(
+                    value = 7423.47,
+                    currency = null,
+                    formatted = "R$ 7.423,47",
+                    isPositive = true
+                ),
+                totalExpense = TotalAmountDTO(
+                    value = 2157.18,
+                    currency = null,
+                    formatted = "R$ 2.157,18",
+                    isPositive = false
+                )
             )
         )
     }

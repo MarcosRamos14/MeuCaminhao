@@ -97,7 +97,7 @@ fun MyVehiclesContent(
                         onClick = {
                             event(NavigateTo(Routes.VehicleDetailsScreen.routeWithArgs(
                                 id = vehicle.id,
-                                licensePlate = vehicle.licensePlate
+                                licensePlate = vehicle.plate
                             )))
                         }
                     )

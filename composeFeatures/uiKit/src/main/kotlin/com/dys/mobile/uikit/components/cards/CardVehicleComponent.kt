@@ -21,7 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.dys.mobile.meucaminhao.domain.dto.VehicleDTO
+import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDTO
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
 import com.dys.mobile.uikit.R
@@ -61,7 +62,7 @@ fun CardVehicleComponent(
                 ) {
                     TextAndPlateComponent(
                         modifier = Modifier.weight(1f),
-                        plateValue = vehicle.licensePlate
+                        plateValue = vehicle.plate
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
@@ -69,7 +70,7 @@ fun CardVehicleComponent(
                     TextAndTimeComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_registration_date,
-                        time = "Ago 23, 2025" ?: stringResource(R.string.common_date_not_defined) // TODO()
+                        time = vehicle.createdAt ?: stringResource(R.string.common_date_not_defined)
                     )
                 }
 
@@ -83,7 +84,7 @@ fun CardVehicleComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_total_income,
                         type = MonetaryValueType.POSITIVE,
-                        value = "R$ 5.421,57" ?: stringResource(R.string.common_default_price) // TODO()
+                        value = vehicle.totalIncome?.formatted ?: stringResource(R.string.common_default_price)
                     )
 
                     Spacer(modifier = Modifier.width(16._dpw))
@@ -92,7 +93,7 @@ fun CardVehicleComponent(
                         modifier = Modifier.weight(1f),
                         title = R.string.text_total_spent,
                         type = MonetaryValueType.NEGATIVE,
-                        value = "R$ 2.151,47" ?: stringResource(R.string.common_default_price) // TODO()
+                        value = vehicle.totalExpense?.formatted ?: stringResource(R.string.common_default_price)
                     )
                 }
             }
@@ -132,7 +133,20 @@ private fun CardVehicleComponentPreview() {
             CardVehicleComponent(
                 vehicle = VehicleDTO(
                     id = 1,
-                    licensePlate = "AAA-1234"
+                    plate = "AAA-1234",
+                    createdAt = "Ago 23, 2025",
+                    totalIncome = TotalAmountDTO(
+                        value = null,
+                        currency = null,
+                        formatted = "R$ 7.423,47",
+                        isPositive = true
+                    ),
+                    totalExpense = TotalAmountDTO(
+                        value = null,
+                        currency = null,
+                        formatted = "R$ 2.157,18",
+                        isPositive = false
+                    )
                 )
             )
         }

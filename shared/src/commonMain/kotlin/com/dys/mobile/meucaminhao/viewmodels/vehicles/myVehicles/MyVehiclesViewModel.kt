@@ -29,9 +29,8 @@ class MyVehiclesViewModel(
 
     private fun requestMyVehicles() {
         launchWithState {
-            val result = vehicleRepository.requestMyVehicles()
-            _myVehiclesStateFlow.updateVehicles(vehicles = result)
-            // TODO: Update UiState.Success ?
+            val vehicles = vehicleRepository.requestMyVehicles()
+            _myVehiclesStateFlow.updateVehicles(vehicles = vehicles)
         }
     }
 }

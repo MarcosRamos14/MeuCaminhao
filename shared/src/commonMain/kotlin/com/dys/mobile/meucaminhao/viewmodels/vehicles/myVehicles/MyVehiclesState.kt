@@ -1,6 +1,6 @@
 package com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles
 
-import com.dys.mobile.meucaminhao.domain.dto.VehicleDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDTO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 

@@ -55,7 +55,7 @@ class GeneralVehicleInfoViewModel(
 
     private fun deleteVehicleById(id: Long) {
         launchWithState {
-            vehiclesRepository.requestVehicleInfoById(id) // TODO: Obter retorno para chamar updateConfirmationDeletionBottomSheet()
+            vehiclesRepository.deleteVehicleById(id) // TODO: Obter retorno para chamar updateConfirmationDeletionBottomSheet()
             _generalVehicleInfoStateFlow.updateConfirmationDeletionBottomSheet(true)
         }
     }
