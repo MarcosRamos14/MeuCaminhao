@@ -1,10 +1,10 @@
 ## Projeto Meu caminhão mobile
 
-### 🚛 Fluxo de login e onboarding
-![Fluxo de login e onboarding](assets/login-e-onboarding.gif)
+<h3>🚛 Fluxo de login e onboarding</h3>
+<img src="assets/login-e-onboarding.gif" width="400"/>
 
-### 📍 Fluxo de viagens
-![Fluxo de viagens](assets/Trips.gif)
+<h3>📍 Fluxo de viagens</h3>
+<img src="assets/Trips.gif" width="400"/>
 
-### 🚗 Fluxo de veículos
-![Fluxo de veículos](assets/veículo.gif)
+<h3>🚗 Fluxo de veículos</h3>
+<img src="assets/veículos.gif" width="400"/>
