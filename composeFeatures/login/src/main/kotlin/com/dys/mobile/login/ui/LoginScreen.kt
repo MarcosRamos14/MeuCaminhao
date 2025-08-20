@@ -38,7 +38,6 @@ import com.dys.mobile.uikit.components.buttons.TextButtonComponent
 import com.dys.mobile.uikit.components.outlinedtext.CredentialComponent
 import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
-import com.dys.mobile.uikit.theme.Red60
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -106,7 +105,6 @@ private fun Credentials(
 
     CredentialComponent(
         title = stringResource(R.string.text_email),
-        titleColor = if (loginState.credentialsError != null) Red60 else null,
         placeHolder = stringResource(R.string.text_email_placeholder),
         value = loginState.email,
         isError = loginState.credentialsError != null,
@@ -117,7 +115,6 @@ private fun Credentials(
 
     CredentialComponent(
         title = stringResource(R.string.text_password),
-        titleColor = if (loginState.credentialsError != null) Red60 else null,
         placeHolder = stringResource(R.string.text_password_placeholder),
         isPassword = true,
         value = loginState.password,

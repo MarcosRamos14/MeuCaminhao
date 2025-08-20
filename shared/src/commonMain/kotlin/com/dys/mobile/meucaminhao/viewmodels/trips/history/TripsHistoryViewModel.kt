@@ -59,6 +59,60 @@ class TripsHistoryViewModel : BaseViewModel() {
                 checklist = emptyList(),
                 canDelete = null,
                 canEdit = null,
+            ),
+            TripDTO(
+                id = 2,
+                title = "Viagem para Belo Horizonte",
+                generalInformation = TripGeneralInfoDTO(
+                    driver = "Marcos Ramos",
+                    vehiclePlate = "AAA1BCD",
+                    date = "Ago 25, 2025",
+                    startTime = null,
+                    duration = null,
+                    manifestUrl = null,
+                    course = null,
+                    weight = null
+                ),
+                income = TripIncomeDTO(
+                    totalAmount = TotalAmountDTO(
+                        value = null,
+                        currency = null,
+                        formatted = "R$ 524,03",
+                        isPositive = false
+                    ),
+                    balanceReceivable = null
+                ),
+                expenses = null,
+                checklist = emptyList(),
+                canDelete = null,
+                canEdit = null,
+            ),
+            TripDTO(
+                id = 1,
+                title = "Viagem para Rio de Janeiro",
+                generalInformation = TripGeneralInfoDTO(
+                    driver = "Marcos Ramos",
+                    vehiclePlate = "AAA1BCD",
+                    date = "Ago 26, 2025",
+                    startTime = null,
+                    duration = null,
+                    manifestUrl = null,
+                    course = null,
+                    weight = null
+                ),
+                income = TripIncomeDTO(
+                    totalAmount = TotalAmountDTO(
+                        value = null,
+                        currency = null,
+                        formatted = "R$ 524,03",
+                        isPositive = false
+                    ),
+                    balanceReceivable = null
+                ),
+                expenses = null,
+                checklist = emptyList(),
+                canDelete = null,
+                canEdit = null,
             )
         )
     }

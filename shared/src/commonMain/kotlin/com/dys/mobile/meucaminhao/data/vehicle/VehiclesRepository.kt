@@ -2,12 +2,21 @@ package com.dys.mobile.meucaminhao.data.vehicle
 
 import com.dys.mobile.meucaminhao.domain.dto.ComponentDTO
 import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.ChecklistToLinkDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.DriverToLinkDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleChecklistDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDriverDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleInfoDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.NewVehicleDTO
 
 interface VehiclesRepository {
+
+    suspend fun createNewVehicle(newVehicle: NewVehicleDTO)
+
+    suspend fun requestDriversToLink(): List<DriverToLinkDTO>
+
+    suspend fun requestChecklistToLink(): List<ChecklistToLinkDTO>
 
     suspend fun requestMyVehicles(): List<VehicleDTO>
 
@@ -18,12 +27,110 @@ interface VehiclesRepository {
 
 class VehiclesRepositoryImpl : VehiclesRepository {
 
+    override suspend fun createNewVehicle(newVehicle: NewVehicleDTO) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun requestDriversToLink(): List<DriverToLinkDTO> {
+        return listOf(
+            DriverToLinkDTO(
+                id = 1,
+                name = "Marcos Ramos"
+            ),
+            DriverToLinkDTO(
+                id = 2,
+                name = "José da Silva"
+            )
+        )
+    }
+
+    override suspend fun requestChecklistToLink(): List<ChecklistToLinkDTO> {
+        return listOf(
+            ChecklistToLinkDTO(
+                id = 1,
+                name = "Revisão pré-viagem"
+            ),
+            ChecklistToLinkDTO(
+                id = 2,
+                name = "Revisão preventiva"
+            )
+        )
+    }
+
     override suspend fun requestMyVehicles(): List<VehicleDTO> {
         return listOf(
             VehicleDTO(
                 id = 1,
                 plate = "AAA-1111",
                 createdAt = "Ago 23, 2025",
+                totalIncome = TotalAmountDTO(
+                    value = 7423.47,
+                    currency = null,
+                    formatted = "R$ 7.423,47",
+                    isPositive = true
+                ),
+                totalExpense = TotalAmountDTO(
+                    value = 2157.18,
+                    currency = null,
+                    formatted = "R$ 2.157,18",
+                    isPositive = false
+                )
+            ),
+            VehicleDTO(
+                id = 2,
+                plate = "BBB-2222",
+                createdAt = "Ago 21, 2025",
+                totalIncome = TotalAmountDTO(
+                    value = 7874.47,
+                    currency = null,
+                    formatted = "R$ 7.874,47",
+                    isPositive = true
+                ),
+                totalExpense = TotalAmountDTO(
+                    value = 12157.18,
+                    currency = null,
+                    formatted = "R$ 12.157,18",
+                    isPositive = false
+                )
+            ),
+            VehicleDTO(
+                id = 3,
+                plate = "CCC-3333",
+                createdAt = "Jan 02, 2025",
+                totalIncome = TotalAmountDTO(
+                    value = 488.07,
+                    currency = null,
+                    formatted = "R$ 488,07",
+                    isPositive = true
+                ),
+                totalExpense = TotalAmountDTO(
+                    value = 57.18,
+                    currency = null,
+                    formatted = "R$ 57,18",
+                    isPositive = false
+                )
+            ),
+            VehicleDTO(
+                id = 4,
+                plate = "DDD-4444",
+                createdAt = "Sep 05, 2024",
+                totalIncome = TotalAmountDTO(
+                    value = 1575.48,
+                    currency = null,
+                    formatted = "R$ 1.575,48",
+                    isPositive = true
+                ),
+                totalExpense = TotalAmountDTO(
+                    value = 2157.18,
+                    currency = null,
+                    formatted = "R$ 2.157,18",
+                    isPositive = false
+                )
+            ),
+            VehicleDTO(
+                id = 5,
+                plate = "EEE-5555",
+                createdAt = "Jul 16, 2025",
                 totalIncome = TotalAmountDTO(
                     value = 7423.47,
                     currency = null,
@@ -47,7 +154,7 @@ class VehiclesRepositoryImpl : VehiclesRepository {
             brand = "Scania",
             model = "R450",
             createdAt = "Ago 23, 2025",
-            photoUrl = "https://picsum.photos/200/300/?blur",
+            photoUrl = "https://static.vecteezy.com/ti/fotos-gratis/t2/27843401-uma-carga-caminhao-com-uma-recipiente-e-visto-dirigindo-atraves-uma-ponte-enquanto-uma-semi-caminhao-com-uma-carga-reboque-segue-de-perto-atras-foto.jpg",
             history = listOf(
                 ComponentDTO(
                     overline = "Receita total",
@@ -94,7 +201,7 @@ class VehiclesRepositoryImpl : VehiclesRepository {
                 ),
                 VehicleDriverDTO(
                     id = 1,
-                    name = "Yuri Barbosa",
+                    name = "Jose Lopes",
                     photoUrl = "",
                     leftInfo = ComponentDTO(
                         overline = "Data de cadastro",

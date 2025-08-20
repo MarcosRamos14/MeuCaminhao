@@ -10,6 +10,7 @@ import com.dys.mobile.meucaminhao.viewmodels.trips.details.TripDetailsViewModel
 import com.dys.mobile.meucaminhao.viewmodels.home.HomeViewModel
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.vehiclesContent.VehiclesViewModel
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.myVehicles.MyVehiclesViewModel
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleViewModel
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.vehicleDetails.generalInfo.GeneralVehicleInfoViewModel
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
@@ -24,6 +25,7 @@ val viewModelModule = module {
     factoryOf(::TripsHistoryViewModel)
     factoryOf(::TripDetailsViewModel)
     factoryOf(::VehiclesViewModel)
+    factoryOf(::NewVehicleViewModel)
     factoryOf(::MyVehiclesViewModel)
     factoryOf(::GeneralVehicleInfoViewModel)
 }

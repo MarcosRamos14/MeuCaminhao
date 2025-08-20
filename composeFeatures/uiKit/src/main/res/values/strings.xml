@@ -26,6 +26,7 @@
     <string name="common_responsible">Responsible</string>
     <string name="common_value">Value</string>
     <string name="common_type">Type</string>
+    <string name="common_required_field">Required field</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Search icon</string>
@@ -33,6 +34,8 @@
     <string name="text_download_file">Download file</string>
     <string name="text_error_loading_image">Error loading image</string>
     <string name="text_user_photo">User photo</string>
+    <string name="text_selected">Selected</string>
+    <string name="text_show_options">Show options</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">Control your trips</string>
@@ -138,6 +141,23 @@
     <string name="text_number_of_trips">Number of trips</string>
 
     <!-- Edit Vehicle Screen -->
+
+    <!-- New Vehicle Screen -->
+    <string name="text_new_vehicle">New vehicle</string>
+    <string name="text_save_vehicle">Save vehicle</string>
+    <string name="text_vehicle_added_to_the_fleet">Vehicle added to the fleet</string>
+    <string name="text_vehicle_was_successfully_added">The vehicle was successfully added to your fleet!</string>
+    <string name="text_typing">Type</string>
+    <string name="text_vehicle_photo">Vehicle photo</string>
+    <string name="text_add_photo">Add photo</string>
+    <string name="text_change_photo">Change photo</string>
+    <string name="text_link_drivers">Link drivers</string>
+    <string name="text_link_checklists">Link checklists</string>
+    <string name="text_selected_multiple">%1$d selected</string>
+    <string name="text_select">Select</string>
+    <string name="text_invalid_plate">Invalid plate</string>
+    <string name="text_take_photo">Take photo</string>
+    <string name="text_choose_from_gallery">Choose from gallery</string>
 
     <!-- Trips Screen -->
     <string name="text_trips">Trips</string>

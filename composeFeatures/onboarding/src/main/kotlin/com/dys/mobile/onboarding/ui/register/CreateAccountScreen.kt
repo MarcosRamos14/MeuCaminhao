@@ -45,7 +45,6 @@ import com.dys.mobile.uikit.components.outlinedtext.CredentialComponent
 import com.dys.mobile.uikit.components.stepper.StepperComponent
 import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
-import com.dys.mobile.uikit.theme.Red60
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -159,7 +158,6 @@ fun CreateAccountScreenContent(
 
             CredentialComponent(
                 title = stringResource(R.string.text_email),
-                titleColor = if (state.emailError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_email_placeholder),
                 isError = state.emailError != null,
                 errorMessage = if (state.emailError != null) R.string.text_invalid_email else null,
@@ -171,7 +169,6 @@ fun CreateAccountScreenContent(
 
             CredentialComponent(
                 title = stringResource(R.string.text_create_password),
-                titleColor = if (state.passwordError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_password_placeholder),
                 isPassword = true,
                 isError = state.passwordError != null,
@@ -189,7 +186,6 @@ fun CreateAccountScreenContent(
 
             CredentialComponent(
                 title = stringResource(R.string.text_confirm_password),
-                titleColor = if (state.passwordError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_password_placeholder),
                 isPassword = true,
                 isError = state.passwordError != null,

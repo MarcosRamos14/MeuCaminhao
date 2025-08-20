@@ -19,12 +19,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.dys.mobile.toolkit.extensions._dph
 import com.dys.mobile.toolkit.extensions._dpw
@@ -42,7 +46,7 @@ import com.dys.mobile.uikit.theme.Red60
 fun CredentialComponent(
     modifier: Modifier = Modifier,
     title: String? = null,
-    titleColor: Color? = null,
+    isRequired: Boolean = false,
     placeHolder: String? = null,
     isPassword: Boolean = false,
     keyboardType: KeyboardType = KeyboardType.Text,
@@ -60,9 +64,16 @@ fun CredentialComponent(
         verticalArrangement = Arrangement.spacedBy(8._dph)
     ) {
         title?.let {
+            val annotatedTitle = buildAnnotatedString {
+                append(it)
+                if (isRequired) {
+                    append(" ")
+                    withStyle(style = SpanStyle(color = Red)) { append("*") }
+                }
+            }
             TextComponent(
-                text = it,
-                color = titleColor ?: Black,
+                text = annotatedTitle.text,
+                color = if (isError) Red60 else Black,
                 fontWeight = FontWeight.Light,
                 style = MaterialTheme.typography.bodyMedium
             )

@@ -25,6 +25,7 @@ sealed class Routes(val route: String) {
      * Vehicles flow route
      */
     data object VehiclesScreen : Routes("vehiclesScreen")
+    data object NewVehicleScreen : Routes("newVehicleScreen")
     data object MyVehiclesScreen : Routes("myVehiclesScreen")
     data object VehicleDetailsScreen : Routes("vehicleDetailsScreen/{id}/{licensePlate}") {
         fun routeWithArgs(id: Long, licensePlate: String) = "vehicleDetailsScreen/$id/$licensePlate"

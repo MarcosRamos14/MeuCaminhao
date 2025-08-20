@@ -36,6 +36,7 @@ import com.dys.mobile.uikit.screens.photos.FullPhotoScreen
 import com.dys.mobile.uikit.screens.photos.PhotoGalleryScreen
 import com.dys.mobile.vehicles.ui.editVehicle.EditVehicleScreen
 import com.dys.mobile.vehicles.ui.myVehicles.MyVehiclesScreen
+import com.dys.mobile.vehicles.ui.newVehicle.NewVehicleScreen
 import com.dys.mobile.vehicles.ui.vehicleDetails.VehicleDetailsScreen
 import com.dys.mobile.vehicles.ui.vehicles.VehiclesScreen
 
@@ -85,6 +86,17 @@ fun MainNavHost() {
                 )
             ) {
                 VehiclesScreen(navController)
+            }
+
+            composable(
+                route = Routes.NewVehicleScreen.route,
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "${applicationId}://app/${Routes.NewVehicleScreen.route}"
+                    }
+                )
+            ) {
+                NewVehicleScreen(navController)
             }
 
             composable(

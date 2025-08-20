@@ -41,7 +41,6 @@ import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.outlinedtext.CredentialComponent
 import com.dys.mobile.uikit.components.texts.TextComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
-import com.dys.mobile.uikit.theme.Red60
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -123,7 +122,6 @@ fun NewPasswordContent(
 
             CredentialComponent(
                 title = stringResource(R.string.text_new_password),
-                titleColor = if (state.passwordError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_password_placeholder),
                 isPassword = true,
                 isError = state.passwordError != null,
@@ -141,7 +139,6 @@ fun NewPasswordContent(
 
             CredentialComponent(
                 title = stringResource(R.string.text_confirm_password),
-                titleColor = if (state.passwordError != null) Red60 else null,
                 placeHolder = stringResource(R.string.text_password_placeholder),
                 isPassword = true,
                 isError = state.passwordError != null,

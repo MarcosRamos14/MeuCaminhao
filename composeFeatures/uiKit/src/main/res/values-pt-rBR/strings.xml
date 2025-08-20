@@ -21,6 +21,7 @@
     <string name="common_responsible">Responsável</string>
     <string name="common_value">Valor</string>
     <string name="common_type">Tipo</string>
+    <string name="common_required_field">Campo obrigatório</string>
 
     <!-- Accessibility description -->
     <string name="text_search_icon_description">Ícone de busca</string>
@@ -28,6 +29,8 @@
     <string name="text_download_file">Baixar arquivo</string>
     <string name="text_error_loading_image">Erro ao carregar imagem</string>
     <string name="text_user_photo">Foto do usuário</string>
+    <string name="text_selected">Selecionado</string>
+    <string name="text_show_options">Mostrar opções</string>
 
     <!-- Login Screen -->
     <string name="text_control_your_trips">O controle das suas viagens</string>
@@ -103,7 +106,7 @@
     <string name="text_vehicles">Veículos</string>
 
     <!-- My Vehicles Screen -->
-    <string name="text_my_vehicles">Meu veículos</string>
+    <string name="text_my_vehicles">Meus veículos</string>
     <string name="text_registration_date">Data de cadastro</string>
     <string name="text_total_spent">Gasto total</string>
     <string name="text_drivers">Motoristas</string>
@@ -131,6 +134,23 @@
     <string name="text_number_of_trips">Qtd. viagens</string>
 
     <!-- Edit Vehicle Screen -->
+
+    <!-- New Vehicle Screen -->
+    <string name="text_new_vehicle">Novo veículo</string>
+    <string name="text_save_vehicle">Salvar veículo</string>
+    <string name="text_vehicle_added_to_the_fleet">Veículo adicionado à frota</string>
+    <string name="text_vehicle_was_successfully_added">O veículo foi adicionado com sucesso à sua frota!</string>
+    <string name="text_typing">Digitar</string>
+    <string name="text_vehicle_photo">Foto do veículo</string>
+    <string name="text_add_photo">Adicionar foto</string>
+    <string name="text_change_photo">Alterar foto</string>
+    <string name="text_link_drivers">Vincular motoristas</string>
+    <string name="text_link_checklists">Vincular checklists</string>
+    <string name="text_selected_multiple">%1$d selecionados</string>
+    <string name="text_select">Selecionar</string>
+    <string name="text_invalid_plate">Placa inválida</string>
+    <string name="text_take_photo">Tirar foto</string>
+    <string name="text_choose_from_gallery">Escolher da galeria</string>
 
     <!-- Trips Screen -->
     <string name="text_trips">Viagens</string>

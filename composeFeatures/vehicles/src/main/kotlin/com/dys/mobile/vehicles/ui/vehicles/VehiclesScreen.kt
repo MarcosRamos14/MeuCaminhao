@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -25,6 +26,7 @@ import com.dys.mobile.toolkit.extensions.handleRoute
 import com.dys.mobile.toolkit.state.CollectUiState
 import com.dys.mobile.uikit.R
 import com.dys.mobile.uikit.components.appBar.TopAppBarComponent
+import com.dys.mobile.uikit.components.buttons.FilledRoundButtonComponent
 import com.dys.mobile.uikit.components.buttons.OutlinedRoundButtonComponent
 import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import org.koin.androidx.compose.koinViewModel
@@ -60,6 +62,17 @@ private fun VehiclesContent(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(modifier = Modifier.weight(1f))
+
+            FilledRoundButtonComponent(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(R.string.text_new_vehicle),
+                icon = R.drawable.ic_add,
+                onClick = {
+                    event(NavigateTo(Routes.NewVehicleScreen.route))
+                }
+            )
+
+            Spacer(modifier = Modifier.height(8._dph))
 
             OutlinedRoundButtonComponent(
                 modifier = Modifier.fillMaxWidth(),
