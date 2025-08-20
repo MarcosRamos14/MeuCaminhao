@@ -141,6 +141,9 @@
     <string name="text_number_of_trips">Number of trips</string>
 
     <!-- Edit Vehicle Screen -->
+    <string name="text_edit">Edit</string>
+    <string name="text_saved_changes">Saved changes</string>
+    <string name="text_vehicle_changes_saved">Vehicle changes have been saved successfully!</string>
 
     <!-- New Vehicle Screen -->
     <string name="text_new_vehicle">New vehicle</string>

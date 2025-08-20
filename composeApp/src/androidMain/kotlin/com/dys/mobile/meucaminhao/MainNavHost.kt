@@ -145,7 +145,7 @@ fun MainNavHost() {
             ) { backStackEntry ->
                 val id = backStackEntry.arguments?.getLong(ARG_ID) ?: -1L
 
-                EditVehicleScreen(id = id)
+                EditVehicleScreen(id = id, navController)
             }
 
             composable(

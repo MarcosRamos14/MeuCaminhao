@@ -106,7 +106,7 @@
     <string name="text_vehicles">Veículos</string>
 
     <!-- My Vehicles Screen -->
-    <string name="text_my_vehicles">Meus veículos</string>
+    <string name="text_my_vehicles">Meu veículos</string>
     <string name="text_registration_date">Data de cadastro</string>
     <string name="text_total_spent">Gasto total</string>
     <string name="text_drivers">Motoristas</string>
@@ -134,12 +134,15 @@
     <string name="text_number_of_trips">Qtd. viagens</string>
 
     <!-- Edit Vehicle Screen -->
+    <string name="text_edit">Editar</string>
+    <string name="text_saved_changes">Saved changes</string>
+    <string name="text_vehicle_changes_saved">As alterações no veículo foram salvas com sucesso!</string>
 
     <!-- New Vehicle Screen -->
     <string name="text_new_vehicle">Novo veículo</string>
     <string name="text_save_vehicle">Salvar veículo</string>
-    <string name="text_vehicle_added_to_the_fleet">Veículo adicionado à frota</string>
-    <string name="text_vehicle_was_successfully_added">O veículo foi adicionado com sucesso à sua frota!</string>
+    <string name="text_vehicle_added_to_the_fleet">Veículo adicionado à fronta</string>
+    <string name="text_vehicle_was_successfully_added">O veículo foi adicionado com sucesso à sua fronta!</string>
     <string name="text_typing">Digitar</string>
     <string name="text_vehicle_photo">Foto do veículo</string>
     <string name="text_add_photo">Adicionar foto</string>

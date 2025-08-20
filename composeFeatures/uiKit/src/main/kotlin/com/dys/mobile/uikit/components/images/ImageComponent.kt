@@ -26,14 +26,14 @@ import com.dys.mobile.uikit.theme.Shapes
 
 @Composable
 fun ImageComponent(
-    url: String,
-    @StringRes contentDescription: Int,
-    openImageClick: () -> Unit,
     modifier: Modifier = Modifier,
+    url: String,
     contentScale: ContentScale = ContentScale.Crop,
     shape: Shape = Shapes.medium,
     fallbackColor: Color = Color.Unspecified,
     @DrawableRes fallback: Int = R.drawable.ic_image,
+    @StringRes contentDescription: Int,
+    openImageClick: () -> Unit
 ) {
     SubcomposeAsyncImage(
         modifier = modifier

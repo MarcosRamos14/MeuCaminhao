@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 import com.dys.mobile.meucaminhao.navigation.event.Event
 import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.navigation.routes.Routes.FullPhotoScreen
-import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleErrorState
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.BrandChanged
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.ChecklistsChanged
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.CreateNewVehicle
@@ -82,10 +82,10 @@ private fun NewVehicleContent(
 ) {
     val context = LocalContext.current
 
-    val invalidPlateError  = state.error is NewVehicleErrorState.InvalidPlate
-    val emptyPlateError = state.error is NewVehicleErrorState.EmptyPlate
-    val emptyBrandError = state.error is NewVehicleErrorState.EmptyBrand
-    val emptyModelError = state.error is NewVehicleErrorState.EmptyModel
+    val invalidPlateError  = state.error is VehicleErrorState.InvalidPlate
+    val emptyPlateError = state.error is VehicleErrorState.EmptyPlate
+    val emptyBrandError = state.error is VehicleErrorState.EmptyBrand
+    val emptyModelError = state.error is VehicleErrorState.EmptyModel
 
     val handlePhotoResult: (Uri) -> Unit = { uri ->
         event(PhotoUriChanged(uri.toString()))

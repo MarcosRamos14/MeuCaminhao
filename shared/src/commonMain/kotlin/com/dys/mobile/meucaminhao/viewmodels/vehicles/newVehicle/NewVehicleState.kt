@@ -2,6 +2,7 @@ package com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle
 
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.ChecklistToLinkDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.DriverToLinkDTO
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -14,15 +15,8 @@ data class NewVehicleState(
     val checklists: List<ChecklistToLinkDTO>? = null,
     val isOpenFeedbackBottomSheet: Boolean = false,
     val isOpenPhotoSourceBottomSheet: Boolean = false,
-    val error: NewVehicleErrorState? = null
+    val error: VehicleErrorState? = null
 )
-
-sealed interface NewVehicleErrorState {
-    data object InvalidPlate : NewVehicleErrorState
-    data object EmptyPlate : NewVehicleErrorState
-    data object EmptyBrand : NewVehicleErrorState
-    data object EmptyModel : NewVehicleErrorState
-}
 
 fun MutableStateFlow<NewVehicleState>.updatePlate(plate: String) {
     update { it.copy(plate = plate) }
@@ -56,6 +50,6 @@ fun MutableStateFlow<NewVehicleState>.updatePhotoSourceBottomSheet(isOpen: Boole
     update { it.copy(isOpenPhotoSourceBottomSheet = isOpen) }
 }
 
-fun MutableStateFlow<NewVehicleState>.updateError(error: NewVehicleErrorState?) {
+fun MutableStateFlow<NewVehicleState>.updateError(error: VehicleErrorState?) {
     update { it.copy(error = error) }
 }

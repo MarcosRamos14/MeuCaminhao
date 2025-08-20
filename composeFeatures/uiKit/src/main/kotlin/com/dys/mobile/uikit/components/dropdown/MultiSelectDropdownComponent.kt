@@ -38,8 +38,8 @@ import com.dys.mobile.uikit.theme.MeuCaminhaoTheme
 import com.dys.mobile.uikit.theme.Shapes
 
 data class DropdownItem(
-    val title: String,
     val id: Long? = null,
+    val title: String,
     val isSelected: Boolean = false
 )
 

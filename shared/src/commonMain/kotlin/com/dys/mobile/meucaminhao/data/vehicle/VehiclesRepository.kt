@@ -4,6 +4,7 @@ import com.dys.mobile.meucaminhao.domain.dto.ComponentDTO
 import com.dys.mobile.meucaminhao.domain.dto.TotalAmountDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.ChecklistToLinkDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.DriverToLinkDTO
+import com.dys.mobile.meucaminhao.domain.dto.vehicle.EditVehicleDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleChecklistDTO
 import com.dys.mobile.meucaminhao.domain.dto.vehicle.VehicleDriverDTO
@@ -23,6 +24,10 @@ interface VehiclesRepository {
     suspend fun requestVehicleInfoById(id: Long): VehicleInfoDTO
 
     suspend fun deleteVehicleById(id: Long)
+
+    suspend fun editVehicle(vehicle: EditVehicleDTO)
+
+    suspend fun requestVehicleForEdit(id: Long): EditVehicleDTO
 }
 
 class VehiclesRepositoryImpl : VehiclesRepository {
@@ -236,5 +241,26 @@ class VehiclesRepositoryImpl : VehiclesRepository {
 
     override suspend fun deleteVehicleById(id: Long) {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun editVehicle(vehicle: EditVehicleDTO) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun requestVehicleForEdit(id: Long): EditVehicleDTO {
+        return EditVehicleDTO(
+            id = 1,
+            plate = "AAA-1111",
+            brand = "Scania",
+            model = "R450",
+            photoUri = "",
+            drivers = listOf(
+                DriverToLinkDTO(
+                    id = 1,
+                    name = "Marcos Ramos"
+                )
+            ),
+            checklists = emptyList()
+        )
     }
 }

@@ -7,10 +7,10 @@ import com.dys.mobile.meucaminhao.domain.usecase.fieldValidator.VehicleValidator
 import com.dys.mobile.meucaminhao.navigation.event.Event
 import com.dys.mobile.meucaminhao.navigation.event.NavigateTo
 import com.dys.mobile.meucaminhao.viewmodels.BaseViewModel
-import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleErrorState.EmptyBrand
-import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleErrorState.EmptyModel
-import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleErrorState.EmptyPlate
-import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleErrorState.InvalidPlate
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState.EmptyBrand
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState.EmptyModel
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState.EmptyPlate
+import com.dys.mobile.meucaminhao.viewmodels.vehicles.common.VehicleErrorState.InvalidPlate
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.BrandChanged
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.ChecklistsChanged
 import com.dys.mobile.meucaminhao.viewmodels.vehicles.newVehicle.NewVehicleEvent.CreateNewVehicle
